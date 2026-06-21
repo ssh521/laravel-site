@@ -17,6 +17,8 @@ return [
     ],
 
     'navigation' => [
+        'cta' => ['label' => 'Start Trial', 'url' => '#pricing'],
+
         'header' => [
             ['label' => 'Home', 'url' => '/', 'active' => true],
             [
@@ -25,18 +27,18 @@ return [
                 'children' => [
                     ['label' => 'Features', 'url' => '#features'],
                     ['label' => 'Pricing', 'url' => '#pricing'],
-                    ['label' => 'FAQ', 'url' => '#faq'],
+                    ['label' => 'Dashboard', 'url' => '#product'],
                 ],
             ],
             ['label' => 'Pricing', 'url' => '#pricing'],
-            ['label' => 'Contact', 'url' => '#contact'],
+            ['label' => 'Pricing', 'url' => '#pricing'],
         ],
 
         'footer' => [
             ['label' => 'Product', 'url' => '#product'],
             ['label' => 'Features', 'url' => '#features'],
             ['label' => 'Pricing', 'url' => '#pricing'],
-            ['label' => 'Contact', 'url' => '#contact'],
+            ['label' => 'Pricing', 'url' => '#pricing'],
         ],
     ],
 ];

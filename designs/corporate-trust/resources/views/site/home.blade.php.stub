@@ -12,35 +12,46 @@
         secondary-url="#capabilities"
     />
 
-    <x-site.section id="company" eyebrow="Company" title="A stable structure for serious business websites">
-        <div class="grid gap-4 md:grid-cols-3">
-            <x-site.feature-card title="Company profile" description="Introduce mission, scale, locations, and business history without overcomplicating the first page." />
-            <x-site.feature-card title="Capabilities" description="Group core services, industries, and delivery strengths in clear comparison-friendly sections." />
-            <x-site.feature-card title="Trust signals" description="Reserve space for certifications, partner logos, metrics, and customer references." />
+    <x-site.section id="company" eyebrow="Company profile" title="Lead with the facts buyers verify">
+        <div class="grid gap-4 md:grid-cols-4">
+            @foreach (['18 years' => 'Operating history', '42+' => 'Completed projects', '12' => 'Industry partners', 'ISO' => 'Certification slot'] as $metric => $label)
+                <div class="rounded-lg border border-[var(--site-color-border)] bg-[var(--site-color-surface)] p-5">
+                    <p class="text-3xl font-bold text-[var(--site-color-accent)]">{{ $metric }}</p>
+                    <p class="mt-2 text-sm text-[var(--site-color-muted)]">{{ $label }}</p>
+                </div>
+            @endforeach
         </div>
     </x-site.section>
 
-    <x-site.section id="capabilities" eyebrow="Capabilities" title="Show what the company can reliably deliver">
-        <div class="grid gap-6 lg:grid-cols-[1.1fr_0.9fr] lg:items-center">
-            <div class="space-y-4 text-base leading-8 text-[var(--site-color-muted)]">
-                <p>
-                    Use this area for service lines, industries served, project capacity, or quality process details.
-                    Corporate pages should make the visitor feel the company is organized and dependable.
-                </p>
-                <p>
-                    Keep claims concrete. Replace generic marketing language with certifications, project counts,
-                    client categories, office locations, and measurable strengths.
+    <x-site.section id="capabilities" eyebrow="Capabilities" title="Separate business units, industries, and delivery strengths">
+        <div class="grid gap-6 lg:grid-cols-[0.8fr_1.2fr]">
+            <div class="rounded-lg border border-[var(--site-color-border)] bg-[var(--site-color-surface-muted)] p-6">
+                <p class="text-sm font-semibold uppercase text-[var(--site-color-accent)]">Company overview</p>
+                <p class="mt-4 text-sm leading-7 text-[var(--site-color-muted)]">
+                    Replace this with a concise company profile, operating region, facility scale, service promise,
+                    and the type of buyer this company serves.
                 </p>
             </div>
-            <div class="rounded-lg border border-[var(--site-color-border)] bg-[var(--site-color-surface)] p-6 shadow-sm">
-                <p class="text-sm font-semibold uppercase text-[var(--site-color-accent)]">Trust checklist</p>
-                <ul class="mt-4 space-y-3 text-sm text-[var(--site-color-muted)]">
-                    <li>Company overview</li>
-                    <li>Services and industries</li>
-                    <li>Certifications or partners</li>
-                    <li>Inquiry CTA and contact path</li>
-                </ul>
+            <div class="grid gap-4 md:grid-cols-2">
+                <x-site.feature-card title="Manufacturing" description="Use for production capacity, quality process, materials, or delivery scope." />
+                <x-site.feature-card title="Professional services" description="Use for advisory, implementation, managed service, or project teams." />
+                <x-site.feature-card title="Public sector" description="Use for compliance, procurement, documentation, and references." />
+                <x-site.feature-card title="Enterprise support" description="Use for SLAs, support model, onboarding, and account management." />
             </div>
+        </div>
+    </x-site.section>
+
+    <x-site.section id="certifications" eyebrow="Trust library" title="Reserve space for proof assets">
+        <div class="grid gap-4 md:grid-cols-3">
+            @foreach (['Certification PDF', 'Partner logos', 'Case reference'] as $asset)
+                <article class="rounded-lg border border-[var(--site-color-border)] bg-[var(--site-color-surface)] p-6">
+                    <div class="mb-5 h-12 rounded bg-[var(--site-color-surface-muted)]"></div>
+                    <h3 class="font-semibold text-[var(--site-color-text)]">{{ $asset }}</h3>
+                    <p class="mt-2 text-sm leading-6 text-[var(--site-color-muted)]">
+                        Add downloadable files, logos, audit references, or customer categories.
+                    </p>
+                </article>
+            @endforeach
         </div>
     </x-site.section>
 

@@ -17,6 +17,8 @@ return [
     ],
 
     'navigation' => [
+        'cta' => ['label' => 'Contact', 'url' => '#contact'],
+
         'header' => [
             ['label' => 'Home', 'url' => '/', 'active' => true],
             [

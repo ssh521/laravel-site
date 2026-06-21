@@ -5,50 +5,59 @@
     <x-site.hero
         eyebrow="Local Business Website"
         title="Help nearby customers call, visit, and choose you."
-        description="A mobile-first scaffold for restaurants, academies, salons, studios, and neighborhood services that need clear info fast."
+        description="A mobile-first scaffold for restaurants, academies, salons, studios, and neighborhood services that need practical information fast."
         primary-label="Call Now"
-        primary-url="#contact"
-        secondary-label="View Location"
+        primary-url="tel:+821012345678"
+        secondary-label="Get Directions"
         secondary-url="#location"
     />
 
-    <x-site.section id="visit" eyebrow="Visit" title="Everything customers need before they arrive">
-        <div class="grid gap-4 md:grid-cols-3">
-            <x-site.feature-card title="Business hours" description="Put opening hours, holiday notices, and booking availability close to the top." />
-            <x-site.feature-card title="Representative offers" description="Show popular services, menus, classes, or packages before deeper details." />
-            <x-site.feature-card title="Map and contact" description="Make phone, directions, parking, and chat links easy to reach on mobile." />
-        </div>
-    </x-site.section>
-
-    <x-site.section id="location" eyebrow="Location" title="Reduce friction for first-time visitors">
-        <div class="grid gap-6 lg:grid-cols-[1.1fr_0.9fr] lg:items-center">
-            <div class="space-y-4 text-base leading-8 text-[var(--site-color-muted)]">
-                <p>
-                    Replace this section with a map embed, transit directions, parking instructions, or neighborhood landmarks.
-                    Local pages should answer practical questions before visitors call.
-                </p>
-                <p>
-                    Keep mobile CTAs short and visible. Use phone, booking, or directions as the primary action depending
-                    on the business.
-                </p>
-            </div>
+    <x-site.section id="hours" eyebrow="Open today" title="Put the visit decision above the fold">
+        <div class="grid gap-5 lg:grid-cols-[0.85fr_1.15fr]">
             <div class="rounded-lg border border-[var(--site-color-border)] bg-[var(--site-color-surface)] p-6 shadow-sm">
-                <p class="text-sm font-semibold uppercase text-[var(--site-color-accent)]">Local checklist</p>
-                <ul class="mt-4 space-y-3 text-sm text-[var(--site-color-muted)]">
-                    <li>Phone and booking CTA</li>
-                    <li>Hours and holiday notices</li>
-                    <li>Map, parking, directions</li>
-                    <li>Reviews or featured offers</li>
-                </ul>
+                <p class="text-sm font-semibold uppercase text-[var(--site-color-accent)]">Business hours</p>
+                <dl class="mt-5 space-y-3 text-sm">
+                    @foreach (['Mon-Fri' => '10:00 - 20:00', 'Saturday' => '10:00 - 18:00', 'Sunday' => 'Closed'] as $day => $time)
+                        <div class="flex items-center justify-between border-b border-[var(--site-color-border)] pb-3 last:border-0 last:pb-0">
+                            <dt class="font-medium text-[var(--site-color-text)]">{{ $day }}</dt>
+                            <dd class="text-[var(--site-color-muted)]">{{ $time }}</dd>
+                        </div>
+                    @endforeach
+                </dl>
+            </div>
+
+            <div id="menu" class="grid gap-4 sm:grid-cols-2">
+                <x-site.feature-card title="Signature service" description="Feature the best-selling menu item, class, treatment, or package with a clear starting price." />
+                <x-site.feature-card title="Booking note" description="Explain same-day availability, reservation rules, parking, or preparation instructions." />
+                <x-site.feature-card title="Customer review" description="Add a short local review, neighborhood reputation note, or repeat-customer proof." />
+                <x-site.feature-card title="Mobile contact" description="Use phone, map, chat, or reservation links depending on how customers actually convert." />
             </div>
         </div>
     </x-site.section>
 
-    <x-site.cta
-        id="contact"
-        title="Ready to visit or book?"
-        description="Replace this CTA with a phone link, reservation page, Kakao channel, or map directions."
-        button-label="Get Directions"
-        button-url="#location"
-    />
+    <x-site.section id="location" eyebrow="Location" title="Make arrival easy for first-time visitors">
+        <div class="grid gap-6 lg:grid-cols-[1.1fr_0.9fr]">
+            <div class="min-h-72 rounded-lg border border-[var(--site-color-border)] bg-[var(--site-color-surface-muted)] p-6">
+                <p class="text-sm font-semibold uppercase text-[var(--site-color-accent)]">Map embed area</p>
+                <p class="mt-4 max-w-xl text-sm leading-6 text-[var(--site-color-muted)]">
+                    Replace this panel with a Naver Map, Kakao Map, Google Map, parking photo, or landmark instructions.
+                </p>
+            </div>
+            <div class="space-y-4">
+                @foreach (['Address' => '123 Local Street, Seoul', 'Parking' => 'Two visitor spots behind the building', 'Transit' => '3 minute walk from Exit 2'] as $label => $value)
+                    <div class="rounded-lg border border-[var(--site-color-border)] bg-[var(--site-color-surface)] p-5">
+                        <p class="text-sm font-semibold text-[var(--site-color-text)]">{{ $label }}</p>
+                        <p class="mt-2 text-sm text-[var(--site-color-muted)]">{{ $value }}</p>
+                    </div>
+                @endforeach
+            </div>
+        </div>
+    </x-site.section>
+
+    <div class="sticky bottom-0 z-30 border-t border-[var(--site-color-border)] bg-[var(--site-color-page)]/95 p-3 backdrop-blur md:hidden">
+        <div class="grid grid-cols-2 gap-3">
+            <x-site.button href="tel:+821012345678" class="justify-center">Call</x-site.button>
+            <x-site.button href="#location" variant="secondary" class="justify-center">Directions</x-site.button>
+        </div>
+    </div>
 </x-layouts.site>

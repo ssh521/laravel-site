@@ -1,5 +1,6 @@
 @php
     $items = config('laravel-site.navigation.header', []);
+    $cta = config('laravel-site.navigation.cta', ['label' => 'Contact', 'url' => '#contact']);
 @endphp
 
 <header class="sticky top-0 z-40 border-b border-[var(--site-color-border)] bg-[var(--site-color-page)]/95 backdrop-blur">
@@ -22,7 +23,7 @@
         </nav>
 
         <div class="hidden md:block">
-            <x-site.button href="#contact" size="sm">Contact</x-site.button>
+            <x-site.button :href="$cta['url'] ?? '#contact'" size="sm">{{ $cta['label'] ?? 'Contact' }}</x-site.button>
         </div>
 
         <button

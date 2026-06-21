@@ -17,11 +17,13 @@ return [
     ],
 
     'navigation' => [
+        'cta' => ['label' => 'Start a Brief', 'url' => '#contact'],
+
         'header' => [
             ['label' => 'Home', 'url' => '/', 'active' => true],
             [
                 'label' => 'Projects',
-                'url' => '#projects',
+                'url' => '#selected-work',
                 'children' => [
                     ['label' => 'Selected Work', 'url' => '#selected-work'],
                     ['label' => 'Process', 'url' => '#process'],
@@ -33,7 +35,7 @@ return [
         ],
 
         'footer' => [
-            ['label' => 'Projects', 'url' => '#projects'],
+            ['label' => 'Projects', 'url' => '#selected-work'],
             ['label' => 'Process', 'url' => '#process'],
             ['label' => 'Studio', 'url' => '#studio'],
             ['label' => 'Contact', 'url' => '#contact'],

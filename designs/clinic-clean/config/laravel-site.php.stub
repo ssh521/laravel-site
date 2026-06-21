@@ -17,11 +17,13 @@ return [
     ],
 
     'navigation' => [
+        'cta' => ['label' => 'Book Appointment', 'url' => '#appointment'],
+
         'header' => [
             ['label' => 'Home', 'url' => '/', 'active' => true],
             [
                 'label' => 'Care',
-                'url' => '#care',
+                'url' => '#programs',
                 'children' => [
                     ['label' => 'Programs', 'url' => '#programs'],
                     ['label' => 'Process', 'url' => '#process'],
@@ -29,14 +31,14 @@ return [
                 ],
             ],
             ['label' => 'Process', 'url' => '#process'],
-            ['label' => 'Contact', 'url' => '#contact'],
+            ['label' => 'Appointment', 'url' => '#appointment'],
         ],
 
         'footer' => [
-            ['label' => 'Care', 'url' => '#care'],
+            ['label' => 'Care', 'url' => '#programs'],
             ['label' => 'Process', 'url' => '#process'],
             ['label' => 'Team', 'url' => '#team'],
-            ['label' => 'Contact', 'url' => '#contact'],
+            ['label' => 'Appointment', 'url' => '#appointment'],
         ],
     ],
 ];

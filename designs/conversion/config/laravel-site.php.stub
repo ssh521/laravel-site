@@ -17,6 +17,8 @@ return [
     ],
 
     'navigation' => [
+        'cta' => ['label' => 'Book Now', 'url' => '#lead-form'],
+
         'header' => [
             ['label' => 'Home', 'url' => '/', 'active' => true],
             [

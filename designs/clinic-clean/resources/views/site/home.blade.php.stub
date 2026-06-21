@@ -7,44 +7,53 @@
         title="Create a calm path from concern to appointment."
         description="A trustworthy responsive scaffold for clinics, counseling centers, law offices, tax firms, and expert-led services."
         primary-label="Book an Appointment"
-        primary-url="#contact"
-        secondary-label="View Care Process"
+        primary-url="#appointment"
+        secondary-label="View Process"
         secondary-url="#process"
     />
 
-    <x-site.section id="care" eyebrow="Care" title="Explain services with clarity and restraint">
-        <div class="grid gap-4 md:grid-cols-3">
-            <x-site.feature-card title="Specialties" description="Group treatments, consultation areas, or expert services in plain language." />
-            <x-site.feature-card title="Process" description="Show appointment steps, first visit expectations, and preparation guidance." />
-            <x-site.feature-card title="Expert profile" description="Reserve space for doctors, counselors, attorneys, or certified professionals." />
+    <x-site.section id="programs" eyebrow="Services" title="Show care areas without overwhelming visitors">
+        <div class="grid gap-4 md:grid-cols-2 lg:grid-cols-4">
+            @foreach (['Initial consultation', 'Specialized program', 'Follow-up care', 'Remote guidance'] as $service)
+                <article class="rounded-lg border border-[var(--site-color-border)] bg-[var(--site-color-surface)] p-5 shadow-sm">
+                    <p class="text-sm font-semibold text-[var(--site-color-accent)]">{{ $service }}</p>
+                    <p class="mt-3 text-sm leading-6 text-[var(--site-color-muted)]">
+                        Add eligibility, duration, preparation, and what patients can expect.
+                    </p>
+                </article>
+            @endforeach
         </div>
     </x-site.section>
 
-    <x-site.section id="process" eyebrow="Process" title="Make the next step feel simple and safe">
-        <div class="grid gap-6 lg:grid-cols-[1.1fr_0.9fr] lg:items-center">
-            <div class="space-y-4 text-base leading-8 text-[var(--site-color-muted)]">
-                <p>
-                    Use this section to explain appointment flow, consultation time, documents to bring, or privacy expectations.
-                    A calm page should reduce anxiety before asking for contact.
-                </p>
-                <p>
-                    Avoid exaggerated claims. Focus on qualification, process, environment, and practical booking information.
-                </p>
+    <x-site.section id="team" eyebrow="Team" title="Make expertise visible before asking for contact">
+        <div class="grid gap-6 lg:grid-cols-[0.9fr_1.1fr] lg:items-start">
+            <div class="rounded-lg border border-[var(--site-color-border)] bg-[var(--site-color-surface-muted)] p-6">
+                <div class="aspect-[4/5] rounded-md bg-[var(--site-color-surface)]"></div>
+                <h3 class="mt-5 text-xl font-bold text-[var(--site-color-text)]">Dr. Example Name</h3>
+                <p class="mt-2 text-sm text-[var(--site-color-muted)]">Director / Licensed specialist</p>
             </div>
-            <div class="rounded-lg border border-[var(--site-color-border)] bg-[var(--site-color-surface)] p-6 shadow-sm">
-                <p class="text-sm font-semibold uppercase text-[var(--site-color-accent)]">Care checklist</p>
-                <ul class="mt-4 space-y-3 text-sm text-[var(--site-color-muted)]">
-                    <li>Service areas</li>
-                    <li>Appointment process</li>
-                    <li>Professional profiles</li>
-                    <li>Booking and contact info</li>
-                </ul>
+            <div class="space-y-4">
+                <x-site.feature-card title="Qualifications" description="List credentials, licenses, certifications, and professional memberships." />
+                <x-site.feature-card title="Care philosophy" description="Explain the tone of care, privacy expectations, and consultation principles." />
+                <x-site.feature-card title="Visit preparation" description="Tell visitors what to bring, how long it takes, and what happens afterward." />
             </div>
+        </div>
+    </x-site.section>
+
+    <x-site.section id="process" eyebrow="Process" title="Reduce anxiety with a clear appointment flow">
+        <div class="grid gap-4 md:grid-cols-4">
+            @foreach (['Reserve', 'Intake', 'Consult', 'Plan'] as $step)
+                <div class="rounded-lg border border-[var(--site-color-border)] bg-[var(--site-color-surface)] p-5">
+                    <p class="text-3xl font-bold text-[var(--site-color-accent)]">0{{ $loop->iteration }}</p>
+                    <h3 class="mt-4 font-semibold text-[var(--site-color-text)]">{{ $step }}</h3>
+                    <p class="mt-2 text-sm leading-6 text-[var(--site-color-muted)]">Replace with a practical explanation for this step.</p>
+                </div>
+            @endforeach
         </div>
     </x-site.section>
 
     <x-site.cta
-        id="contact"
+        id="appointment"
         title="Ready to schedule a consultation?"
         description="Replace this CTA with a Livewire appointment form, booking service, or office phone link."
         button-label="Book an Appointment"

@@ -17,6 +17,8 @@ return [
     ],
 
     'navigation' => [
+        'cta' => ['label' => 'Request Consultation', 'url' => '#contact'],
+
         'header' => [
             ['label' => 'Home', 'url' => '/', 'active' => true],
             [
@@ -25,7 +27,7 @@ return [
                 'children' => [
                     ['label' => 'Capabilities', 'url' => '#capabilities'],
                     ['label' => 'Certifications', 'url' => '#certifications'],
-                    ['label' => 'Clients', 'url' => '#clients'],
+                    ['label' => 'Trust Library', 'url' => '#certifications'],
                 ],
             ],
             ['label' => 'Capabilities', 'url' => '#capabilities'],
@@ -35,7 +37,7 @@ return [
         'footer' => [
             ['label' => 'Company', 'url' => '#company'],
             ['label' => 'Capabilities', 'url' => '#capabilities'],
-            ['label' => 'Clients', 'url' => '#clients'],
+            ['label' => 'Trust Library', 'url' => '#certifications'],
             ['label' => 'Contact', 'url' => '#contact'],
         ],
     ],

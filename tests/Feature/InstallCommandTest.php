@@ -179,6 +179,32 @@ JS);
         }
     }
 
+    public function test_designs_ship_distinct_functional_sections(): void
+    {
+        $expectations = [
+            'conversion' => ['Lead form placeholder', 'Remove the objections'],
+            'corporate-trust' => ['Company profile', 'Trust library'],
+            'local-business' => ['Business hours', 'Map embed area'],
+            'clinic-clean' => ['Dr. Example Name', 'Reduce anxiety'],
+            'portfolio-editorial' => ['Selected work', 'Studio facts'],
+            'saas-product' => ['Show the product shape early', 'Pricing'],
+            'event-promo' => ['Event details', 'Speakers'],
+        ];
+
+        foreach ($expectations as $design => $markers) {
+            $this->artisan('laravel-site:design', [
+                'design' => $design,
+                '--force' => true,
+            ])->assertExitCode(0);
+
+            $home = File::get(base_path('resources/views/site/home.blade.php'));
+
+            foreach ($markers as $marker) {
+                $this->assertStringContainsString($marker, $home);
+            }
+        }
+    }
+
     public function test_install_command_does_not_overwrite_existing_files_without_force(): void
     {
         File::ensureDirectoryExists(base_path('resources/views/site'));

@@ -17,11 +17,13 @@ return [
     ],
 
     'navigation' => [
+        'cta' => ['label' => 'Call Now', 'url' => 'tel:+821012345678'],
+
         'header' => [
             ['label' => 'Home', 'url' => '/', 'active' => true],
             [
                 'label' => 'Visit',
-                'url' => '#visit',
+                'url' => '#hours',
                 'children' => [
                     ['label' => 'Menu', 'url' => '#menu'],
                     ['label' => 'Hours', 'url' => '#hours'],
@@ -29,14 +31,14 @@ return [
                 ],
             ],
             ['label' => 'Menu', 'url' => '#menu'],
-            ['label' => 'Contact', 'url' => '#contact'],
+            ['label' => 'Location', 'url' => '#location'],
         ],
 
         'footer' => [
             ['label' => 'Menu', 'url' => '#menu'],
             ['label' => 'Hours', 'url' => '#hours'],
             ['label' => 'Location', 'url' => '#location'],
-            ['label' => 'Contact', 'url' => '#contact'],
+            ['label' => 'Directions', 'url' => '#location'],
         ],
     ],
 ];

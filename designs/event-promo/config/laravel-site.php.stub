@@ -17,6 +17,8 @@ return [
     ],
 
     'navigation' => [
+        'cta' => ['label' => 'Register', 'url' => '#tickets'],
+
         'header' => [
             ['label' => 'Home', 'url' => '/', 'active' => true],
             [
@@ -25,18 +27,18 @@ return [
                 'children' => [
                     ['label' => 'Schedule', 'url' => '#schedule'],
                     ['label' => 'Speakers', 'url' => '#speakers'],
-                    ['label' => 'Venue', 'url' => '#venue'],
+                    ['label' => 'Tickets', 'url' => '#tickets'],
                 ],
             ],
             ['label' => 'Schedule', 'url' => '#schedule'],
-            ['label' => 'Contact', 'url' => '#contact'],
+            ['label' => 'Tickets', 'url' => '#tickets'],
         ],
 
         'footer' => [
             ['label' => 'Schedule', 'url' => '#schedule'],
             ['label' => 'Speakers', 'url' => '#speakers'],
-            ['label' => 'Venue', 'url' => '#venue'],
-            ['label' => 'Contact', 'url' => '#contact'],
+            ['label' => 'Event', 'url' => '#event'],
+            ['label' => 'Tickets', 'url' => '#tickets'],
         ],
     ],
 ];

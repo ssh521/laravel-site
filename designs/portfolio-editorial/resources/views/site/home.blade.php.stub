@@ -7,38 +7,57 @@
         title="Give the work room to speak with a refined editorial site."
         description="A spacious portfolio scaffold for studios, designers, makers, and brands that need project stories and strong visual rhythm."
         primary-label="View Selected Work"
-        primary-url="#contact"
+        primary-url="#selected-work"
         secondary-label="About the Studio"
         secondary-url="#studio"
     />
 
-    <x-site.section id="projects" eyebrow="Projects" title="Organize work by story, category, and outcome">
-        <div class="grid gap-4 md:grid-cols-3">
-            <x-site.feature-card title="Selected work" description="Use cards for project titles, categories, years, and short editorial descriptions." />
-            <x-site.feature-card title="Case stories" description="Leave room for problem, process, deliverables, and visual proof." />
-            <x-site.feature-card title="Studio voice" description="Support a stronger brand tone with slower sections and confident whitespace." />
+    <x-site.section id="selected-work" eyebrow="Selected work" title="Lead with project evidence, not a generic services grid">
+        <div class="grid gap-5 md:grid-cols-2">
+            @foreach (['Brand system for a new venue', 'Editorial campaign for a launch', 'Digital experience for a studio', 'Packaging refresh for retail'] as $project)
+                <article class="group overflow-hidden rounded-lg border border-[var(--site-color-border)] bg-[var(--site-color-surface)]">
+                    <div class="aspect-[4/3] bg-[var(--site-color-surface-muted)] transition group-hover:opacity-80"></div>
+                    <div class="p-5">
+                        <p class="text-xs font-semibold uppercase text-[var(--site-color-accent)]">Case study</p>
+                        <h3 class="mt-2 text-xl font-bold text-[var(--site-color-text)]">{{ $project }}</h3>
+                        <p class="mt-3 text-sm leading-6 text-[var(--site-color-muted)]">
+                            Replace with client, role, year, result, and a short editorial hook.
+                        </p>
+                    </div>
+                </article>
+            @endforeach
         </div>
     </x-site.section>
 
-    <x-site.section id="studio" eyebrow="Studio" title="Make the portfolio feel authored, not generic">
-        <div class="grid gap-6 lg:grid-cols-[1.1fr_0.9fr] lg:items-center">
-            <div class="space-y-4 text-base leading-8 text-[var(--site-color-muted)]">
+    <x-site.section id="process" eyebrow="Process" title="Show how the work is made">
+        <div class="grid gap-4 md:grid-cols-3">
+            <x-site.feature-card title="Direction" description="Research, positioning, concept, and visual point of view." />
+            <x-site.feature-card title="Production" description="Design systems, art direction, content, build, and launch assets." />
+            <x-site.feature-card title="Stewardship" description="Guidelines, rollout, measurement, and future campaign support." />
+        </div>
+    </x-site.section>
+
+    <x-site.section id="studio" eyebrow="Studio" title="Make the portfolio feel authored">
+        <div class="grid gap-6 lg:grid-cols-[1.1fr_0.9fr]">
+            <div class="space-y-5 text-base leading-8 text-[var(--site-color-muted)]">
                 <p>
-                    Replace the placeholder visual block with real work images as early as possible.
-                    Portfolio pages depend on specific visuals more than generic decoration.
+                    Replace this text with a sharp studio statement. Portfolio pages should feel specific:
+                    name clients, methods, materials, categories, and the kind of briefs you want.
                 </p>
                 <p>
-                    Keep text short and intentional. Use project names, client type, role, and result to help visitors scan.
+                    Keep this section quieter than the work grid. The strongest proof should remain the projects.
                 </p>
             </div>
-            <div class="rounded-lg border border-[var(--site-color-border)] bg-[var(--site-color-surface)] p-6 shadow-sm">
-                <p class="text-sm font-semibold uppercase text-[var(--site-color-accent)]">Portfolio checklist</p>
-                <ul class="mt-4 space-y-3 text-sm text-[var(--site-color-muted)]">
-                    <li>Selected project grid</li>
-                    <li>Studio introduction</li>
-                    <li>Process or capabilities</li>
-                    <li>Inquiry CTA</li>
-                </ul>
+            <div class="rounded-lg border border-[var(--site-color-border)] bg-[var(--site-color-surface)] p-6">
+                <p class="text-sm font-semibold uppercase text-[var(--site-color-accent)]">Studio facts</p>
+                <dl class="mt-5 space-y-3 text-sm">
+                    @foreach (['Focus' => 'Brand, editorial, digital', 'Based in' => 'Seoul / remote', 'Inquiries' => 'New projects quarterly'] as $label => $value)
+                        <div class="flex justify-between gap-4 border-b border-[var(--site-color-border)] pb-3 last:border-0 last:pb-0">
+                            <dt class="font-medium text-[var(--site-color-text)]">{{ $label }}</dt>
+                            <dd class="text-right text-[var(--site-color-muted)]">{{ $value }}</dd>
+                        </div>
+                    @endforeach
+                </dl>
             </div>
         </div>
     </x-site.section>
