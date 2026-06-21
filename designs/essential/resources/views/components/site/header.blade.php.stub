@@ -39,5 +39,6 @@
         </button>
     </div>
 
-    <x-site.mobile-menu :items="$items" />
 </header>
+
+<x-site.mobile-menu :items="$items" />

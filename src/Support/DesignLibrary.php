@@ -47,6 +47,32 @@ class DesignLibrary
         return $this->copyDirectory($command, $this->designPath($design), base_path(), $force);
     }
 
+    public function ensureViteInputs(Command $command): void
+    {
+        $viteConfigPath = base_path('vite.config.js');
+
+        if (! File::exists($viteConfigPath)) {
+            $command->warn('Skipped Vite input update: vite.config.js was not found.');
+
+            return;
+        }
+
+        $contents = File::get($viteConfigPath);
+        $updated = $this->addViteInputs($contents, [
+            'resources/css/site.css',
+            'resources/js/site.js',
+        ]);
+
+        if ($updated === $contents) {
+            $command->line('Vite inputs already include Laravel Site assets.');
+
+            return;
+        }
+
+        File::put($viteConfigPath, $updated);
+        $command->line("Updated Vite inputs: {$viteConfigPath}");
+    }
+
     private function copyDirectory(Command $command, string $sourceRoot, string $targetRoot, bool $force): int
     {
         $copied = 0;
@@ -79,6 +105,47 @@ class DesignLibrary
         }
 
         return rtrim($targetRoot, DIRECTORY_SEPARATOR).DIRECTORY_SEPARATOR.$relativePath;
+    }
+
+    /**
+     * @param  array<int, string>  $assets
+     */
+    private function addViteInputs(string $contents, array $assets): string
+    {
+        if (! preg_match('/input\s*:\s*\[(?<inputs>.*?)\]/s', $contents, $matches, PREG_OFFSET_CAPTURE)) {
+            return $contents;
+        }
+
+        $inputBody = $matches['inputs'][0];
+        $missingAssets = array_values(array_filter(
+            $assets,
+            fn (string $asset): bool => ! str_contains($inputBody, "'{$asset}'")
+                && ! str_contains($inputBody, "\"{$asset}\"")
+        ));
+
+        if ($missingAssets === []) {
+            return $contents;
+        }
+
+        $lineIndent = $this->viteInputIndent($inputBody);
+        $insert = '';
+
+        foreach ($missingAssets as $asset) {
+            $insert .= ",\n{$lineIndent}'{$asset}'";
+        }
+
+        $insertOffset = $matches['inputs'][1] + strlen($inputBody);
+
+        return substr($contents, 0, $insertOffset).$insert.substr($contents, $insertOffset);
+    }
+
+    private function viteInputIndent(string $inputBody): string
+    {
+        if (preg_match('/\n(?<indent>\s*)[\'"]/', $inputBody, $matches)) {
+            return $matches['indent'];
+        }
+
+        return '                    ';
     }
 
     private function stubsRoot(): string

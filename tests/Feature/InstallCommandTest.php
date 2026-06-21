@@ -55,6 +55,85 @@ class InstallCommandTest extends TestCase
         $this->assertStringContainsString('Build responsive customer websites faster.', File::get(base_path('resources/views/site/home.blade.php')));
     }
 
+    public function test_installed_site_script_initializes_mobile_menu_after_dom_is_ready(): void
+    {
+        $this->artisan('laravel-site:install')
+            ->assertExitCode(0);
+
+        $script = File::get(base_path('resources/js/site.js'));
+
+        $this->assertStringContainsString('function initSiteMobileMenu()', $script);
+        $this->assertStringContainsString("document.readyState === 'loading'", $script);
+        $this->assertStringContainsString('DOMContentLoaded', $script);
+        $this->assertStringContainsString("menu.classList.toggle('hidden', !isOpen)", $script);
+        $this->assertStringContainsString("panel?.classList.toggle('translate-x-full', !isOpen)", $script);
+    }
+
+    public function test_mobile_menu_is_rendered_outside_the_sticky_header(): void
+    {
+        $this->artisan('laravel-site:install')
+            ->assertExitCode(0);
+
+        $header = File::get(base_path('resources/views/components/site/header.blade.php'));
+
+        $this->assertMatchesRegularExpression('/<\/header>\s*<x-site\.mobile-menu :items="\$items" \/>/', $header);
+    }
+
+    public function test_install_command_adds_site_assets_to_vite_inputs(): void
+    {
+        File::put(base_path('vite.config.js'), <<<'JS'
+import { defineConfig } from 'vite';
+import laravel from 'laravel-vite-plugin';
+
+export default defineConfig({
+    plugins: [
+        laravel({
+            input: ['resources/css/app.css', 'resources/js/app.js'],
+            refresh: true,
+        }),
+    ],
+});
+JS);
+
+        $this->artisan('laravel-site:install')
+            ->assertExitCode(0);
+
+        $viteConfig = File::get(base_path('vite.config.js'));
+
+        $this->assertStringContainsString("'resources/css/site.css'", $viteConfig);
+        $this->assertStringContainsString("'resources/js/site.js'", $viteConfig);
+    }
+
+    public function test_install_command_does_not_duplicate_site_vite_inputs(): void
+    {
+        File::put(base_path('vite.config.js'), <<<'JS'
+import { defineConfig } from 'vite';
+import laravel from 'laravel-vite-plugin';
+
+export default defineConfig({
+    plugins: [
+        laravel({
+            input: [
+                'resources/css/app.css',
+                'resources/js/app.js',
+                'resources/css/site.css',
+                'resources/js/site.js',
+            ],
+            refresh: true,
+        }),
+    ],
+});
+JS);
+
+        $this->artisan('laravel-site:install')
+            ->assertExitCode(0);
+
+        $viteConfig = File::get(base_path('vite.config.js'));
+
+        $this->assertSame(1, substr_count($viteConfig, 'resources/css/site.css'));
+        $this->assertSame(1, substr_count($viteConfig, 'resources/js/site.js'));
+    }
+
     public function test_install_command_can_select_a_design(): void
     {
         $this->artisan('laravel-site:install', ['--design' => 'conversion'])
@@ -172,6 +251,7 @@ class InstallCommandTest extends TestCase
             base_path('routes/site.php'),
             base_path('routes/web.php'),
             base_path('config/laravel-site.php'),
+            base_path('vite.config.js'),
             base_path('resources/views/site'),
             base_path('resources/views/components/layouts/site.blade.php'),
             base_path('resources/views/components/site'),

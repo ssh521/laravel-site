@@ -28,6 +28,7 @@ class DesignCommand extends Command
 
         $design = trim((string) ($this->argument('design') ?: $this->designLibrary()->defaultDesign()));
         $copied = $this->designLibrary()->installDesign($this, $design, (bool) $this->option('force'));
+        $this->designLibrary()->ensureViteInputs($this);
 
         $this->newLine();
         $this->info("Laravel Site design [{$design}] applied. {$copied} file(s) copied.");

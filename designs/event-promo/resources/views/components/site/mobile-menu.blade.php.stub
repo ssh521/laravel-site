@@ -1,6 +1,6 @@
 @props(['items' => []])
 
-<div id="site-mobile-menu" class="site-mobile-menu fixed inset-0 z-50 hidden md:hidden" data-site-mobile-menu>
+<div id="site-mobile-menu" class="site-mobile-menu fixed inset-0 z-50 hidden md:hidden" data-site-mobile-menu aria-hidden="true">
     <div class="absolute inset-0 bg-black/40" data-site-menu-close></div>
     <aside class="site-mobile-panel absolute right-0 top-0 flex h-full w-full max-w-sm translate-x-full flex-col bg-[var(--site-color-surface)] p-6 shadow-2xl transition-transform duration-200">
         <div class="flex items-center justify-between">

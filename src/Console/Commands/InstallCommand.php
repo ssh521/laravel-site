@@ -23,6 +23,7 @@ class InstallCommand extends Command
         $design = $this->selectedDesign();
         $copied = $this->designLibrary()->installBase($this, (bool) $this->option('force'));
         $copied += $this->designLibrary()->installDesign($this, $design, (bool) $this->option('force'));
+        $this->designLibrary()->ensureViteInputs($this);
 
         if (! $this->option('skip-route-include')) {
             $this->ensureSiteRouteIsLoaded();
