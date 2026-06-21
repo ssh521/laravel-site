@@ -1,0 +1,42 @@
+<?php
+
+return [
+    'routes' => [
+        'home_path' => env('LARAVEL_SITE_HOME_PATH', '/'),
+        'home_name' => 'site.home',
+    ],
+
+    'brand' => [
+        'name' => env('APP_NAME', 'Laravel Site'),
+        'tagline' => 'Fast, responsive customer websites for Laravel.',
+        'logo_text' => env('APP_NAME', 'Site'),
+    ],
+
+    'design' => [
+        'preset' => env('LARAVEL_SITE_PRESET', 'essential'),
+    ],
+
+    'navigation' => [
+        'header' => [
+            ['label' => 'Home', 'url' => '/', 'active' => true],
+            [
+                'label' => 'Services',
+                'url' => '#services',
+                'children' => [
+                    ['label' => 'Strategy', 'url' => '#strategy'],
+                    ['label' => 'Design', 'url' => '#design'],
+                    ['label' => 'Development', 'url' => '#development'],
+                ],
+            ],
+            ['label' => 'Work', 'url' => '#work'],
+            ['label' => 'Contact', 'url' => '#contact'],
+        ],
+
+        'footer' => [
+            ['label' => 'Company', 'url' => '#about'],
+            ['label' => 'Services', 'url' => '#services'],
+            ['label' => 'Work', 'url' => '#work'],
+            ['label' => 'Contact', 'url' => '#contact'],
+        ],
+    ],
+];

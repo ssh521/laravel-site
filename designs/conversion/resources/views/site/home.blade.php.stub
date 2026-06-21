@@ -1,0 +1,54 @@
+<x-layouts.site
+    :title="config('laravel-site.brand.name')"
+    :description="config('laravel-site.brand.tagline')"
+>
+    <x-site.hero
+        eyebrow="Campaign Landing Kit"
+        title="Turn campaign traffic into qualified inquiries."
+        description="A focused Laravel landing page scaffold with repeated CTA paths, proof sections, and responsive blocks for high-intent visitors."
+        primary-label="Book a Consultation"
+        primary-url="#contact"
+        secondary-label="See the Offer"
+        secondary-url="#offer"
+    />
+
+    <x-site.section id="offer" eyebrow="Offer" title="Make the value clear before visitors scroll away">
+        <div class="grid gap-4 md:grid-cols-3">
+            <x-site.feature-card title="Specific promise" description="Lead with a concrete result, timeline, or service outcome instead of a generic introduction." />
+            <x-site.feature-card title="Repeated CTA" description="Keep the next action available after the hero, proof, FAQ, and closing section." />
+            <x-site.feature-card title="Fast customization" description="Swap copy, proof points, and form integrations directly in the published Blade files." />
+        </div>
+    </x-site.section>
+
+    <x-site.section id="proof" eyebrow="Proof" title="Build trust with the details buyers need">
+        <div class="grid gap-6 lg:grid-cols-[1.1fr_0.9fr] lg:items-center">
+            <div class="space-y-4 text-base leading-8 text-[var(--site-color-muted)]">
+                <p>
+                    Use this area for client logos, short case results, service guarantees, or before-after summaries.
+                    Keep proof close to the main call to action so visitors can decide quickly.
+                </p>
+                <p>
+                    For campaign pages, remove navigation items that distract from the primary inquiry flow.
+                    The header and footer stay componentized so the page can still be adjusted quickly.
+                </p>
+            </div>
+            <div class="rounded-lg border border-[var(--site-color-border)] bg-[var(--site-color-surface)] p-6 shadow-sm">
+                <p class="text-sm font-semibold uppercase text-[var(--site-color-accent)]">Conversion checklist</p>
+                <ul class="mt-4 space-y-3 text-sm text-[var(--site-color-muted)]">
+                    <li>Clear offer above the fold</li>
+                    <li>One primary action</li>
+                    <li>Trust proof before the form</li>
+                    <li>Short FAQ near the final CTA</li>
+                </ul>
+            </div>
+        </div>
+    </x-site.section>
+
+    <x-site.cta
+        id="contact"
+        title="Ready to launch the campaign page?"
+        description="Replace this CTA with a Livewire inquiry form, CRM handoff, phone booking link, or paid campaign conversion event."
+        button-label="Book Now"
+        button-url="mailto:hello@example.com"
+    />
+</x-layouts.site>

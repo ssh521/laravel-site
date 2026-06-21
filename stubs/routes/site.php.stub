@@ -1,0 +1,9 @@
+<?php
+
+use App\Http\Controllers\Site\HomeController;
+use Illuminate\Support\Facades\Route;
+
+Route::middleware('web')->group(function () {
+    Route::get(config('laravel-site.routes.home_path', '/'), HomeController::class)
+        ->name(config('laravel-site.routes.home_name', 'site.home'));
+});

@@ -1,0 +1,62 @@
+@props([
+    'eyebrow' => null,
+    'title',
+    'description' => null,
+    'primaryLabel' => null,
+    'primaryUrl' => '#',
+    'secondaryLabel' => null,
+    'secondaryUrl' => '#',
+])
+
+<section class="relative overflow-hidden border-b border-[var(--site-color-border)] bg-[var(--site-color-hero)]">
+    <div class="mx-auto grid min-h-[calc(100vh-4rem)] max-w-7xl items-center gap-10 px-4 py-16 sm:px-6 lg:grid-cols-[1.05fr_0.95fr] lg:px-8">
+        <div class="max-w-3xl">
+            @if ($eyebrow)
+                <p class="text-sm font-semibold uppercase text-[var(--site-color-accent)]">{{ $eyebrow }}</p>
+            @endif
+
+            <h1 class="mt-5 text-4xl font-bold leading-tight text-[var(--site-color-text)] sm:text-5xl lg:text-6xl">
+                {{ $title }}
+            </h1>
+
+            @if ($description)
+                <p class="mt-6 max-w-2xl text-lg leading-8 text-[var(--site-color-muted)]">
+                    {{ $description }}
+                </p>
+            @endif
+
+            @if ($primaryLabel || $secondaryLabel)
+                <div class="mt-8 flex flex-col gap-3 sm:flex-row">
+                    @if ($primaryLabel)
+                        <x-site.button :href="$primaryUrl" size="lg" class="justify-center">{{ $primaryLabel }}</x-site.button>
+                    @endif
+
+                    @if ($secondaryLabel)
+                        <x-site.button :href="$secondaryUrl" variant="secondary" size="lg" class="justify-center">{{ $secondaryLabel }}</x-site.button>
+                    @endif
+                </div>
+            @endif
+        </div>
+
+        <div class="rounded-lg border border-[var(--site-color-border)] bg-[var(--site-color-surface)] p-6 shadow-xl">
+            <div class="aspect-[4/3] rounded-md bg-[var(--site-color-surface-muted)] p-5">
+                <div class="grid h-full grid-rows-[auto_1fr_auto] gap-4">
+                    <div class="flex gap-2">
+                        <span class="h-3 w-3 rounded-full bg-[var(--site-color-accent)]"></span>
+                        <span class="h-3 w-3 rounded-full bg-[var(--site-color-muted)]"></span>
+                        <span class="h-3 w-3 rounded-full bg-[var(--site-color-border)]"></span>
+                    </div>
+                    <div class="grid grid-cols-2 gap-4">
+                        <div class="rounded-md bg-[var(--site-color-surface)]"></div>
+                        <div class="space-y-3">
+                            <div class="h-5 rounded bg-[var(--site-color-surface)]"></div>
+                            <div class="h-5 w-3/4 rounded bg-[var(--site-color-surface)]"></div>
+                            <div class="h-20 rounded bg-[var(--site-color-surface)]"></div>
+                        </div>
+                    </div>
+                    <div class="h-10 rounded-md bg-[var(--site-color-accent)]"></div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>

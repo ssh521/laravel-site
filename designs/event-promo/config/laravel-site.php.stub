@@ -1,0 +1,42 @@
+<?php
+
+return [
+    'routes' => [
+        'home_path' => env('LARAVEL_SITE_HOME_PATH', '/'),
+        'home_name' => 'site.home',
+    ],
+
+    'brand' => [
+        'name' => env('APP_NAME', 'Laravel Site'),
+        'tagline' => 'Focused event pages for registrations, seminars, and launches.',
+        'logo_text' => env('APP_NAME', 'Event'),
+    ],
+
+    'design' => [
+        'preset' => env('LARAVEL_SITE_PRESET', 'event-promo'),
+    ],
+
+    'navigation' => [
+        'header' => [
+            ['label' => 'Home', 'url' => '/', 'active' => true],
+            [
+                'label' => 'Event',
+                'url' => '#event',
+                'children' => [
+                    ['label' => 'Schedule', 'url' => '#schedule'],
+                    ['label' => 'Speakers', 'url' => '#speakers'],
+                    ['label' => 'Venue', 'url' => '#venue'],
+                ],
+            ],
+            ['label' => 'Schedule', 'url' => '#schedule'],
+            ['label' => 'Contact', 'url' => '#contact'],
+        ],
+
+        'footer' => [
+            ['label' => 'Schedule', 'url' => '#schedule'],
+            ['label' => 'Speakers', 'url' => '#speakers'],
+            ['label' => 'Venue', 'url' => '#venue'],
+            ['label' => 'Contact', 'url' => '#contact'],
+        ],
+    ],
+];

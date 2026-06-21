@@ -1,0 +1,42 @@
+<?php
+
+return [
+    'routes' => [
+        'home_path' => env('LARAVEL_SITE_HOME_PATH', '/'),
+        'home_name' => 'site.home',
+    ],
+
+    'brand' => [
+        'name' => env('APP_NAME', 'Laravel Site'),
+        'tagline' => 'Product landing pages for SaaS, apps, and digital tools.',
+        'logo_text' => env('APP_NAME', 'App'),
+    ],
+
+    'design' => [
+        'preset' => env('LARAVEL_SITE_PRESET', 'saas-product'),
+    ],
+
+    'navigation' => [
+        'header' => [
+            ['label' => 'Home', 'url' => '/', 'active' => true],
+            [
+                'label' => 'Product',
+                'url' => '#product',
+                'children' => [
+                    ['label' => 'Features', 'url' => '#features'],
+                    ['label' => 'Pricing', 'url' => '#pricing'],
+                    ['label' => 'FAQ', 'url' => '#faq'],
+                ],
+            ],
+            ['label' => 'Pricing', 'url' => '#pricing'],
+            ['label' => 'Contact', 'url' => '#contact'],
+        ],
+
+        'footer' => [
+            ['label' => 'Product', 'url' => '#product'],
+            ['label' => 'Features', 'url' => '#features'],
+            ['label' => 'Pricing', 'url' => '#pricing'],
+            ['label' => 'Contact', 'url' => '#contact'],
+        ],
+    ],
+];

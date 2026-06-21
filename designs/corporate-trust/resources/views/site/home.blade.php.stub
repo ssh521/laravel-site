@@ -1,0 +1,54 @@
+<x-layouts.site
+    :title="config('laravel-site.brand.name')"
+    :description="config('laravel-site.brand.tagline')"
+>
+    <x-site.hero
+        eyebrow="Corporate Website Kit"
+        title="Present your company with clarity, proof, and confidence."
+        description="A structured company website scaffold for B2B teams that need a credible first impression, service clarity, and trust signals."
+        primary-label="Request a Consultation"
+        primary-url="#contact"
+        secondary-label="View Capabilities"
+        secondary-url="#capabilities"
+    />
+
+    <x-site.section id="company" eyebrow="Company" title="A stable structure for serious business websites">
+        <div class="grid gap-4 md:grid-cols-3">
+            <x-site.feature-card title="Company profile" description="Introduce mission, scale, locations, and business history without overcomplicating the first page." />
+            <x-site.feature-card title="Capabilities" description="Group core services, industries, and delivery strengths in clear comparison-friendly sections." />
+            <x-site.feature-card title="Trust signals" description="Reserve space for certifications, partner logos, metrics, and customer references." />
+        </div>
+    </x-site.section>
+
+    <x-site.section id="capabilities" eyebrow="Capabilities" title="Show what the company can reliably deliver">
+        <div class="grid gap-6 lg:grid-cols-[1.1fr_0.9fr] lg:items-center">
+            <div class="space-y-4 text-base leading-8 text-[var(--site-color-muted)]">
+                <p>
+                    Use this area for service lines, industries served, project capacity, or quality process details.
+                    Corporate pages should make the visitor feel the company is organized and dependable.
+                </p>
+                <p>
+                    Keep claims concrete. Replace generic marketing language with certifications, project counts,
+                    client categories, office locations, and measurable strengths.
+                </p>
+            </div>
+            <div class="rounded-lg border border-[var(--site-color-border)] bg-[var(--site-color-surface)] p-6 shadow-sm">
+                <p class="text-sm font-semibold uppercase text-[var(--site-color-accent)]">Trust checklist</p>
+                <ul class="mt-4 space-y-3 text-sm text-[var(--site-color-muted)]">
+                    <li>Company overview</li>
+                    <li>Services and industries</li>
+                    <li>Certifications or partners</li>
+                    <li>Inquiry CTA and contact path</li>
+                </ul>
+            </div>
+        </div>
+    </x-site.section>
+
+    <x-site.cta
+        id="contact"
+        title="Need a reliable partner for your next project?"
+        description="Replace this CTA with a company inquiry form, sales email, or B2B consultation booking flow."
+        button-label="Start the Conversation"
+        button-url="mailto:hello@example.com"
+    />
+</x-layouts.site>

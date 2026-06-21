@@ -1,0 +1,42 @@
+<?php
+
+return [
+    'routes' => [
+        'home_path' => env('LARAVEL_SITE_HOME_PATH', '/'),
+        'home_name' => 'site.home',
+    ],
+
+    'brand' => [
+        'name' => env('APP_NAME', 'Laravel Site'),
+        'tagline' => 'Clean, calm websites for clinics and professional offices.',
+        'logo_text' => env('APP_NAME', 'Care'),
+    ],
+
+    'design' => [
+        'preset' => env('LARAVEL_SITE_PRESET', 'clinic-clean'),
+    ],
+
+    'navigation' => [
+        'header' => [
+            ['label' => 'Home', 'url' => '/', 'active' => true],
+            [
+                'label' => 'Care',
+                'url' => '#care',
+                'children' => [
+                    ['label' => 'Programs', 'url' => '#programs'],
+                    ['label' => 'Process', 'url' => '#process'],
+                    ['label' => 'Team', 'url' => '#team'],
+                ],
+            ],
+            ['label' => 'Process', 'url' => '#process'],
+            ['label' => 'Contact', 'url' => '#contact'],
+        ],
+
+        'footer' => [
+            ['label' => 'Care', 'url' => '#care'],
+            ['label' => 'Process', 'url' => '#process'],
+            ['label' => 'Team', 'url' => '#team'],
+            ['label' => 'Contact', 'url' => '#contact'],
+        ],
+    ],
+];

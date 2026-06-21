@@ -1,0 +1,53 @@
+<x-layouts.site
+    :title="config('laravel-site.brand.name')"
+    :description="config('laravel-site.brand.tagline')"
+>
+    <x-site.hero
+        eyebrow="SaaS Product Page"
+        title="Explain the product, prove the value, and invite a trial."
+        description="A product-focused scaffold for SaaS, apps, dashboards, APIs, and digital tools that need feature clarity and demo CTAs."
+        primary-label="Start Free Trial"
+        primary-url="#contact"
+        secondary-label="View Features"
+        secondary-url="#features"
+    />
+
+    <x-site.section id="product" eyebrow="Product" title="Connect features to outcomes">
+        <div class="grid gap-4 md:grid-cols-3">
+            <x-site.feature-card title="Core features" description="Describe product modules, integrations, dashboards, or APIs in user language." />
+            <x-site.feature-card title="Use cases" description="Show who the product helps and what workflow it improves." />
+            <x-site.feature-card title="Trial path" description="Keep demo, signup, pricing, and onboarding CTAs easy to find." />
+        </div>
+    </x-site.section>
+
+    <x-site.section id="features" eyebrow="Features" title="Make the product understandable before pricing">
+        <div class="grid gap-6 lg:grid-cols-[1.1fr_0.9fr] lg:items-center">
+            <div class="space-y-4 text-base leading-8 text-[var(--site-color-muted)]">
+                <p>
+                    Replace this section with product screenshots, feature rows, integrations, security notes, or onboarding steps.
+                    SaaS pages should show product shape quickly.
+                </p>
+                <p>
+                    Keep claims tied to workflows. Buyers should understand what changes after they start using the product.
+                </p>
+            </div>
+            <div class="rounded-lg border border-[var(--site-color-border)] bg-[var(--site-color-surface)] p-6 shadow-sm">
+                <p class="text-sm font-semibold uppercase text-[var(--site-color-accent)]">Product checklist</p>
+                <ul class="mt-4 space-y-3 text-sm text-[var(--site-color-muted)]">
+                    <li>Feature blocks</li>
+                    <li>Screenshot or demo area</li>
+                    <li>Pricing/plan path</li>
+                    <li>Trial or demo CTA</li>
+                </ul>
+            </div>
+        </div>
+    </x-site.section>
+
+    <x-site.cta
+        id="contact"
+        title="Ready to see the product in action?"
+        description="Replace this CTA with a trial signup, demo booking, waitlist, or product onboarding flow."
+        button-label="Start Free Trial"
+        button-url="mailto:hello@example.com"
+    />
+</x-layouts.site>

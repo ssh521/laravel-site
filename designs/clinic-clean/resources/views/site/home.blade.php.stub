@@ -1,0 +1,53 @@
+<x-layouts.site
+    :title="config('laravel-site.brand.name')"
+    :description="config('laravel-site.brand.tagline')"
+>
+    <x-site.hero
+        eyebrow="Clinic and Professional Office"
+        title="Create a calm path from concern to appointment."
+        description="A trustworthy responsive scaffold for clinics, counseling centers, law offices, tax firms, and expert-led services."
+        primary-label="Book an Appointment"
+        primary-url="#contact"
+        secondary-label="View Care Process"
+        secondary-url="#process"
+    />
+
+    <x-site.section id="care" eyebrow="Care" title="Explain services with clarity and restraint">
+        <div class="grid gap-4 md:grid-cols-3">
+            <x-site.feature-card title="Specialties" description="Group treatments, consultation areas, or expert services in plain language." />
+            <x-site.feature-card title="Process" description="Show appointment steps, first visit expectations, and preparation guidance." />
+            <x-site.feature-card title="Expert profile" description="Reserve space for doctors, counselors, attorneys, or certified professionals." />
+        </div>
+    </x-site.section>
+
+    <x-site.section id="process" eyebrow="Process" title="Make the next step feel simple and safe">
+        <div class="grid gap-6 lg:grid-cols-[1.1fr_0.9fr] lg:items-center">
+            <div class="space-y-4 text-base leading-8 text-[var(--site-color-muted)]">
+                <p>
+                    Use this section to explain appointment flow, consultation time, documents to bring, or privacy expectations.
+                    A calm page should reduce anxiety before asking for contact.
+                </p>
+                <p>
+                    Avoid exaggerated claims. Focus on qualification, process, environment, and practical booking information.
+                </p>
+            </div>
+            <div class="rounded-lg border border-[var(--site-color-border)] bg-[var(--site-color-surface)] p-6 shadow-sm">
+                <p class="text-sm font-semibold uppercase text-[var(--site-color-accent)]">Care checklist</p>
+                <ul class="mt-4 space-y-3 text-sm text-[var(--site-color-muted)]">
+                    <li>Service areas</li>
+                    <li>Appointment process</li>
+                    <li>Professional profiles</li>
+                    <li>Booking and contact info</li>
+                </ul>
+            </div>
+        </div>
+    </x-site.section>
+
+    <x-site.cta
+        id="contact"
+        title="Ready to schedule a consultation?"
+        description="Replace this CTA with a Livewire appointment form, booking service, or office phone link."
+        button-label="Book an Appointment"
+        button-url="mailto:hello@example.com"
+    />
+</x-layouts.site>

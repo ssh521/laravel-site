@@ -1,0 +1,42 @@
+<?php
+
+return [
+    'routes' => [
+        'home_path' => env('LARAVEL_SITE_HOME_PATH', '/'),
+        'home_name' => 'site.home',
+    ],
+
+    'brand' => [
+        'name' => env('APP_NAME', 'Laravel Site'),
+        'tagline' => 'Conversion-focused landing pages for serious campaigns.',
+        'logo_text' => env('APP_NAME', 'Launch'),
+    ],
+
+    'design' => [
+        'preset' => env('LARAVEL_SITE_PRESET', 'conversion'),
+    ],
+
+    'navigation' => [
+        'header' => [
+            ['label' => 'Home', 'url' => '/', 'active' => true],
+            [
+                'label' => 'Offer',
+                'url' => '#offer',
+                'children' => [
+                    ['label' => 'Benefits', 'url' => '#benefits'],
+                    ['label' => 'Proof', 'url' => '#proof'],
+                    ['label' => 'FAQ', 'url' => '#faq'],
+                ],
+            ],
+            ['label' => 'Proof', 'url' => '#proof'],
+            ['label' => 'Contact', 'url' => '#contact'],
+        ],
+
+        'footer' => [
+            ['label' => 'Offer', 'url' => '#offer'],
+            ['label' => 'Benefits', 'url' => '#benefits'],
+            ['label' => 'Proof', 'url' => '#proof'],
+            ['label' => 'Contact', 'url' => '#contact'],
+        ],
+    ],
+];

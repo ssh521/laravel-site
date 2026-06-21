@@ -1,0 +1,42 @@
+<?php
+
+return [
+    'routes' => [
+        'home_path' => env('LARAVEL_SITE_HOME_PATH', '/'),
+        'home_name' => 'site.home',
+    ],
+
+    'brand' => [
+        'name' => env('APP_NAME', 'Laravel Site'),
+        'tagline' => 'Editorial portfolio websites for studios, makers, and brands.',
+        'logo_text' => env('APP_NAME', 'Work'),
+    ],
+
+    'design' => [
+        'preset' => env('LARAVEL_SITE_PRESET', 'portfolio-editorial'),
+    ],
+
+    'navigation' => [
+        'header' => [
+            ['label' => 'Home', 'url' => '/', 'active' => true],
+            [
+                'label' => 'Projects',
+                'url' => '#projects',
+                'children' => [
+                    ['label' => 'Selected Work', 'url' => '#selected-work'],
+                    ['label' => 'Process', 'url' => '#process'],
+                    ['label' => 'Studio', 'url' => '#studio'],
+                ],
+            ],
+            ['label' => 'Studio', 'url' => '#studio'],
+            ['label' => 'Contact', 'url' => '#contact'],
+        ],
+
+        'footer' => [
+            ['label' => 'Projects', 'url' => '#projects'],
+            ['label' => 'Process', 'url' => '#process'],
+            ['label' => 'Studio', 'url' => '#studio'],
+            ['label' => 'Contact', 'url' => '#contact'],
+        ],
+    ],
+];

@@ -1,0 +1,42 @@
+<?php
+
+return [
+    'routes' => [
+        'home_path' => env('LARAVEL_SITE_HOME_PATH', '/'),
+        'home_name' => 'site.home',
+    ],
+
+    'brand' => [
+        'name' => env('APP_NAME', 'Laravel Site'),
+        'tagline' => 'Reliable company websites for B2B teams and established brands.',
+        'logo_text' => env('APP_NAME', 'Corp'),
+    ],
+
+    'design' => [
+        'preset' => env('LARAVEL_SITE_PRESET', 'corporate-trust'),
+    ],
+
+    'navigation' => [
+        'header' => [
+            ['label' => 'Home', 'url' => '/', 'active' => true],
+            [
+                'label' => 'Company',
+                'url' => '#company',
+                'children' => [
+                    ['label' => 'Capabilities', 'url' => '#capabilities'],
+                    ['label' => 'Certifications', 'url' => '#certifications'],
+                    ['label' => 'Clients', 'url' => '#clients'],
+                ],
+            ],
+            ['label' => 'Capabilities', 'url' => '#capabilities'],
+            ['label' => 'Contact', 'url' => '#contact'],
+        ],
+
+        'footer' => [
+            ['label' => 'Company', 'url' => '#company'],
+            ['label' => 'Capabilities', 'url' => '#capabilities'],
+            ['label' => 'Clients', 'url' => '#clients'],
+            ['label' => 'Contact', 'url' => '#contact'],
+        ],
+    ],
+];

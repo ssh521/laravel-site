@@ -1,0 +1,53 @@
+<x-layouts.site
+    :title="config('laravel-site.brand.name')"
+    :description="config('laravel-site.brand.tagline')"
+>
+    <x-site.hero
+        eyebrow="Event Promotion Page"
+        title="Give visitors the reason, date, and path to register."
+        description="A focused event scaffold for seminars, classes, launches, conferences, and seasonal promotions."
+        primary-label="Register Now"
+        primary-url="#contact"
+        secondary-label="View Schedule"
+        secondary-url="#schedule"
+    />
+
+    <x-site.section id="event" eyebrow="Event" title="Make the event details impossible to miss">
+        <div class="grid gap-4 md:grid-cols-3">
+            <x-site.feature-card title="Date and venue" description="Put the when and where in clear, repeated positions for fast scanning." />
+            <x-site.feature-card title="Speaker or offer" description="Show the person, topic, limited offer, or key reason to participate." />
+            <x-site.feature-card title="Registration path" description="Keep registration, payment, seat limit, or reminder signup easy to reach." />
+        </div>
+    </x-site.section>
+
+    <x-site.section id="schedule" eyebrow="Schedule" title="Help visitors understand what happens next">
+        <div class="grid gap-6 lg:grid-cols-[1.1fr_0.9fr] lg:items-center">
+            <div class="space-y-4 text-base leading-8 text-[var(--site-color-muted)]">
+                <p>
+                    Replace this section with a timetable, session list, speaker details, location guide, or limited promotion terms.
+                    Event pages should reduce uncertainty before registration.
+                </p>
+                <p>
+                    Use short sections and repeated registration buttons. Date, venue, price, and capacity should not be hidden.
+                </p>
+            </div>
+            <div class="rounded-lg border border-[var(--site-color-border)] bg-[var(--site-color-surface)] p-6 shadow-sm">
+                <p class="text-sm font-semibold uppercase text-[var(--site-color-accent)]">Event checklist</p>
+                <ul class="mt-4 space-y-3 text-sm text-[var(--site-color-muted)]">
+                    <li>Date, time, venue</li>
+                    <li>Schedule or agenda</li>
+                    <li>Speaker/host details</li>
+                    <li>Registration CTA</li>
+                </ul>
+            </div>
+        </div>
+    </x-site.section>
+
+    <x-site.cta
+        id="contact"
+        title="Ready to reserve your spot?"
+        description="Replace this CTA with registration, ticket checkout, reminder signup, or campaign tracking link."
+        button-label="Register Now"
+        button-url="mailto:hello@example.com"
+    />
+</x-layouts.site>

@@ -1,0 +1,29 @@
+@php
+    $items = config('laravel-site.navigation.footer', []);
+@endphp
+
+<footer class="border-t border-[var(--site-color-border)] bg-[var(--site-color-surface-muted)]">
+    <div class="mx-auto grid max-w-7xl gap-8 px-4 py-10 sm:px-6 md:grid-cols-[1fr_auto] lg:px-8">
+        <div>
+            <x-site.logo />
+            <p class="mt-4 max-w-xl text-sm leading-6 text-[var(--site-color-muted)]">
+                {{ config('laravel-site.brand.tagline') }}
+            </p>
+        </div>
+
+        <nav class="flex flex-wrap gap-x-5 gap-y-3 text-sm" aria-label="Footer navigation">
+            @foreach ($items as $item)
+                <a href="{{ $item['url'] ?? '#' }}" class="text-[var(--site-color-muted)] hover:text-[var(--site-color-text)]">
+                    {{ $item['label'] ?? 'Menu' }}
+                </a>
+            @endforeach
+        </nav>
+    </div>
+
+    <div class="border-t border-[var(--site-color-border)]">
+        <div class="mx-auto flex max-w-7xl flex-col gap-2 px-4 py-5 text-sm text-[var(--site-color-muted)] sm:flex-row sm:items-center sm:justify-between sm:px-6 lg:px-8">
+            <p>&copy; {{ date('Y') }} {{ config('laravel-site.brand.name') }}. All rights reserved.</p>
+            <p>Built with Laravel, Livewire, and Tailwind CSS.</p>
+        </div>
+    </div>
+</footer>

@@ -1,0 +1,54 @@
+<x-layouts.site
+    :title="config('laravel-site.brand.name')"
+    :description="config('laravel-site.brand.tagline')"
+>
+    <x-site.hero
+        eyebrow="Local Business Website"
+        title="Help nearby customers call, visit, and choose you."
+        description="A mobile-first scaffold for restaurants, academies, salons, studios, and neighborhood services that need clear info fast."
+        primary-label="Call Now"
+        primary-url="#contact"
+        secondary-label="View Location"
+        secondary-url="#location"
+    />
+
+    <x-site.section id="visit" eyebrow="Visit" title="Everything customers need before they arrive">
+        <div class="grid gap-4 md:grid-cols-3">
+            <x-site.feature-card title="Business hours" description="Put opening hours, holiday notices, and booking availability close to the top." />
+            <x-site.feature-card title="Representative offers" description="Show popular services, menus, classes, or packages before deeper details." />
+            <x-site.feature-card title="Map and contact" description="Make phone, directions, parking, and chat links easy to reach on mobile." />
+        </div>
+    </x-site.section>
+
+    <x-site.section id="location" eyebrow="Location" title="Reduce friction for first-time visitors">
+        <div class="grid gap-6 lg:grid-cols-[1.1fr_0.9fr] lg:items-center">
+            <div class="space-y-4 text-base leading-8 text-[var(--site-color-muted)]">
+                <p>
+                    Replace this section with a map embed, transit directions, parking instructions, or neighborhood landmarks.
+                    Local pages should answer practical questions before visitors call.
+                </p>
+                <p>
+                    Keep mobile CTAs short and visible. Use phone, booking, or directions as the primary action depending
+                    on the business.
+                </p>
+            </div>
+            <div class="rounded-lg border border-[var(--site-color-border)] bg-[var(--site-color-surface)] p-6 shadow-sm">
+                <p class="text-sm font-semibold uppercase text-[var(--site-color-accent)]">Local checklist</p>
+                <ul class="mt-4 space-y-3 text-sm text-[var(--site-color-muted)]">
+                    <li>Phone and booking CTA</li>
+                    <li>Hours and holiday notices</li>
+                    <li>Map, parking, directions</li>
+                    <li>Reviews or featured offers</li>
+                </ul>
+            </div>
+        </div>
+    </x-site.section>
+
+    <x-site.cta
+        id="contact"
+        title="Ready to visit or book?"
+        description="Replace this CTA with a phone link, reservation page, Kakao channel, or map directions."
+        button-label="Get Directions"
+        button-url="#location"
+    />
+</x-layouts.site>

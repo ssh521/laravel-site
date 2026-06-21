@@ -1,0 +1,53 @@
+<x-layouts.site
+    :title="config('laravel-site.brand.name')"
+    :description="config('laravel-site.brand.tagline')"
+>
+    <x-site.hero
+        eyebrow="Portfolio Editorial"
+        title="Give the work room to speak with a refined editorial site."
+        description="A spacious portfolio scaffold for studios, designers, makers, and brands that need project stories and strong visual rhythm."
+        primary-label="View Selected Work"
+        primary-url="#contact"
+        secondary-label="About the Studio"
+        secondary-url="#studio"
+    />
+
+    <x-site.section id="projects" eyebrow="Projects" title="Organize work by story, category, and outcome">
+        <div class="grid gap-4 md:grid-cols-3">
+            <x-site.feature-card title="Selected work" description="Use cards for project titles, categories, years, and short editorial descriptions." />
+            <x-site.feature-card title="Case stories" description="Leave room for problem, process, deliverables, and visual proof." />
+            <x-site.feature-card title="Studio voice" description="Support a stronger brand tone with slower sections and confident whitespace." />
+        </div>
+    </x-site.section>
+
+    <x-site.section id="studio" eyebrow="Studio" title="Make the portfolio feel authored, not generic">
+        <div class="grid gap-6 lg:grid-cols-[1.1fr_0.9fr] lg:items-center">
+            <div class="space-y-4 text-base leading-8 text-[var(--site-color-muted)]">
+                <p>
+                    Replace the placeholder visual block with real work images as early as possible.
+                    Portfolio pages depend on specific visuals more than generic decoration.
+                </p>
+                <p>
+                    Keep text short and intentional. Use project names, client type, role, and result to help visitors scan.
+                </p>
+            </div>
+            <div class="rounded-lg border border-[var(--site-color-border)] bg-[var(--site-color-surface)] p-6 shadow-sm">
+                <p class="text-sm font-semibold uppercase text-[var(--site-color-accent)]">Portfolio checklist</p>
+                <ul class="mt-4 space-y-3 text-sm text-[var(--site-color-muted)]">
+                    <li>Selected project grid</li>
+                    <li>Studio introduction</li>
+                    <li>Process or capabilities</li>
+                    <li>Inquiry CTA</li>
+                </ul>
+            </div>
+        </div>
+    </x-site.section>
+
+    <x-site.cta
+        id="contact"
+        title="Want to discuss a project?"
+        description="Replace this CTA with an inquiry form, portfolio brief, or studio contact flow."
+        button-label="Start a Brief"
+        button-url="mailto:hello@example.com"
+    />
+</x-layouts.site>

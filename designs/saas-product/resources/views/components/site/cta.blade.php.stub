@@ -1,0 +1,29 @@
+@props([
+    'id' => null,
+    'title',
+    'description' => null,
+    'buttonLabel' => null,
+    'buttonUrl' => '#',
+])
+
+<section @if ($id) id="{{ $id }}" @endif class="py-16 sm:py-20">
+    <div class="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
+        <div class="rounded-lg bg-[var(--site-color-accent)] px-6 py-10 text-[var(--site-color-accent-contrast)] sm:px-10 lg:flex lg:items-center lg:justify-between">
+            <div class="max-w-2xl">
+                <h2 class="text-3xl font-bold">{{ $title }}</h2>
+
+                @if ($description)
+                    <p class="mt-4 text-base leading-7 opacity-90">{{ $description }}</p>
+                @endif
+            </div>
+
+            @if ($buttonLabel)
+                <div class="mt-8 lg:mt-0">
+                    <x-site.button :href="$buttonUrl" variant="secondary" size="lg" class="justify-center">
+                        {{ $buttonLabel }}
+                    </x-site.button>
+                </div>
+            @endif
+        </div>
+    </div>
+</section>

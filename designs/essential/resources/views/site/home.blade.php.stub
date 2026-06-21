@@ -1,0 +1,55 @@
+<x-layouts.site
+    :title="config('laravel-site.brand.name')"
+    :description="config('laravel-site.brand.tagline')"
+>
+    <x-site.hero
+        eyebrow="Laravel Site Starter"
+        title="Build responsive customer websites faster."
+        description="A clean Laravel, Livewire, and Tailwind CSS front-site scaffold that your agency can customize directly inside the host app."
+        primary-label="Start a Project"
+        primary-url="#contact"
+        secondary-label="View Services"
+        secondary-url="#services"
+    />
+
+    <x-site.section id="services" eyebrow="Services" title="Reusable sections for real client work">
+        <div class="grid gap-4 md:grid-cols-3">
+            <x-site.feature-card title="Strategy" description="Shape the page structure, message hierarchy, and conversion path before design starts." />
+            <x-site.feature-card title="Design" description="Use shared site tokens and components so the whole site can change tone consistently." />
+            <x-site.feature-card title="Development" description="Publish the scaffold, edit Blade components, and keep the project in normal Laravel files." />
+        </div>
+    </x-site.section>
+
+    <x-site.section id="work" eyebrow="Workflow" title="A starter page that stays easy to customize">
+        <div class="grid gap-6 lg:grid-cols-[1.1fr_0.9fr] lg:items-center">
+            <div class="space-y-4 text-base leading-8 text-[var(--site-color-muted)]">
+                <p>
+                    The homepage starts with a hero and clear section slots. Add, remove, or reorder sections in
+                    <code class="rounded bg-[var(--site-color-surface-muted)] px-1.5 py-1 text-sm">resources/views/site/home.blade.php</code>.
+                </p>
+                <p>
+                    Shared components live under
+                    <code class="rounded bg-[var(--site-color-surface-muted)] px-1.5 py-1 text-sm">resources/views/components/site</code>
+                    so customer-specific changes stay close to the rendered site.
+                </p>
+            </div>
+            <div class="rounded-lg border border-[var(--site-color-border)] bg-[var(--site-color-surface)] p-6 shadow-sm">
+                <p class="text-sm font-semibold uppercase text-[var(--site-color-accent)]">Editable after install</p>
+                <ul class="mt-4 space-y-3 text-sm text-[var(--site-color-muted)]">
+                    <li>Blade layout and components</li>
+                    <li>Responsive header, dropdowns, and mobile menu</li>
+                    <li>Footer, logo, buttons, cards, and sections</li>
+                    <li>CSS variable design tokens</li>
+                </ul>
+            </div>
+        </div>
+    </x-site.section>
+
+    <x-site.cta
+        id="contact"
+        title="Ready to customize this for a client?"
+        description="Replace this block with a Livewire contact form, CRM integration, or project inquiry flow."
+        button-label="Contact Us"
+        button-url="mailto:hello@example.com"
+    />
+</x-layouts.site>

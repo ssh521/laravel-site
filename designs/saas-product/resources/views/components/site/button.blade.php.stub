@@ -1,0 +1,31 @@
+@props([
+    'href' => null,
+    'variant' => 'primary',
+    'size' => 'md',
+    'type' => 'button',
+])
+
+@php
+    $base = 'inline-flex items-center rounded-md font-semibold transition focus:outline-none focus:ring-2 focus:ring-[var(--site-color-ring)] focus:ring-offset-2 focus:ring-offset-[var(--site-color-page)]';
+    $sizes = [
+        'sm' => 'px-3 py-2 text-sm',
+        'md' => 'px-5 py-3 text-sm',
+        'lg' => 'px-6 py-4 text-base',
+    ];
+    $variants = [
+        'primary' => 'bg-[var(--site-color-accent)] text-[var(--site-color-accent-contrast)] hover:bg-[var(--site-color-accent-strong)]',
+        'secondary' => 'border border-[var(--site-color-border)] bg-[var(--site-color-surface)] text-[var(--site-color-text)] hover:bg-[var(--site-color-surface-muted)]',
+        'ghost' => 'text-[var(--site-color-text)] hover:bg-[var(--site-color-surface-muted)]',
+    ];
+    $classes = $base.' '.($sizes[$size] ?? $sizes['md']).' '.($variants[$variant] ?? $variants['primary']);
+@endphp
+
+@if ($href)
+    <a href="{{ $href }}" {{ $attributes->merge(['class' => $classes]) }}>
+        {{ $slot }}
+    </a>
+@else
+    <button type="{{ $type }}" {{ $attributes->merge(['class' => $classes]) }}>
+        {{ $slot }}
+    </button>
+@endif

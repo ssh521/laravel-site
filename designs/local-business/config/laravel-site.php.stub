@@ -1,0 +1,42 @@
+<?php
+
+return [
+    'routes' => [
+        'home_path' => env('LARAVEL_SITE_HOME_PATH', '/'),
+        'home_name' => 'site.home',
+    ],
+
+    'brand' => [
+        'name' => env('APP_NAME', 'Laravel Site'),
+        'tagline' => 'Mobile-first local business websites that drive calls and visits.',
+        'logo_text' => env('APP_NAME', 'Local'),
+    ],
+
+    'design' => [
+        'preset' => env('LARAVEL_SITE_PRESET', 'local-business'),
+    ],
+
+    'navigation' => [
+        'header' => [
+            ['label' => 'Home', 'url' => '/', 'active' => true],
+            [
+                'label' => 'Visit',
+                'url' => '#visit',
+                'children' => [
+                    ['label' => 'Menu', 'url' => '#menu'],
+                    ['label' => 'Hours', 'url' => '#hours'],
+                    ['label' => 'Location', 'url' => '#location'],
+                ],
+            ],
+            ['label' => 'Menu', 'url' => '#menu'],
+            ['label' => 'Contact', 'url' => '#contact'],
+        ],
+
+        'footer' => [
+            ['label' => 'Menu', 'url' => '#menu'],
+            ['label' => 'Hours', 'url' => '#hours'],
+            ['label' => 'Location', 'url' => '#location'],
+            ['label' => 'Contact', 'url' => '#contact'],
+        ],
+    ],
+];
