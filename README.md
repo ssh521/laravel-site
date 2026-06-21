@@ -52,7 +52,7 @@ php artisan laravel-site:design clinic-clean --force
 php artisan laravel-site:design corporate-trust --force
 php artisan laravel-site:design conversion --force
 php artisan laravel-site:design essential --force
-php artisan laravel-site:design event-promo --forde
+php artisan laravel-site:design event-promo --force
 php artisan laravel-site:design local-business --force
 php artisan laravel-site:design portfolio-editorial --force
 php artisan laravel-site:design saas-product --force
