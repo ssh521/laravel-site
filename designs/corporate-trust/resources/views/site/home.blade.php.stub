@@ -15,9 +15,9 @@
     <x-site.section id="company" eyebrow="Company profile" title="Lead with the facts buyers verify">
         <div class="grid gap-4 md:grid-cols-4">
             @foreach (['18 years' => 'Operating history', '42+' => 'Completed projects', '12' => 'Industry partners', 'ISO' => 'Certification slot'] as $metric => $label)
-                <div class="rounded-lg border border-[var(--site-color-border)] bg-[var(--site-color-surface)] p-5">
-                    <p class="text-3xl font-bold text-[var(--site-color-accent)]">{{ $metric }}</p>
-                    <p class="mt-2 text-sm text-[var(--site-color-muted)]">{{ $label }}</p>
+                <div class="rounded-lg border border-(--site-color-border) bg-(--site-color-surface) p-5">
+                    <p class="text-3xl font-bold text-(--site-color-accent)">{{ $metric }}</p>
+                    <p class="mt-2 text-sm text-(--site-color-muted)">{{ $label }}</p>
                 </div>
             @endforeach
         </div>
@@ -25,9 +25,9 @@
 
     <x-site.section id="capabilities" eyebrow="Capabilities" title="Separate business units, industries, and delivery strengths">
         <div class="grid gap-6 lg:grid-cols-[0.8fr_1.2fr]">
-            <div class="rounded-lg border border-[var(--site-color-border)] bg-[var(--site-color-surface-muted)] p-6">
-                <p class="text-sm font-semibold uppercase text-[var(--site-color-accent)]">Company overview</p>
-                <p class="mt-4 text-sm leading-7 text-[var(--site-color-muted)]">
+            <div class="rounded-lg border border-(--site-color-border) bg-(--site-color-surface-muted) p-6">
+                <p class="text-sm font-semibold uppercase text-(--site-color-accent)">Company overview</p>
+                <p class="mt-4 text-sm leading-7 text-(--site-color-muted)">
                     Replace this with a concise company profile, operating region, facility scale, service promise,
                     and the type of buyer this company serves.
                 </p>
@@ -44,10 +44,10 @@
     <x-site.section id="certifications" eyebrow="Trust library" title="Reserve space for proof assets">
         <div class="grid gap-4 md:grid-cols-3">
             @foreach (['Certification PDF', 'Partner logos', 'Case reference'] as $asset)
-                <article class="rounded-lg border border-[var(--site-color-border)] bg-[var(--site-color-surface)] p-6">
-                    <div class="mb-5 h-12 rounded bg-[var(--site-color-surface-muted)]"></div>
-                    <h3 class="font-semibold text-[var(--site-color-text)]">{{ $asset }}</h3>
-                    <p class="mt-2 text-sm leading-6 text-[var(--site-color-muted)]">
+                <article class="rounded-lg border border-(--site-color-border) bg-(--site-color-surface) p-6">
+                    <div class="mb-5 h-12 rounded bg-(--site-color-surface-muted)"></div>
+                    <h3 class="font-semibold text-(--site-color-text)">{{ $asset }}</h3>
+                    <p class="mt-2 text-sm leading-6 text-(--site-color-muted)">
                         Add downloadable files, logos, audit references, or customer categories.
                     </p>
                 </article>

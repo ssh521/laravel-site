@@ -9,7 +9,12 @@
 - PHP `^8.3`
 - Laravel `^13.0`
 - Livewire `^3.0|^4.0`
-- Tailwind CSS가 구성된 Laravel Starter Kit 앱
+- Tailwind CSS `^4.0`이 구성된 Laravel Starter Kit 앱
+
+`resources/css/app.css`는 Tailwind v4 방식인 `@import "tailwindcss";`를 사용하고,
+`vite.config.js`에는 `@tailwindcss/vite` 플러그인이 설정되어 있어야 합니다.
+이 패키지는 `tailwind.config.js`나 v3의 `@tailwind base/components/utilities`
+지시어를 생성하지 않습니다.
 
 ## 설치
 

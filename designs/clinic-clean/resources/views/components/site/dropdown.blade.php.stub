@@ -3,7 +3,7 @@
 <div class="site-dropdown relative">
     <a
         href="{{ $item['url'] ?? '#' }}"
-        class="inline-flex items-center gap-1 rounded-md px-3 py-2 text-sm font-medium text-[var(--site-color-muted)] transition hover:bg-[var(--site-color-surface-muted)] hover:text-[var(--site-color-text)]"
+        class="inline-flex items-center gap-1 rounded-md px-3 py-2 text-sm font-medium text-(--site-color-muted) transition hover:bg-(--site-color-surface-muted) hover:text-(--site-color-text)"
     >
         {{ $item['label'] ?? 'Menu' }}
         <svg class="h-4 w-4" viewBox="0 0 20 20" fill="currentColor" aria-hidden="true">
@@ -11,11 +11,11 @@
         </svg>
     </a>
 
-    <div class="site-dropdown-panel absolute left-0 top-full hidden min-w-48 rounded-md border border-[var(--site-color-border)] bg-[var(--site-color-surface)] p-2 shadow-lg">
+    <div class="site-dropdown-panel absolute left-0 top-full hidden min-w-48 rounded-md border border-(--site-color-border) bg-(--site-color-surface) p-2 shadow-lg">
         @foreach ($item['children'] ?? [] as $child)
             <a
                 href="{{ $child['url'] ?? '#' }}"
-                class="block rounded-md px-3 py-2 text-sm text-[var(--site-color-muted)] hover:bg-[var(--site-color-surface-muted)] hover:text-[var(--site-color-text)]"
+                class="block rounded-md px-3 py-2 text-sm text-(--site-color-muted) hover:bg-(--site-color-surface-muted) hover:text-(--site-color-text)"
             >
                 {{ $child['label'] ?? 'Menu' }}
             </a>

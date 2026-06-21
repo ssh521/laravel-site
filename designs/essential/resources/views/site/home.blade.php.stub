@@ -22,20 +22,20 @@
 
     <x-site.section id="work" eyebrow="Workflow" title="A starter page that stays easy to customize">
         <div class="grid gap-6 lg:grid-cols-[1.1fr_0.9fr] lg:items-center">
-            <div class="space-y-4 text-base leading-8 text-[var(--site-color-muted)]">
+            <div class="space-y-4 text-base leading-8 text-(--site-color-muted)">
                 <p>
                     The homepage starts with a hero and clear section slots. Add, remove, or reorder sections in
-                    <code class="rounded bg-[var(--site-color-surface-muted)] px-1.5 py-1 text-sm">resources/views/site/home.blade.php</code>.
+                    <code class="rounded bg-(--site-color-surface-muted) px-1.5 py-1 text-sm">resources/views/site/home.blade.php</code>.
                 </p>
                 <p>
                     Shared components live under
-                    <code class="rounded bg-[var(--site-color-surface-muted)] px-1.5 py-1 text-sm">resources/views/components/site</code>
+                    <code class="rounded bg-(--site-color-surface-muted) px-1.5 py-1 text-sm">resources/views/components/site</code>
                     so customer-specific changes stay close to the rendered site.
                 </p>
             </div>
-            <div class="rounded-lg border border-[var(--site-color-border)] bg-[var(--site-color-surface)] p-6 shadow-sm">
-                <p class="text-sm font-semibold uppercase text-[var(--site-color-accent)]">Editable after install</p>
-                <ul class="mt-4 space-y-3 text-sm text-[var(--site-color-muted)]">
+            <div class="rounded-lg border border-(--site-color-border) bg-(--site-color-surface) p-6 shadow-sm">
+                <p class="text-sm font-semibold uppercase text-(--site-color-accent)">Editable after install</p>
+                <ul class="mt-4 space-y-3 text-sm text-(--site-color-muted)">
                     <li>Blade layout and components</li>
                     <li>Responsive header, dropdowns, and mobile menu</li>
                     <li>Footer, logo, buttons, cards, and sections</li>

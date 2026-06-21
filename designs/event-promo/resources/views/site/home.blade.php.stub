@@ -23,11 +23,11 @@
     <x-site.section id="schedule" eyebrow="Schedule" title="Let visitors picture the day">
         <div class="space-y-4">
             @foreach (['09:30' => 'Doors open and welcome coffee', '10:00' => 'Opening keynote', '11:30' => 'Practical workshop', '13:00' => 'Networking and closing'] as $time => $title)
-                <div class="grid gap-4 rounded-lg border border-[var(--site-color-border)] bg-[var(--site-color-surface)] p-5 md:grid-cols-[8rem_1fr]">
-                    <p class="font-bold text-[var(--site-color-accent)]">{{ $time }}</p>
+                <div class="grid gap-4 rounded-lg border border-(--site-color-border) bg-(--site-color-surface) p-5 md:grid-cols-[8rem_1fr]">
+                    <p class="font-bold text-(--site-color-accent)">{{ $time }}</p>
                     <div>
-                        <h3 class="font-semibold text-[var(--site-color-text)]">{{ $title }}</h3>
-                        <p class="mt-2 text-sm text-[var(--site-color-muted)]">Add speaker, room, session description, and attendee outcome.</p>
+                        <h3 class="font-semibold text-(--site-color-text)">{{ $title }}</h3>
+                        <p class="mt-2 text-sm text-(--site-color-muted)">Add speaker, room, session description, and attendee outcome.</p>
                     </div>
                 </div>
             @endforeach
@@ -37,10 +37,10 @@
     <x-site.section id="speakers" eyebrow="Speakers" title="Show who makes the event worth attending">
         <div class="grid gap-4 md:grid-cols-3">
             @foreach (['Host Name', 'Guest Expert', 'Panel Moderator'] as $speaker)
-                <article class="rounded-lg border border-[var(--site-color-border)] bg-[var(--site-color-surface)] p-5">
-                    <div class="aspect-square rounded-md bg-[var(--site-color-surface-muted)]"></div>
-                    <h3 class="mt-4 font-semibold text-[var(--site-color-text)]">{{ $speaker }}</h3>
-                    <p class="mt-2 text-sm text-[var(--site-color-muted)]">Role, company, topic, or credibility line.</p>
+                <article class="rounded-lg border border-(--site-color-border) bg-(--site-color-surface) p-5">
+                    <div class="aspect-square rounded-md bg-(--site-color-surface-muted)"></div>
+                    <h3 class="mt-4 font-semibold text-(--site-color-text)">{{ $speaker }}</h3>
+                    <p class="mt-2 text-sm text-(--site-color-muted)">Role, company, topic, or credibility line.</p>
                 </article>
             @endforeach
         </div>

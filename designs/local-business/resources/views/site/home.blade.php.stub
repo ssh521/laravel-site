@@ -14,13 +14,13 @@
 
     <x-site.section id="hours" eyebrow="Open today" title="Put the visit decision above the fold">
         <div class="grid gap-5 lg:grid-cols-[0.85fr_1.15fr]">
-            <div class="rounded-lg border border-[var(--site-color-border)] bg-[var(--site-color-surface)] p-6 shadow-sm">
-                <p class="text-sm font-semibold uppercase text-[var(--site-color-accent)]">Business hours</p>
+            <div class="rounded-lg border border-(--site-color-border) bg-(--site-color-surface) p-6 shadow-sm">
+                <p class="text-sm font-semibold uppercase text-(--site-color-accent)">Business hours</p>
                 <dl class="mt-5 space-y-3 text-sm">
                     @foreach (['Mon-Fri' => '10:00 - 20:00', 'Saturday' => '10:00 - 18:00', 'Sunday' => 'Closed'] as $day => $time)
-                        <div class="flex items-center justify-between border-b border-[var(--site-color-border)] pb-3 last:border-0 last:pb-0">
-                            <dt class="font-medium text-[var(--site-color-text)]">{{ $day }}</dt>
-                            <dd class="text-[var(--site-color-muted)]">{{ $time }}</dd>
+                        <div class="flex items-center justify-between border-b border-(--site-color-border) pb-3 last:border-0 last:pb-0">
+                            <dt class="font-medium text-(--site-color-text)">{{ $day }}</dt>
+                            <dd class="text-(--site-color-muted)">{{ $time }}</dd>
                         </div>
                     @endforeach
                 </dl>
@@ -37,24 +37,24 @@
 
     <x-site.section id="location" eyebrow="Location" title="Make arrival easy for first-time visitors">
         <div class="grid gap-6 lg:grid-cols-[1.1fr_0.9fr]">
-            <div class="min-h-72 rounded-lg border border-[var(--site-color-border)] bg-[var(--site-color-surface-muted)] p-6">
-                <p class="text-sm font-semibold uppercase text-[var(--site-color-accent)]">Map embed area</p>
-                <p class="mt-4 max-w-xl text-sm leading-6 text-[var(--site-color-muted)]">
+            <div class="min-h-72 rounded-lg border border-(--site-color-border) bg-(--site-color-surface-muted) p-6">
+                <p class="text-sm font-semibold uppercase text-(--site-color-accent)">Map embed area</p>
+                <p class="mt-4 max-w-xl text-sm leading-6 text-(--site-color-muted)">
                     Replace this panel with a Naver Map, Kakao Map, Google Map, parking photo, or landmark instructions.
                 </p>
             </div>
             <div class="space-y-4">
                 @foreach (['Address' => '123 Local Street, Seoul', 'Parking' => 'Two visitor spots behind the building', 'Transit' => '3 minute walk from Exit 2'] as $label => $value)
-                    <div class="rounded-lg border border-[var(--site-color-border)] bg-[var(--site-color-surface)] p-5">
-                        <p class="text-sm font-semibold text-[var(--site-color-text)]">{{ $label }}</p>
-                        <p class="mt-2 text-sm text-[var(--site-color-muted)]">{{ $value }}</p>
+                    <div class="rounded-lg border border-(--site-color-border) bg-(--site-color-surface) p-5">
+                        <p class="text-sm font-semibold text-(--site-color-text)">{{ $label }}</p>
+                        <p class="mt-2 text-sm text-(--site-color-muted)">{{ $value }}</p>
                     </div>
                 @endforeach
             </div>
         </div>
     </x-site.section>
 
-    <div class="sticky bottom-0 z-30 border-t border-[var(--site-color-border)] bg-[var(--site-color-page)]/95 p-3 backdrop-blur md:hidden">
+    <div class="sticky bottom-0 z-30 border-t border-(--site-color-border) bg-(--site-color-page)/95 p-3 backdrop-blur md:hidden">
         <div class="grid grid-cols-2 gap-3">
             <x-site.button href="tel:+821012345678" class="justify-center">Call</x-site.button>
             <x-site.button href="#location" variant="secondary" class="justify-center">Directions</x-site.button>

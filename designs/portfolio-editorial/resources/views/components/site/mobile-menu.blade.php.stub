@@ -6,12 +6,12 @@
 
 <div id="site-mobile-menu" class="site-mobile-menu fixed inset-0 z-50 hidden md:hidden" data-site-mobile-menu aria-hidden="true">
     <div class="absolute inset-0 bg-black/40" data-site-menu-close></div>
-    <aside class="site-mobile-panel absolute right-0 top-0 flex h-full w-full max-w-sm translate-x-full flex-col bg-[var(--site-color-surface)] p-6 shadow-2xl transition-transform duration-200">
+    <aside class="site-mobile-panel absolute right-0 top-0 flex h-full w-full max-w-sm translate-x-full flex-col bg-(--site-color-surface) p-6 shadow-2xl transition-transform duration-200">
         <div class="flex items-center justify-between">
             <x-site.logo />
             <button
                 type="button"
-                class="inline-flex h-10 w-10 items-center justify-center rounded-md border border-[var(--site-color-border)] text-[var(--site-color-text)]"
+                class="inline-flex h-10 w-10 items-center justify-center rounded-md border border-(--site-color-border) text-(--site-color-text)"
                 data-site-menu-close
             >
                 <span class="sr-only">Close menu</span>
@@ -23,12 +23,12 @@
 
         <nav class="mt-8 space-y-2" aria-label="Mobile navigation">
             @foreach ($items as $item)
-                <a href="{{ $item['url'] ?? '#' }}" class="block rounded-md px-3 py-3 text-base font-medium text-[var(--site-color-text)] hover:bg-[var(--site-color-surface-muted)]">
+                <a href="{{ $item['url'] ?? '#' }}" class="block rounded-md px-3 py-3 text-base font-medium text-(--site-color-text) hover:bg-(--site-color-surface-muted)">
                     {{ $item['label'] ?? 'Menu' }}
                 </a>
 
                 @foreach ($item['children'] ?? [] as $child)
-                    <a href="{{ $child['url'] ?? '#' }}" class="block rounded-md px-6 py-2 text-sm text-[var(--site-color-muted)] hover:bg-[var(--site-color-surface-muted)]">
+                    <a href="{{ $child['url'] ?? '#' }}" class="block rounded-md px-6 py-2 text-sm text-(--site-color-muted) hover:bg-(--site-color-surface-muted)">
                         {{ $child['label'] ?? 'Menu' }}
                     </a>
                 @endforeach

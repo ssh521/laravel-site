@@ -14,7 +14,7 @@
 
         @vite(['resources/css/app.css', 'resources/css/site.css', 'resources/js/app.js', 'resources/js/site.js'])
     </head>
-    <body class="site-shell site-preset-{{ config('laravel-site.design.preset', 'essential') }} min-h-screen bg-[var(--site-color-page)] text-[var(--site-color-text)] antialiased">
+    <body class="site-shell site-preset-{{ config('laravel-site.design.preset', 'essential') }} min-h-screen bg-(--site-color-page) text-(--site-color-text) antialiased">
         <x-site.header />
 
         <main id="content">

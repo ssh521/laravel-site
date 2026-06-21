@@ -15,12 +15,12 @@
     <x-site.section id="selected-work" eyebrow="Selected work" title="Lead with project evidence, not a generic services grid">
         <div class="grid gap-5 md:grid-cols-2">
             @foreach (['Brand system for a new venue', 'Editorial campaign for a launch', 'Digital experience for a studio', 'Packaging refresh for retail'] as $project)
-                <article class="group overflow-hidden rounded-lg border border-[var(--site-color-border)] bg-[var(--site-color-surface)]">
-                    <div class="aspect-[4/3] bg-[var(--site-color-surface-muted)] transition group-hover:opacity-80"></div>
+                <article class="group overflow-hidden rounded-lg border border-(--site-color-border) bg-(--site-color-surface)">
+                    <div class="aspect-[4/3] bg-(--site-color-surface-muted) transition group-hover:opacity-80"></div>
                     <div class="p-5">
-                        <p class="text-xs font-semibold uppercase text-[var(--site-color-accent)]">Case study</p>
-                        <h3 class="mt-2 text-xl font-bold text-[var(--site-color-text)]">{{ $project }}</h3>
-                        <p class="mt-3 text-sm leading-6 text-[var(--site-color-muted)]">
+                        <p class="text-xs font-semibold uppercase text-(--site-color-accent)">Case study</p>
+                        <h3 class="mt-2 text-xl font-bold text-(--site-color-text)">{{ $project }}</h3>
+                        <p class="mt-3 text-sm leading-6 text-(--site-color-muted)">
                             Replace with client, role, year, result, and a short editorial hook.
                         </p>
                     </div>
@@ -39,7 +39,7 @@
 
     <x-site.section id="studio" eyebrow="Studio" title="Make the portfolio feel authored">
         <div class="grid gap-6 lg:grid-cols-[1.1fr_0.9fr]">
-            <div class="space-y-5 text-base leading-8 text-[var(--site-color-muted)]">
+            <div class="space-y-5 text-base leading-8 text-(--site-color-muted)">
                 <p>
                     Replace this text with a sharp studio statement. Portfolio pages should feel specific:
                     name clients, methods, materials, categories, and the kind of briefs you want.
@@ -48,13 +48,13 @@
                     Keep this section quieter than the work grid. The strongest proof should remain the projects.
                 </p>
             </div>
-            <div class="rounded-lg border border-[var(--site-color-border)] bg-[var(--site-color-surface)] p-6">
-                <p class="text-sm font-semibold uppercase text-[var(--site-color-accent)]">Studio facts</p>
+            <div class="rounded-lg border border-(--site-color-border) bg-(--site-color-surface) p-6">
+                <p class="text-sm font-semibold uppercase text-(--site-color-accent)">Studio facts</p>
                 <dl class="mt-5 space-y-3 text-sm">
                     @foreach (['Focus' => 'Brand, editorial, digital', 'Based in' => 'Seoul / remote', 'Inquiries' => 'New projects quarterly'] as $label => $value)
-                        <div class="flex justify-between gap-4 border-b border-[var(--site-color-border)] pb-3 last:border-0 last:pb-0">
-                            <dt class="font-medium text-[var(--site-color-text)]">{{ $label }}</dt>
-                            <dd class="text-right text-[var(--site-color-muted)]">{{ $value }}</dd>
+                        <div class="flex justify-between gap-4 border-b border-(--site-color-border) pb-3 last:border-0 last:pb-0">
+                            <dt class="font-medium text-(--site-color-text)">{{ $label }}</dt>
+                            <dd class="text-right text-(--site-color-muted)">{{ $value }}</dd>
                         </div>
                     @endforeach
                 </dl>

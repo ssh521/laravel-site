@@ -15,9 +15,9 @@
     <x-site.section id="programs" eyebrow="Services" title="Show care areas without overwhelming visitors">
         <div class="grid gap-4 md:grid-cols-2 lg:grid-cols-4">
             @foreach (['Initial consultation', 'Specialized program', 'Follow-up care', 'Remote guidance'] as $service)
-                <article class="rounded-lg border border-[var(--site-color-border)] bg-[var(--site-color-surface)] p-5 shadow-sm">
-                    <p class="text-sm font-semibold text-[var(--site-color-accent)]">{{ $service }}</p>
-                    <p class="mt-3 text-sm leading-6 text-[var(--site-color-muted)]">
+                <article class="rounded-lg border border-(--site-color-border) bg-(--site-color-surface) p-5 shadow-sm">
+                    <p class="text-sm font-semibold text-(--site-color-accent)">{{ $service }}</p>
+                    <p class="mt-3 text-sm leading-6 text-(--site-color-muted)">
                         Add eligibility, duration, preparation, and what patients can expect.
                     </p>
                 </article>
@@ -27,10 +27,10 @@
 
     <x-site.section id="team" eyebrow="Team" title="Make expertise visible before asking for contact">
         <div class="grid gap-6 lg:grid-cols-[0.9fr_1.1fr] lg:items-start">
-            <div class="rounded-lg border border-[var(--site-color-border)] bg-[var(--site-color-surface-muted)] p-6">
-                <div class="aspect-[4/5] rounded-md bg-[var(--site-color-surface)]"></div>
-                <h3 class="mt-5 text-xl font-bold text-[var(--site-color-text)]">Dr. Example Name</h3>
-                <p class="mt-2 text-sm text-[var(--site-color-muted)]">Director / Licensed specialist</p>
+            <div class="rounded-lg border border-(--site-color-border) bg-(--site-color-surface-muted) p-6">
+                <div class="aspect-[4/5] rounded-md bg-(--site-color-surface)"></div>
+                <h3 class="mt-5 text-xl font-bold text-(--site-color-text)">Dr. Example Name</h3>
+                <p class="mt-2 text-sm text-(--site-color-muted)">Director / Licensed specialist</p>
             </div>
             <div class="space-y-4">
                 <x-site.feature-card title="Qualifications" description="List credentials, licenses, certifications, and professional memberships." />
@@ -43,10 +43,10 @@
     <x-site.section id="process" eyebrow="Process" title="Reduce anxiety with a clear appointment flow">
         <div class="grid gap-4 md:grid-cols-4">
             @foreach (['Reserve', 'Intake', 'Consult', 'Plan'] as $step)
-                <div class="rounded-lg border border-[var(--site-color-border)] bg-[var(--site-color-surface)] p-5">
-                    <p class="text-3xl font-bold text-[var(--site-color-accent)]">0{{ $loop->iteration }}</p>
-                    <h3 class="mt-4 font-semibold text-[var(--site-color-text)]">{{ $step }}</h3>
-                    <p class="mt-2 text-sm leading-6 text-[var(--site-color-muted)]">Replace with a practical explanation for this step.</p>
+                <div class="rounded-lg border border-(--site-color-border) bg-(--site-color-surface) p-5">
+                    <p class="text-3xl font-bold text-(--site-color-accent)">0{{ $loop->iteration }}</p>
+                    <h3 class="mt-4 font-semibold text-(--site-color-text)">{{ $step }}</h3>
+                    <p class="mt-2 text-sm leading-6 text-(--site-color-muted)">Replace with a practical explanation for this step.</p>
                 </div>
             @endforeach
         </div>

@@ -83,10 +83,12 @@ class InstallCommandTest extends TestCase
     {
         File::put(base_path('vite.config.js'), <<<'JS'
 import { defineConfig } from 'vite';
+import tailwindcss from '@tailwindcss/vite';
 import laravel from 'laravel-vite-plugin';
 
 export default defineConfig({
     plugins: [
+        tailwindcss(),
         laravel({
             input: ['resources/css/app.css', 'resources/js/app.js'],
             refresh: true,
@@ -108,10 +110,12 @@ JS);
     {
         File::put(base_path('vite.config.js'), <<<'JS'
 import { defineConfig } from 'vite';
+import tailwindcss from '@tailwindcss/vite';
 import laravel from 'laravel-vite-plugin';
 
 export default defineConfig({
     plugins: [
+        tailwindcss(),
         laravel({
             input: [
                 'resources/css/app.css',
@@ -202,6 +206,44 @@ JS);
             foreach ($markers as $marker) {
                 $this->assertStringContainsString($marker, $home);
             }
+        }
+    }
+
+    public function test_design_stubs_do_not_ship_tailwind_v3_configuration_patterns(): void
+    {
+        $forbiddenPatterns = [
+            '@tailwind base',
+            '@tailwind components',
+            '@tailwind utilities',
+            'tailwind.config',
+            'content: [',
+            'theme: {',
+            'extend: {',
+        ];
+
+        foreach (File::allFiles(dirname(__DIR__, 2).'/designs') as $file) {
+            $contents = File::get($file->getPathname());
+
+            foreach ($forbiddenPatterns as $pattern) {
+                $this->assertStringNotContainsString(
+                    $pattern,
+                    $contents,
+                    "Unexpected Tailwind v3 pattern [{$pattern}] in {$file->getRelativePathname()}."
+                );
+            }
+        }
+    }
+
+    public function test_design_stubs_use_tailwind_v4_css_variable_shorthand(): void
+    {
+        foreach (File::allFiles(dirname(__DIR__, 2).'/designs') as $file) {
+            $contents = File::get($file->getPathname());
+
+            $this->assertStringNotContainsString(
+                '[var(--site-color',
+                $contents,
+                "Use Tailwind v4 CSS variable shorthand in {$file->getRelativePathname()}."
+            );
         }
     }
 
