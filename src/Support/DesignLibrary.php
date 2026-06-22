@@ -11,7 +11,7 @@ class DesignLibrary
 {
     public function defaultDesign(): string
     {
-        return 'essential';
+        return 'package-guide';
     }
 
     /**

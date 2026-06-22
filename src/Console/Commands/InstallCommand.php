@@ -10,7 +10,7 @@ use Ssh521\LaravelSite\Support\DesignLibrary;
 class InstallCommand extends Command
 {
     protected $signature = 'laravel-site:install
-        {--design=essential : Design library item to install}
+        {--design=package-guide : Design library item to install}
         {--force : Overwrite existing generated site scaffold files}
         {--skip-route-include : Do not add the routes/site.php require line to routes/web.php}';
 

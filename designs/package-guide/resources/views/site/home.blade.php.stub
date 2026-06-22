@@ -1,0 +1,103 @@
+<x-layouts.site
+    :title="config('laravel-site.brand.name')"
+    :description="config('laravel-site.brand.tagline')"
+>
+    <x-site.hero
+        eyebrow="ssh521/laravel-site"
+        title="Laravel Starter Kit 위에 공개 사이트를 바로 얹는 패키지"
+        description="인증, 대시보드, 관리자 영역은 Laravel 앱이 맡고, laravel-site는 메인 랜딩 페이지와 공개 사이트 컴포넌트를 호스트 앱에 복사해 바로 수정할 수 있게 합니다."
+        primary-label="설치 방법"
+        primary-url="#install"
+        secondary-label="추가 제작 흐름"
+        secondary-url="#extend"
+    />
+
+    <x-site.section
+        id="overview"
+        eyebrow="Package Overview"
+        title="런타임 빌더가 아니라, 수정 가능한 사이트 스캐폴드입니다"
+        description="설치 후 생성되는 파일은 패키지 내부에 숨지 않고 애플리케이션의 resources, routes, config 아래에 놓입니다."
+    >
+        <div class="grid gap-4 md:grid-cols-3">
+            <x-site.feature-card title="Starter Kit Friendly" description="Laravel Starter Kit의 auth, dashboard, profile 화면을 유지하고 public home만 사이트용 화면으로 교체합니다." />
+            <x-site.feature-card title="Editable Files" description="Blade, CSS, JS, config, design.md를 호스트 앱에 생성해서 프로젝트별 요구에 맞게 직접 수정합니다." />
+            <x-site.feature-card title="Design Library" description="essential, conversion, corporate-trust 같은 프리셋을 선택하거나 이 구조를 기준으로 새 디자인을 추가합니다." />
+        </div>
+    </x-site.section>
+
+    <x-site.section id="install" eyebrow="Install" title="새 Laravel 앱에서 적용하는 기본 순서">
+        <div class="grid gap-6 lg:grid-cols-[0.95fr_1.05fr] lg:items-start">
+            <div class="rounded-lg border border-(--site-color-border) bg-(--site-color-surface) p-6 shadow-sm">
+                <p class="text-sm font-semibold uppercase text-(--site-color-accent)">Recommended setup</p>
+                <ol class="mt-5 space-y-4 text-sm leading-7 text-(--site-color-muted)">
+                    <li><span class="font-semibold text-(--site-color-text)">1.</span> Laravel Starter Kit을 먼저 설치합니다.</li>
+                    <li><span class="font-semibold text-(--site-color-text)">2.</span> Composer로 laravel-site를 추가합니다.</li>
+                    <li><span class="font-semibold text-(--site-color-text)">3.</span> install command를 실행해 public site 파일을 생성합니다.</li>
+                    <li><span class="font-semibold text-(--site-color-text)">4.</span> 생성된 Blade와 config를 프로젝트 문구에 맞게 수정합니다.</li>
+                </ol>
+            </div>
+
+            <div class="rounded-lg border border-(--site-color-border) bg-(--site-color-text) p-6 text-sm text-(--site-color-accent-contrast) shadow-sm">
+                <pre class="overflow-x-auto leading-7"><code>composer require ssh521/laravel-site
+php artisan laravel-site:install
+
+# 다른 디자인을 선택할 때
+php artisan laravel-site:install --design=essential
+php artisan laravel-site:install --design=conversion</code></pre>
+            </div>
+        </div>
+    </x-site.section>
+
+    <x-site.section
+        id="extend"
+        eyebrow="Generated Files"
+        title="설치 후 여기서 화면을 이어서 만듭니다"
+        description="패키지는 시작점을 만들고 빠집니다. 실제 사이트 구현은 Laravel 프로젝트 안의 보통 파일을 고치는 방식입니다."
+        class="bg-(--site-color-surface-muted)"
+    >
+        <div class="grid gap-4 md:grid-cols-2 lg:grid-cols-3">
+            <x-site.feature-card title="routes/site.php" description="메인 public route를 분리해서 관리합니다. 기본 경로는 / 이며 config로 변경할 수 있습니다." />
+            <x-site.feature-card title="resources/views/site/home.blade.php" description="첫 화면의 섹션 순서, 문구, CTA, 패키지 소개 내용을 수정하는 중심 파일입니다." />
+            <x-site.feature-card title="resources/views/components/site" description="header, footer, hero, button, card 같은 반복 UI를 컴포넌트로 관리합니다." />
+            <x-site.feature-card title="resources/css/site.css" description="사이트 전용 CSS 변수와 public UI 동작에 필요한 스타일을 모읍니다." />
+            <x-site.feature-card title="config/laravel-site.php" description="브랜드 이름, 메뉴, home path, design preset 값을 프로젝트에 맞게 조정합니다." />
+            <x-site.feature-card title="design.md" description="AI 또는 다른 개발자가 이어서 화면을 추가할 때 따라야 할 제작 기준을 남깁니다." />
+        </div>
+    </x-site.section>
+
+    <x-site.section id="designs" eyebrow="Design Library" title="기본 설치는 package-guide, 고객 사이트는 목적별 디자인으로 교체">
+        <div class="grid gap-6 lg:grid-cols-[1fr_1fr]">
+            <div class="space-y-4 text-base leading-8 text-(--site-color-muted)">
+                <p>
+                    새 프로젝트에 <code class="rounded bg-(--site-color-surface-muted) px-1.5 py-1 text-sm">laravel-site:install</code>만 실행하면 이 패키지 설명 화면이 설치됩니다. 고객 납품용 화면으로 바로 시작하려면
+                    <code class="rounded bg-(--site-color-surface-muted) px-1.5 py-1 text-sm">--design=essential</code>,
+                    <code class="rounded bg-(--site-color-surface-muted) px-1.5 py-1 text-sm">--design=corporate-trust</code>
+                    처럼 디자인을 지정합니다.
+                </p>
+                <p>
+                    이미 설치한 뒤에는
+                    <code class="rounded bg-(--site-color-surface-muted) px-1.5 py-1 text-sm">php artisan laravel-site:design {name} --force</code>
+                    로 디자인 파일만 교체할 수 있습니다.
+                </p>
+            </div>
+
+            <div class="rounded-lg border border-(--site-color-border) bg-(--site-color-surface) p-6 shadow-sm">
+                <p class="text-sm font-semibold uppercase text-(--site-color-accent)">Common choices</p>
+                <ul class="mt-4 grid gap-3 text-sm text-(--site-color-muted) sm:grid-cols-2">
+                    <li><span class="font-semibold text-(--site-color-text)">essential</span><br>범용 회사/서비스 소개</li>
+                    <li><span class="font-semibold text-(--site-color-text)">conversion</span><br>광고 유입/문의 전환</li>
+                    <li><span class="font-semibold text-(--site-color-text)">local-business</span><br>오프라인 매장</li>
+                    <li><span class="font-semibold text-(--site-color-text)">saas-product</span><br>디지털 제품 소개</li>
+                </ul>
+            </div>
+        </div>
+    </x-site.section>
+
+    <x-site.cta
+        id="contact"
+        title="이 화면을 프로젝트 문서 또는 고객 랜딩으로 바꾸세요"
+        description="메인 페이지는 이미 호스트 앱 파일입니다. 섹션을 줄이거나 늘리고, Livewire 문의 폼이나 관리자 패키지 링크를 이어 붙이면 됩니다."
+        button-label="생성 파일 수정하기"
+        button-url="#extend"
+    />
+</x-layouts.site>

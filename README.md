@@ -23,9 +23,12 @@ composer require ssh521/laravel-site
 php artisan laravel-site:install
 ```
 
+기본 설치 디자인은 `package-guide`입니다. Laravel Starter Kit 설치 직후 실행하면 메인 화면이 `ssh521/laravel-site` 패키지 설명, 설치 방법, 생성 파일 안내 화면으로 바뀝니다.
+
 디자인을 선택해서 설치:
 
 ```bash
+php artisan laravel-site:install --design=essential
 php artisan laravel-site:install --design=conversion
 php artisan laravel-site:install --design=corporate-trust
 ```
@@ -55,6 +58,7 @@ php artisan laravel-site:design --list
 ```bash
 php artisan laravel-site:design clinic-clean --force
 php artisan laravel-site:design corporate-trust --force
+php artisan laravel-site:design package-guide --force
 php artisan laravel-site:design conversion --force
 php artisan laravel-site:design essential --force
 php artisan laravel-site:design event-promo --force
@@ -73,6 +77,7 @@ designs/
 ├── essential/
 ├── event-promo/
 ├── local-business/
+├── package-guide/
 ├── portfolio-editorial/
 └── saas-product/
 ```
@@ -83,6 +88,7 @@ designs/
 
 | 디자인 | 용도 |
 |--------|------|
+| `package-guide` | 기본 설치 화면, 패키지 설명 및 설치/추가 방법 안내 |
 | `essential` | 범용 회사/서비스 소개형 |
 | `conversion` | 광고 유입, 상담 신청, 문의 전환형 |
 | `corporate-trust` | B2B 회사, 제조, 전문 서비스 신뢰형 |

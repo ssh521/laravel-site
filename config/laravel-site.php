@@ -29,23 +29,16 @@ return [
     'navigation' => [
         'header' => [
             ['label' => 'Home', 'url' => '/', 'active' => true],
-            [
-                'label' => 'Services',
-                'url' => '#services',
-                'children' => [
-                    ['label' => 'Strategy', 'url' => '#strategy'],
-                    ['label' => 'Design', 'url' => '#design'],
-                    ['label' => 'Development', 'url' => '#development'],
-                ],
-            ],
-            ['label' => 'Work', 'url' => '#work'],
-            ['label' => 'Contact', 'url' => '#contact'],
+            ['label' => 'Overview', 'url' => '#overview'],
+            ['label' => 'Install', 'url' => '#install'],
+            ['label' => 'Generated Files', 'url' => '#extend'],
+            ['label' => 'Designs', 'url' => '#designs'],
         ],
         'footer' => [
-            ['label' => 'Company', 'url' => '#about'],
-            ['label' => 'Services', 'url' => '#services'],
-            ['label' => 'Contact', 'url' => '#contact'],
-            ['label' => 'Privacy', 'url' => '/privacy'],
+            ['label' => 'Overview', 'url' => '#overview'],
+            ['label' => 'Install', 'url' => '#install'],
+            ['label' => 'Generated Files', 'url' => '#extend'],
+            ['label' => 'Designs', 'url' => '#designs'],
         ],
     ],
 
@@ -56,8 +49,8 @@ return [
     */
     'brand' => [
         'name' => env('APP_NAME', 'Laravel Site'),
-        'tagline' => 'Fast, responsive customer websites for Laravel.',
-        'logo_text' => env('APP_NAME', 'Site'),
+        'tagline' => 'Public site scaffold for Laravel Starter Kit apps.',
+        'logo_text' => 'Laravel Site',
     ],
 
     /*
@@ -65,11 +58,11 @@ return [
     | Design Preset
     |--------------------------------------------------------------------------
     |
-    | The generated CSS ships with essential, editorial, and conversion token
-    | sets. The layout root receives this preset name as a class.
+    | The generated CSS ships with package-guide plus customer-site token sets.
+    | The layout root receives this preset name as a class.
     |
     */
     'design' => [
-        'preset' => env('LARAVEL_SITE_PRESET', 'essential'),
+        'preset' => env('LARAVEL_SITE_PRESET', 'package-guide'),
     ],
 ];

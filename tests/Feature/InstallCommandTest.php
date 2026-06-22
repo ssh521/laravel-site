@@ -52,7 +52,8 @@ class InstallCommandTest extends TestCase
         $this->assertFileExists(base_path('design.md'));
 
         $this->assertStringContainsString("require __DIR__.'/site.php';", File::get(base_path('routes/web.php')));
-        $this->assertStringContainsString('Build responsive customer websites faster.', File::get(base_path('resources/views/site/home.blade.php')));
+        $this->assertStringContainsString('Laravel Starter Kit 위에 공개 사이트를 바로 얹는 패키지', File::get(base_path('resources/views/site/home.blade.php')));
+        $this->assertStringContainsString("'preset' => env('LARAVEL_SITE_PRESET', 'package-guide')", File::get(base_path('config/laravel-site.php')));
     }
 
     public function test_installed_site_script_initializes_mobile_menu_after_dom_is_ready(): void
@@ -157,6 +158,7 @@ JS);
             ->expectsOutput('- essential')
             ->expectsOutput('- event-promo')
             ->expectsOutput('- local-business')
+            ->expectsOutput('- package-guide')
             ->expectsOutput('- portfolio-editorial')
             ->expectsOutput('- saas-product')
             ->assertExitCode(0);
@@ -168,6 +170,7 @@ JS);
             'corporate-trust' => 'Present your company with clarity',
             'local-business' => 'Help nearby customers call',
             'clinic-clean' => 'Create a calm path',
+            'package-guide' => 'Laravel Starter Kit 위에 공개 사이트를 바로 얹는 패키지',
             'portfolio-editorial' => 'Give the work room',
             'saas-product' => 'Explain the product',
             'event-promo' => 'Give visitors the reason',

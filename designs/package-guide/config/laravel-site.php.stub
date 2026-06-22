@@ -1,0 +1,35 @@
+<?php
+
+return [
+    'routes' => [
+        'home_path' => env('LARAVEL_SITE_HOME_PATH', '/'),
+        'home_name' => 'site.home',
+    ],
+
+    'brand' => [
+        'name' => env('APP_NAME', 'Laravel Site'),
+        'tagline' => 'Public site scaffold for Laravel Starter Kit apps.',
+        'logo_text' => 'Laravel Site',
+    ],
+
+    'design' => [
+        'preset' => env('LARAVEL_SITE_PRESET', 'package-guide'),
+    ],
+
+    'navigation' => [
+        'header' => [
+            ['label' => 'Home', 'url' => '/', 'active' => true],
+            ['label' => 'Overview', 'url' => '#overview'],
+            ['label' => 'Install', 'url' => '#install'],
+            ['label' => 'Generated Files', 'url' => '#extend'],
+            ['label' => 'Designs', 'url' => '#designs'],
+        ],
+
+        'footer' => [
+            ['label' => 'Overview', 'url' => '#overview'],
+            ['label' => 'Install', 'url' => '#install'],
+            ['label' => 'Generated Files', 'url' => '#extend'],
+            ['label' => 'Designs', 'url' => '#designs'],
+        ],
+    ],
+];
