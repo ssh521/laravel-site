@@ -3,9 +3,8 @@
     'label' => config('laravel-site.brand.logo_text', config('laravel-site.brand.name')),
 ])
 
-<a href="{{ $href }}" {{ $attributes->merge(['class' => 'inline-flex items-center gap-3 text-(--site-color-text)']) }}>
-    <span class="flex h-10 w-10 items-center justify-center rounded-md bg-(--site-color-accent) text-sm font-bold text-(--site-color-accent-contrast)">
-        {{ mb_substr($label, 0, 1) }}
+<a href="{{ $href }}" {{ $attributes->merge(['class' => 'inline-flex items-center text-(--site-color-text)']) }}>
+    <span class="text-lg font-black uppercase leading-none">
+        {{ $label }}<span class="text-(--site-color-accent)">.</span>
     </span>
-    <span class="text-base font-semibold">{{ $label }}</span>
 </a>

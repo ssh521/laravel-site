@@ -2,7 +2,7 @@
     $items = config('laravel-site.navigation.footer', []);
 @endphp
 
-<footer class="border-t border-(--site-color-border) bg-(--site-color-surface-muted)">
+<footer class="border-t border-(--site-color-border) bg-(--site-color-page)">
     <div class="mx-auto grid max-w-7xl gap-8 px-4 py-10 sm:px-6 md:grid-cols-[1fr_auto] lg:px-8">
         <div>
             <x-site.logo />
@@ -11,9 +11,9 @@
             </p>
         </div>
 
-        <nav class="flex flex-wrap gap-x-5 gap-y-3 text-sm" aria-label="Footer navigation">
+        <nav class="flex flex-wrap gap-x-6 gap-y-3 text-xs font-semibold uppercase" aria-label="Footer navigation">
             @foreach ($items as $item)
-                <a href="{{ $item['url'] ?? '#' }}" class="text-(--site-color-muted) hover:text-(--site-color-text)">
+                <a href="{{ $item['url'] ?? '#' }}" class="text-(--site-color-muted) hover:text-(--site-color-accent)">
                     {{ $item['label'] ?? 'Menu' }}
                 </a>
             @endforeach

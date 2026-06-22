@@ -9,7 +9,7 @@ return [
     'brand' => [
         'name' => env('APP_NAME', 'Laravel Site'),
         'tagline' => 'Public site scaffold for Laravel Starter Kit apps.',
-        'logo_text' => 'Laravel Site',
+        'logo_text' => 'Site',
     ],
 
     'design' => [
@@ -19,16 +19,17 @@ return [
     'navigation' => [
         'header' => [
             ['label' => 'Home', 'url' => '/', 'active' => true],
-            ['label' => 'Overview', 'url' => '#overview'],
             ['label' => 'Install', 'url' => '#install'],
-            ['label' => 'Generated Files', 'url' => '#extend'],
+            ['label' => 'Files', 'url' => '#extend'],
+            ['label' => 'Packages', 'url' => '#packages'],
             ['label' => 'Designs', 'url' => '#designs'],
         ],
 
         'footer' => [
             ['label' => 'Overview', 'url' => '#overview'],
             ['label' => 'Install', 'url' => '#install'],
-            ['label' => 'Generated Files', 'url' => '#extend'],
+            ['label' => 'Files', 'url' => '#extend'],
+            ['label' => 'Packages', 'url' => '#packages'],
             ['label' => 'Designs', 'url' => '#designs'],
         ],
     ],

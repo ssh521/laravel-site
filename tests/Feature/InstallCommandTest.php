@@ -52,7 +52,11 @@ class InstallCommandTest extends TestCase
         $this->assertFileExists(base_path('design.md'));
 
         $this->assertStringContainsString("require __DIR__.'/site.php';", File::get(base_path('routes/web.php')));
-        $this->assertStringContainsString('Laravel Starter Kit 위에 공개 사이트를 바로 얹는 패키지', File::get(base_path('resources/views/site/home.blade.php')));
+        $this->assertStringContainsString('Laravel Starter Kit 위에', File::get(base_path('resources/views/site/home.blade.php')));
+        $this->assertStringContainsString('Public Site', File::get(base_path('resources/views/site/home.blade.php')));
+        $this->assertStringContainsString('공개 사이트를 만든 뒤 관리자와 기능 패키지로 확장합니다', File::get(base_path('resources/views/site/home.blade.php')));
+        $this->assertStringContainsString('composer require ssh521/laravel-admin', File::get(base_path('resources/views/site/home.blade.php')));
+        $this->assertStringContainsString('php artisan laravel-admin:install --with=users,file', File::get(base_path('resources/views/site/home.blade.php')));
         $this->assertStringContainsString("'preset' => env('LARAVEL_SITE_PRESET', 'package-guide')", File::get(base_path('config/laravel-site.php')));
     }
 
@@ -170,7 +174,7 @@ JS);
             'corporate-trust' => 'Present your company with clarity',
             'local-business' => 'Help nearby customers call',
             'clinic-clean' => 'Create a calm path',
-            'package-guide' => 'Laravel Starter Kit 위에 공개 사이트를 바로 얹는 패키지',
+            'package-guide' => 'Public Site',
             'portfolio-editorial' => 'Give the work room',
             'saas-product' => 'Explain the product',
             'event-promo' => 'Give visitors the reason',
@@ -296,7 +300,7 @@ JS);
         $this->artisan('laravel-site:install', ['--force' => true])
             ->assertExitCode(0);
 
-        $this->assertStringContainsString('<x-site.hero', File::get(base_path('resources/views/site/home.blade.php')));
+        $this->assertStringContainsString('Public Site', File::get(base_path('resources/views/site/home.blade.php')));
     }
 
     public function test_design_command_applies_selected_design_with_force(): void

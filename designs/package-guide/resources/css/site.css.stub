@@ -2,6 +2,7 @@
     --site-color-page: #ffffff;
     --site-color-surface: #ffffff;
     --site-color-surface-muted: #f5f7fb;
+    --site-color-code: #172033;
     --site-color-text: #172033;
     --site-color-muted: #5f6f89;
     --site-color-border: #d9e0ea;
@@ -17,6 +18,7 @@
     --site-color-page: #fbfaf7;
     --site-color-surface: #ffffff;
     --site-color-surface-muted: #f0ece3;
+    --site-color-code: #1e2528;
     --site-color-text: #1e2528;
     --site-color-muted: #68706c;
     --site-color-border: #ddd6ca;
@@ -32,6 +34,7 @@
     --site-color-page: #ffffff;
     --site-color-surface: #ffffff;
     --site-color-surface-muted: #eef4ff;
+    --site-color-code: #101828;
     --site-color-text: #101828;
     --site-color-muted: #526070;
     --site-color-border: #cad7ea;
@@ -44,22 +47,111 @@
 }
 
 .site-preset-package-guide {
-    --site-color-page: #ffffff;
-    --site-color-surface: #ffffff;
-    --site-color-surface-muted: #f3f7f6;
-    --site-color-text: #172033;
-    --site-color-muted: #5b697c;
-    --site-color-border: #d5dfdc;
-    --site-color-accent: #256d85;
-    --site-color-accent-strong: #1c5669;
-    --site-color-accent-soft: #e4f3f7;
-    --site-color-accent-contrast: #ffffff;
-    --site-color-ring: #256d85;
-    --site-color-hero: #f4faf9;
+    --site-color-page: #05070a;
+    --site-color-surface: #090c11;
+    --site-color-surface-muted: #111821;
+    --site-color-code: #070a0f;
+    --site-color-text: #f4f6fb;
+    --site-color-muted: #8c97a8;
+    --site-color-border: #1b2430;
+    --site-color-accent: #65e7f0;
+    --site-color-accent-strong: #c8ff55;
+    --site-color-accent-soft: #12262d;
+    --site-color-accent-contrast: #05070a;
+    --site-color-ring: #65e7f0;
+    --site-color-hero: #05070a;
 }
 
 .site-shell {
     font-family: ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+}
+
+.site-agency-hero {
+    background:
+        radial-gradient(circle at 50% 26%, rgba(101, 231, 240, 0.12), transparent 10rem),
+        linear-gradient(180deg, #05070a 0%, #05070a 60%, #071016 100%);
+}
+
+.site-agency-field {
+    position: absolute;
+    inset: 0;
+    background-image: radial-gradient(circle, rgba(101, 231, 240, 0.28) 1px, transparent 1.5px);
+    background-position: center 5rem;
+    background-size: 64px 64px;
+    -webkit-mask-image: radial-gradient(circle at center 28%, black, transparent 34%);
+    mask-image: radial-gradient(circle at center 28%, black, transparent 34%);
+    opacity: 0.45;
+}
+
+.site-orbit {
+    position: relative;
+    height: 92px;
+    width: 92px;
+}
+
+.site-orbit::before,
+.site-orbit::after,
+.site-orbit span {
+    position: absolute;
+    inset: 0;
+    border: 1px solid rgba(101, 231, 240, 0.42);
+    border-radius: 9999px;
+    content: "";
+}
+
+.site-orbit::after {
+    inset: 24px;
+    border-color: rgba(200, 255, 85, 0.36);
+}
+
+.site-orbit span {
+    inset: 42px;
+    background: var(--site-color-accent);
+    box-shadow: 0 0 30px rgba(101, 231, 240, 0.65);
+}
+
+.site-kicker {
+    letter-spacing: 0;
+}
+
+.site-gradient-text {
+    background: linear-gradient(90deg, #65e7f0 0%, #6f87ff 48%, #ff4f9a 100%);
+    -webkit-background-clip: text;
+    background-clip: text;
+    color: transparent;
+}
+
+.site-outline-text {
+    color: transparent;
+    -webkit-text-stroke: 1px rgba(244, 246, 251, 0.48);
+}
+
+.site-marquee {
+    overflow: hidden;
+}
+
+.site-marquee-track {
+    display: flex;
+    width: max-content;
+    min-width: 100%;
+    gap: 2.5rem;
+    animation: site-marquee 28s linear infinite;
+}
+
+.site-marquee-track span::before {
+    color: var(--site-color-accent);
+    content: "/";
+    margin-right: 2.5rem;
+}
+
+@keyframes site-marquee {
+    from {
+        transform: translateX(0);
+    }
+
+    to {
+        transform: translateX(-50%);
+    }
 }
 
 .site-dropdown:hover .site-dropdown-panel,

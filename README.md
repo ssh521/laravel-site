@@ -25,6 +25,42 @@ php artisan laravel-site:install
 
 기본 설치 디자인은 `package-guide`입니다. Laravel Starter Kit 설치 직후 실행하면 메인 화면이 `ssh521/laravel-site` 패키지 설명, 설치 방법, 생성 파일 안내 화면으로 바뀝니다.
 
+## 관리자/기능 패키지로 확장
+
+`laravel-site`는 방문자용 public site를 생성하는 패키지입니다. 고객 사이트에 관리자 화면과 운영 기능이 필요하면 `ssh521/laravel-admin`을 추가한 뒤 기능 패키지를 이어서 설치합니다.
+
+```bash
+# 공개 사이트
+composer require ssh521/laravel-site
+php artisan laravel-site:install
+
+# 관리자 기반
+composer require ssh521/laravel-admin
+php artisan laravel-admin:install
+
+# 자주 쓰는 관리자 기능 패키지
+composer require ssh521/laravel-admin-users ssh521/laravel-file
+php artisan laravel-admin:install --with=users,file
+
+# 콘텐츠 기능 패키지 예시
+composer require ssh521/laravel-blog ssh521/laravel-bbs
+php artisan laravel-admin:install --with=blog,bbs
+```
+
+확장 패키지는 프로젝트 성격에 맞게 선택합니다.
+
+| 패키지 | 용도 |
+|--------|------|
+| `ssh521/laravel-admin` | 관리자 레이아웃, 메뉴, 권한 기반 |
+| `ssh521/laravel-admin-users` | 관리자 사용자 관리 |
+| `ssh521/laravel-blog` | 블로그 콘텐츠 관리 |
+| `ssh521/laravel-bbs` | 게시판/커뮤니티 |
+| `ssh521/laravel-file` | 파일 관리 |
+| `ssh521/laravel-page` | 정적/반정적 페이지 CMS |
+| `ssh521/laravel-popup` | 팝업, 배너, 공지바 관리 |
+| `ssh521/laravel-notification` | 알림 관리 |
+| `ssh521/laravel-broadcast-notification` | 실시간 인앱 알림 |
+
 디자인을 선택해서 설치:
 
 ```bash

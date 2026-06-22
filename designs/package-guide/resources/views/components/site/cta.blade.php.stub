@@ -6,20 +6,24 @@
     'buttonUrl' => '#',
 ])
 
-<section @if ($id) id="{{ $id }}" @endif class="py-16 sm:py-20">
+<section @if ($id) id="{{ $id }}" @endif class="border-y border-(--site-color-border) bg-(--site-color-surface) py-20 sm:py-28">
     <div class="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
-        <div class="rounded-lg bg-(--site-color-accent) px-6 py-10 text-(--site-color-accent-contrast) sm:px-10 lg:flex lg:items-center lg:justify-between">
+        <div class="lg:flex lg:items-end lg:justify-between">
             <div class="max-w-2xl">
-                <h2 class="text-3xl font-bold">{{ $title }}</h2>
+                <p class="site-kicker flex items-center gap-4 text-xs font-semibold uppercase text-(--site-color-accent)">
+                    <span class="h-px w-12 bg-(--site-color-accent)"></span>
+                    Next step
+                </p>
+                <h2 class="mt-6 text-4xl font-black uppercase leading-tight text-(--site-color-text) sm:text-6xl">{{ $title }}</h2>
 
                 @if ($description)
-                    <p class="mt-4 text-base leading-7 opacity-90">{{ $description }}</p>
+                    <p class="mt-6 text-base leading-8 text-(--site-color-muted)">{{ $description }}</p>
                 @endif
             </div>
 
             @if ($buttonLabel)
-                <div class="mt-8 lg:mt-0">
-                    <x-site.button :href="$buttonUrl" variant="secondary" size="lg" class="justify-center">
+                <div class="mt-8 lg:mt-0 lg:pl-10">
+                    <x-site.button :href="$buttonUrl" size="lg" class="justify-center">
                         {{ $buttonLabel }}
                     </x-site.button>
                 </div>
