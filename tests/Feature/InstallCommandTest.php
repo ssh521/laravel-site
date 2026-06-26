@@ -94,6 +94,31 @@ class InstallCommandTest extends TestCase
         $this->assertStringContainsString('window.jarallax(elements)', $script);
     }
 
+    public function test_yaver_studio_ships_snap_scroll_indicator(): void
+    {
+        $this->artisan('laravel-site:design', [
+            'design' => 'yaver-studio',
+            '--force' => true,
+        ])->assertExitCode(0);
+
+        $layout = File::get(base_path('resources/views/components/layouts/site.blade.php'));
+        $hero = File::get(base_path('resources/views/components/site/hero.blade.php'));
+        $home = File::get(base_path('resources/views/site/home.blade.php'));
+        $css = File::get(base_path('resources/css/site.css'));
+        $script = File::get(base_path('resources/js/site.js'));
+
+        $this->assertStringContainsString('site-snap-container', $layout);
+        $this->assertStringContainsString('site-snap-section', $hero);
+        $this->assertStringContainsString('data-site-scroll-to', $hero);
+        $this->assertStringContainsString('SCROLL', $hero);
+        $this->assertStringContainsString('site-scroll-line', $hero);
+        $this->assertStringContainsString('site-snap-section bg-white', $home);
+        $this->assertStringContainsString('scroll-snap-type: y mandatory', $css);
+        $this->assertStringContainsString('scroll-snap-stop: always', $css);
+        $this->assertStringContainsString('function initSiteScrollLinks()', $script);
+        $this->assertStringContainsString('target.scrollIntoView', $script);
+    }
+
     public function test_mobile_menu_is_rendered_outside_the_sticky_header(): void
     {
         $this->artisan('laravel-site:install')

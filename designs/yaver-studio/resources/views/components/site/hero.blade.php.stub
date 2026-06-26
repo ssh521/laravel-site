@@ -6,9 +6,10 @@
     'primaryUrl' => '#',
     'secondaryLabel' => null,
     'secondaryUrl' => '#',
+    'scrollUrl' => '#services',
 ])
 
-<section class="jarallax relative overflow-hidden bg-[#0f0a27] text-white" data-jarallax data-speed="0.38">
+<section class="site-snap-section jarallax relative overflow-hidden bg-[#0f0a27] text-white" data-jarallax data-speed="0.38">
     <video
         class="jarallax-img absolute inset-0 h-full w-full object-cover"
         src="{{ asset('media/yaver-studio-hero.mp4') }}"
@@ -100,5 +101,22 @@
                 </div>
             </div>
         </div>
+    </div>
+
+    <div class="absolute bottom-5 left-1/2 z-30 -translate-x-1/2">
+        <a
+            href="{{ $scrollUrl }}"
+            class="site-scroll-indicator site-hero-reveal site-hero-delay-3 group flex flex-col items-center gap-2 text-white/70 transition hover:text-white focus:outline-none focus-visible:ring-2 focus-visible:ring-white/60 focus-visible:ring-offset-2 focus-visible:ring-offset-black/40"
+            data-site-scroll-to
+            aria-label="다음 섹션으로 이동"
+        >
+            <span class="text-xs font-semibold tracking-[0.22em]">SCROLL</span>
+            <span class="h-10 w-[2px] overflow-hidden rounded-full bg-white/15">
+                <span class="site-scroll-line block h-5 w-full bg-gradient-to-b from-white/70 to-transparent"></span>
+            </span>
+            <svg class="h-4 w-4 transition group-hover:translate-y-0.5" viewBox="0 0 24 24" fill="none" aria-hidden="true">
+                <path d="m6 9 6 6 6-6" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" />
+            </svg>
+        </a>
     </div>
 </section>

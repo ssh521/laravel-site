@@ -20,7 +20,7 @@
     <body class="site-shell site-preset-{{ config('laravel-site.design.preset', 'essential') }} min-h-screen bg-(--site-color-page) text-(--site-color-text) antialiased">
         <x-site.header />
 
-        <main id="content">
+        <main id="content" class="site-snap-container">
             {{ $slot }}
         </main>
 

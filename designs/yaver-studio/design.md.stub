@@ -41,6 +41,7 @@
 - 첫 화면의 메시지는 `<x-site.hero>`에서 관리하고, 서비스/워크플로/증거/CTA는 `resources/views/site/home.blade.php`에서 편집합니다.
 - 첫 화면 배경 동영상은 `public/media/yaver-studio-hero.mp4`를 교체하면 됩니다.
 - 첫 화면 패럴랙스는 jarallax CDN과 `resources/js/site.js`의 `initSiteJarallax()`에서 초기화합니다.
+- 한 화면 단위 스크롤은 `.site-snap-section`과 히어로의 `data-site-scroll-to` 인디케이터로 제어합니다.
 - CTA는 `<x-site.button>`을 사용해서 보라/퓨샤 버튼 톤을 유지합니다.
 - 로고는 어두운 헤더/푸터 기준으로 설계되어 있으므로 밝은 배경에 옮길 때는 색상을 함께 조정합니다.
 - 반복 카드 UI는 필요할 때만 별도 `resources/views/components/site/*.blade.php` 컴포넌트로 분리합니다.

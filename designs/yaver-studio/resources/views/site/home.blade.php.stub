@@ -12,7 +12,7 @@
         secondary-url="#services"
     />
 
-    <section id="services" class="bg-white px-4 py-20 sm:px-6 lg:px-8">
+    <section id="services" class="site-snap-section bg-white px-4 py-20 sm:px-6 lg:px-8">
         <div class="mx-auto max-w-7xl">
             <div class="max-w-3xl">
                 <p class="text-sm font-bold uppercase text-purple-700">핵심 서비스</p>
@@ -54,7 +54,7 @@
         </div>
     </section>
 
-    <section id="workflow" class="bg-[#120d2b] px-4 py-20 text-white sm:px-6 lg:px-8">
+    <section id="workflow" class="site-snap-section bg-[#120d2b] px-4 py-20 text-white sm:px-6 lg:px-8">
         <div class="mx-auto grid max-w-7xl gap-10 lg:grid-cols-[0.9fr_1.1fr] lg:items-start">
             <div>
                 <p class="text-sm font-bold uppercase text-purple-200">진행 방식</p>
@@ -79,7 +79,7 @@
         </div>
     </section>
 
-    <section id="proof" class="bg-[#f8fbff] px-4 py-20 sm:px-6 lg:px-8">
+    <section id="proof" class="site-snap-section bg-[#f8fbff] px-4 py-20 sm:px-6 lg:px-8">
         <div class="mx-auto max-w-7xl">
             <div class="grid gap-6 lg:grid-cols-3">
                 <div class="rounded-2xl bg-white p-6 shadow-sm ring-1 ring-purple-100">

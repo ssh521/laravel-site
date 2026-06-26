@@ -48,9 +48,40 @@ function initSiteJarallax() {
     window.jarallax(elements);
 }
 
+function initSiteScrollLinks() {
+    const links = document.querySelectorAll('[data-site-scroll-to]');
+
+    links.forEach((link) => {
+        link.addEventListener('click', (event) => {
+            const href = link.getAttribute('href') ?? '';
+            const targetId = href.startsWith('#') ? href.slice(1) : null;
+
+            if (!targetId) {
+                return;
+            }
+
+            const target = document.getElementById(targetId);
+
+            if (!target) {
+                return;
+            }
+
+            event.preventDefault();
+
+            target.scrollIntoView({
+                behavior: window.matchMedia('(prefers-reduced-motion: reduce)').matches ? 'auto' : 'smooth',
+                block: 'start',
+            });
+
+            window.history.replaceState(null, '', href);
+        });
+    });
+}
+
 function initSite() {
     initSiteMobileMenu();
     initSiteJarallax();
+    initSiteScrollLinks();
 }
 
 if (document.readyState === 'loading') {
