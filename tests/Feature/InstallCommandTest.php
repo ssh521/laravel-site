@@ -165,6 +165,7 @@ JS);
             ->expectsOutput('- package-guide')
             ->expectsOutput('- portfolio-editorial')
             ->expectsOutput('- saas-product')
+            ->expectsOutput('- yaver-studio')
             ->assertExitCode(0);
     }
 
@@ -177,6 +178,7 @@ JS);
             'package-guide' => 'Public Site',
             'portfolio-editorial' => 'Give the work room',
             'saas-product' => 'Explain the product',
+            'yaver-studio' => '세련된 디지털 경험을 빠르게 만듭니다.',
             'event-promo' => 'Give visitors the reason',
         ];
 
@@ -188,6 +190,8 @@ JS);
 
             $this->assertStringContainsString($headline, File::get(base_path('resources/views/site/home.blade.php')));
         }
+
+        $this->assertFileExists(base_path('public/media/yaver-studio-hero.mp4'));
     }
 
     public function test_designs_ship_distinct_functional_sections(): void
@@ -200,6 +204,7 @@ JS);
             'portfolio-editorial' => ['Selected work', 'Studio facts'],
             'saas-product' => ['Show the product shape early', 'Pricing'],
             'event-promo' => ['Event details', 'Speakers'],
+            'yaver-studio' => ['핵심 서비스', '첫 아이디어부터 운영 중인 서비스까지.'],
         ];
 
         foreach ($expectations as $design => $markers) {
@@ -332,6 +337,7 @@ JS);
             base_path('resources/views/components/site'),
             base_path('resources/css/site.css'),
             base_path('resources/js/site.js'),
+            base_path('public/media/yaver-studio-hero.mp4'),
             base_path('design.md'),
         ];
     }

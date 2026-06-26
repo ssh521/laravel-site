@@ -1,0 +1,60 @@
+# Laravel Site 야버 스튜디오 디자인
+
+이 문서는 `laravel-site:install --design=yaver-studio` 이후 AI 또는 개발자가 공개 사이트 화면을 이어서 만들 때 참조하는 기준입니다.
+
+## 목적
+
+- yaver.com 초기 화면의 강한 첫인상, 보라/퓨샤 CTA, 빌드·운영·자동화 메시지를 재사용 가능한 공개 사이트 프리셋으로 제공합니다.
+- 1인 스튜디오, 디지털 제품 팀, Laravel 제작사, 자동화 컨설팅 사이트의 첫 화면으로 바로 수정할 수 있게 합니다.
+- Laravel Starter Kit의 auth, dashboard, admin 화면은 건드리지 않고 public site 화면만 관리합니다.
+
+## 파일 구조
+
+- `resources/views/site/home.blade.php`: 메인 랜딩 페이지
+- `resources/views/components/layouts/site.blade.php`: public site layout
+- `resources/views/components/site`: header, footer, hero, button 등 반복 컴포넌트
+- `resources/css/site.css`: 사이트 디자인 토큰과 public 전용 CSS
+- `resources/js/site.js`: 모바일 메뉴 등 public 전용 JS
+- `public/media/yaver-studio-hero.mp4`: 첫 화면 배경 동영상
+- `config/laravel-site.php`: 브랜드, 프리셋, 메뉴 설정
+
+## 디자인 토큰
+
+전체 톤은 `resources/css/site.css`의 CSS 변수로 조정합니다.
+
+- `--site-color-page`: 전체 페이지 배경
+- `--site-color-surface`: 카드/패널 배경
+- `--site-color-surface-muted`: 보조 배경
+- `--site-color-text`: 주요 텍스트
+- `--site-color-muted`: 보조 텍스트
+- `--site-color-border`: 테두리
+- `--site-color-accent`: 주요 CTA 색상
+- `--site-color-accent-strong`: CTA hover 색상
+- `--site-color-accent-soft`: 약한 강조 배경
+- `--site-color-accent-contrast`: 강조색 위 텍스트
+- `--site-color-hero`: 히어로 배경
+
+기본 프리셋은 `yaver-studio`입니다. 새 프리셋을 만들 때는 `.site-preset-{name}` 클래스를 추가하고 `config/laravel-site.php`의 `design.preset` 값을 변경합니다.
+
+## 컴포넌트 규칙
+
+- 첫 화면의 메시지는 `<x-site.hero>`에서 관리하고, 서비스/워크플로/증거/CTA는 `resources/views/site/home.blade.php`에서 편집합니다.
+- 첫 화면 배경 동영상은 `public/media/yaver-studio-hero.mp4`를 교체하면 됩니다.
+- CTA는 `<x-site.button>`을 사용해서 보라/퓨샤 버튼 톤을 유지합니다.
+- 로고는 어두운 헤더/푸터 기준으로 설계되어 있으므로 밝은 배경에 옮길 때는 색상을 함께 조정합니다.
+- 반복 카드 UI는 필요할 때만 별도 `resources/views/components/site/*.blade.php` 컴포넌트로 분리합니다.
+- 모바일에서 먼저 자연스럽게 보이도록 1열을 기본으로 하고, `md:` 또는 `lg:`부터 다열 레이아웃을 적용합니다.
+
+## 내비게이션
+
+- 데스크톱 header는 드롭다운 메뉴를 지원합니다.
+- 모바일 header는 햄버거 버튼과 슬라이딩 메뉴를 사용합니다.
+- v1 메뉴는 `config/laravel-site.php`의 `navigation.header`, `navigation.footer`, `navigation.cta` 배열에서 관리합니다.
+
+## AI 추가 제작 기준
+
+- 기존 컴포넌트를 먼저 재사용하고, 반복되는 구조만 새 컴포넌트로 만듭니다.
+- auth, dashboard, admin 화면은 수정하지 않습니다.
+- 실제 서비스 링크, 사례, 연락 경로는 `config/laravel-site.php`와 `resources/views/site/home.blade.php`에서 교체합니다.
+- 전체 색상 변경은 개별 Tailwind class를 흩뿌리지 말고 CSS 변수부터 조정합니다.
+- 새 public JS는 `resources/js/site.js`에 모으고, 컴포넌트 markup은 `data-site-*` 속성을 사용합니다.

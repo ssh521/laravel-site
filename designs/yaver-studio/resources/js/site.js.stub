@@ -1,0 +1,37 @@
+function initSiteMobileMenu() {
+    const menu = document.querySelector('[data-site-mobile-menu]');
+    const panel = menu?.querySelector('.site-mobile-panel');
+    const openButton = document.querySelector('[data-site-menu-button]');
+    const closeButtons = document.querySelectorAll('[data-site-menu-close]');
+
+    if (!menu || !openButton) {
+        return;
+    }
+
+    function setMenuState(isOpen) {
+        menu.classList.toggle('hidden', !isOpen);
+        menu.classList.toggle('is-open', isOpen);
+        panel?.classList.toggle('translate-x-full', !isOpen);
+        menu.setAttribute('aria-hidden', isOpen ? 'false' : 'true');
+        openButton.setAttribute('aria-expanded', isOpen ? 'true' : 'false');
+        document.body.classList.toggle('overflow-hidden', isOpen);
+    }
+
+    openButton.addEventListener('click', () => setMenuState(true));
+
+    closeButtons.forEach((button) => {
+        button.addEventListener('click', () => setMenuState(false));
+    });
+
+    document.addEventListener('keydown', (event) => {
+        if (event.key === 'Escape') {
+            setMenuState(false);
+        }
+    });
+}
+
+if (document.readyState === 'loading') {
+    document.addEventListener('DOMContentLoaded', initSiteMobileMenu, { once: true });
+} else {
+    initSiteMobileMenu();
+}

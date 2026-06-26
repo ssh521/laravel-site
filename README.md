@@ -67,6 +67,7 @@ php artisan laravel-admin:install --with=blog,bbs
 php artisan laravel-site:install --design=essential
 php artisan laravel-site:install --design=conversion
 php artisan laravel-site:install --design=corporate-trust
+php artisan laravel-site:install --design=yaver-studio
 ```
 
 기존 생성 파일을 다시 쓰려면:
@@ -101,6 +102,7 @@ php artisan laravel-site:design event-promo --force
 php artisan laravel-site:design local-business --force
 php artisan laravel-site:design portfolio-editorial --force
 php artisan laravel-site:design saas-product --force
+php artisan laravel-site:design yaver-studio --force
 ```
 
 패키지의 디자인 원본은 다음 구조로 관리합니다.
@@ -115,7 +117,8 @@ designs/
 ├── local-business/
 ├── package-guide/
 ├── portfolio-editorial/
-└── saas-product/
+├── saas-product/
+└── yaver-studio/
 ```
 
 각 디자인은 `home.blade.php`, site component, `site.css`, `site.js`, `config/laravel-site.php`, `design.md`를 함께 가집니다.
@@ -133,6 +136,7 @@ designs/
 | `portfolio-editorial` | 스튜디오, 작가, 브랜드 포트폴리오형 |
 | `saas-product` | SaaS, 앱, API, 디지털 제품 소개형 |
 | `event-promo` | 세미나, 강의, 컨퍼런스, 단기 프로모션형 |
+| `yaver-studio` | yaver.com 스타일의 스튜디오/디지털 제작사 소개형 |
 
 ## 생성 파일
 
@@ -145,6 +149,7 @@ resources/views/components/layouts/site.blade.php
 resources/views/components/site/*.blade.php
 resources/css/site.css
 resources/js/site.js
+public/media/yaver-studio-hero.mp4
 design.md
 ```
 

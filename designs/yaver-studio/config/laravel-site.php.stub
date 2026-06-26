@@ -1,0 +1,39 @@
+<?php
+
+return [
+    'routes' => [
+        'home_path' => env('LARAVEL_SITE_HOME_PATH', '/'),
+        'home_name' => 'site.home',
+    ],
+
+    'brand' => [
+        'name' => env('APP_NAME', '야버 스튜디오'),
+        'tagline' => '빌드, 운영, 자동화까지 연결하는 디지털 제작 스튜디오.',
+        'logo_text' => '야버 스튜디오',
+    ],
+
+    'design' => [
+        'preset' => env('LARAVEL_SITE_PRESET', 'yaver-studio'),
+    ],
+
+    'navigation' => [
+        'header' => [
+            ['label' => '홈', 'url' => '/', 'active' => true],
+            ['label' => '서비스', 'url' => '#services'],
+            ['label' => '진행 방식', 'url' => '#workflow'],
+            ['label' => '강점', 'url' => '#proof'],
+        ],
+
+        'cta' => [
+            'label' => '프로젝트 시작',
+            'url' => '#contact',
+        ],
+
+        'footer' => [
+            ['label' => '서비스', 'url' => '#services'],
+            ['label' => '진행 방식', 'url' => '#workflow'],
+            ['label' => '강점', 'url' => '#proof'],
+            ['label' => '문의', 'url' => '#contact'],
+        ],
+    ],
+];
