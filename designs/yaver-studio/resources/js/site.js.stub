@@ -30,8 +30,33 @@ function initSiteMobileMenu() {
     });
 }
 
-if (document.readyState === 'loading') {
-    document.addEventListener('DOMContentLoaded', initSiteMobileMenu, { once: true });
-} else {
-    initSiteMobileMenu();
+function initSiteJarallax() {
+    const elements = document.querySelectorAll('[data-jarallax]');
+
+    if (elements.length === 0 || typeof window.jarallax !== 'function') {
+        return;
+    }
+
+    elements.forEach((element) => {
+        if (element.dataset.siteJarallaxReady === 'true') {
+            return;
+        }
+
+        element.dataset.siteJarallaxReady = 'true';
+    });
+
+    window.jarallax(elements);
 }
+
+function initSite() {
+    initSiteMobileMenu();
+    initSiteJarallax();
+}
+
+if (document.readyState === 'loading') {
+    document.addEventListener('DOMContentLoaded', initSite, { once: true });
+} else {
+    initSite();
+}
+
+window.addEventListener('load', initSiteJarallax, { once: true });

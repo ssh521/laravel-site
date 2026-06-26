@@ -74,6 +74,26 @@ class InstallCommandTest extends TestCase
         $this->assertStringContainsString("panel?.classList.toggle('translate-x-full', !isOpen)", $script);
     }
 
+    public function test_yaver_studio_initializes_jarallax_video_hero(): void
+    {
+        $this->artisan('laravel-site:design', [
+            'design' => 'yaver-studio',
+            '--force' => true,
+        ])->assertExitCode(0);
+
+        $layout = File::get(base_path('resources/views/components/layouts/site.blade.php'));
+        $hero = File::get(base_path('resources/views/components/site/hero.blade.php'));
+        $script = File::get(base_path('resources/js/site.js'));
+
+        $this->assertStringContainsString('jarallax@2/dist/jarallax.css', $layout);
+        $this->assertStringContainsString('jarallax@2/dist/jarallax.min.js', $layout);
+        $this->assertStringContainsString('data-jarallax', $hero);
+        $this->assertStringContainsString('jarallax-img', $hero);
+        $this->assertStringContainsString('media/yaver-studio-hero.mp4', $hero);
+        $this->assertStringContainsString('function initSiteJarallax()', $script);
+        $this->assertStringContainsString('window.jarallax(elements)', $script);
+    }
+
     public function test_mobile_menu_is_rendered_outside_the_sticky_header(): void
     {
         $this->artisan('laravel-site:install')

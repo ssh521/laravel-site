@@ -8,9 +8,9 @@
     'secondaryUrl' => '#',
 ])
 
-<section class="relative overflow-hidden bg-[#0f0a27] text-white">
+<section class="jarallax relative overflow-hidden bg-[#0f0a27] text-white" data-jarallax data-speed="0.38">
     <video
-        class="absolute inset-0 h-full w-full object-cover"
+        class="jarallax-img absolute inset-0 h-full w-full object-cover"
         src="{{ asset('media/yaver-studio-hero.mp4') }}"
         autoplay
         loop
