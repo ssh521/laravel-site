@@ -68,6 +68,13 @@ class InstallCommand extends Command
         }
 
         $contents = File::get($routesWebPath);
+        $updatedContents = $this->removeStarterWelcomeHomeRoute($contents);
+
+        if ($updatedContents !== $contents) {
+            File::put($routesWebPath, $updatedContents);
+            $contents = $updatedContents;
+            $this->line('Removed default Laravel welcome home route.');
+        }
 
         if (str_contains($contents, "routes/site.php") || str_contains($contents, "__DIR__.'/site.php'")) {
             $this->line('Site route loader already exists.');
@@ -77,6 +84,16 @@ class InstallCommand extends Command
 
         File::append($routesWebPath, "\n{$includeLine}\n");
         $this->line("Updated route loader: {$routesWebPath}");
+    }
+
+    private function removeStarterWelcomeHomeRoute(string $contents): string
+    {
+        $patterns = [
+            "/^Route::view\\('\\/', 'welcome'\\)->name\\('home'\\);\\R?/m",
+            "/^Route::view\\(\"\\/\", \"welcome\"\\)->name\\(\"home\"\\);\\R?/m",
+        ];
+
+        return preg_replace($patterns, '', $contents) ?? $contents;
     }
 
     private function designLibrary(): DesignLibrary

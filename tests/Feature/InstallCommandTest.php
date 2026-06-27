@@ -357,6 +357,23 @@ JS);
         );
     }
 
+    public function test_install_command_removes_starter_home_route_and_keeps_home_route_name_available(): void
+    {
+        File::ensureDirectoryExists(base_path('routes'));
+
+        File::put(base_path('routes/web.php'), "<?php\n\nuse Illuminate\\Support\\Facades\\Route;\n\nRoute::view('/', 'welcome')->name('home');\n");
+
+        $this->artisan('laravel-site:install')
+            ->assertExitCode(0);
+
+        $routesWeb = File::get(base_path('routes/web.php'));
+
+        $this->assertStringNotContainsString("Route::view('/', 'welcome')->name('home');", $routesWeb);
+        $this->assertStringContainsString("require __DIR__.'/site.php';", $routesWeb);
+        $this->assertStringContainsString("'home_name' => env('LARAVEL_SITE_HOME_NAME', 'home')", File::get(base_path('config/laravel-site.php')));
+        $this->assertStringContainsString("->name(config('laravel-site.routes.home_name', 'home'))", File::get(base_path('routes/site.php')));
+    }
+
     public function test_install_command_does_not_duplicate_route_loader(): void
     {
         File::ensureDirectoryExists(base_path('routes'));
