@@ -123,6 +123,8 @@ designs/
 
 각 디자인은 `home.blade.php`, site component, `site.css`, `site.js`, `config/laravel-site.php`, `design.md`를 함께 가집니다.
 
+패키지 레벨의 프리셋 제작 기준은 [docs/designs.md](docs/designs.md)에 정리합니다. 루트 `design.md`는 만들지 않습니다. `design.md`는 설치 후 호스트 앱에 생성되는 산출물이며, 패키지 원본에서는 각 디자인의 `design.md.stub`가 그 역할을 합니다.
+
 기본 제공 디자인:
 
 | 디자인 | 용도 |
@@ -177,4 +179,10 @@ require __DIR__.'/site.php';
 
 ```bash
 vendor/bin/phpunit --configuration phpunit.xml.dist
+```
+
+로컬 패키지에 PHPUnit 의존성이 없을 때는 워크벤치의 공유 runner를 사용할 수 있습니다.
+
+```bash
+/Users/ssh521/Projects/Packagist/adminTest/vendor/bin/phpunit --configuration phpunit.xml.dist
 ```
