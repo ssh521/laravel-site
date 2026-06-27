@@ -87,9 +87,15 @@ class InstallCommandTest extends TestCase
 
         $this->assertStringContainsString('jarallax@2/dist/jarallax.css', $layout);
         $this->assertStringContainsString('jarallax@2/dist/jarallax.min.js', $layout);
+        $this->assertStringContainsString('data-site-header', File::get(base_path('resources/views/components/site/header.blade.php')));
         $this->assertStringContainsString('data-jarallax', $hero);
         $this->assertStringContainsString('jarallax-img', $hero);
+        $this->assertStringContainsString('site-hero-stage', $hero);
         $this->assertStringContainsString('media/yaver-studio-hero.mp4', $hero);
+        $this->assertStringContainsString('function updateSiteHeaderOffset()', $script);
+        $this->assertStringContainsString('function watchSiteHeaderOffset()', $script);
+        $this->assertStringContainsString('ResizeObserver', $script);
+        $this->assertStringContainsString('--site-header-height', $script);
         $this->assertStringContainsString('function initSiteJarallax()', $script);
         $this->assertStringContainsString('window.jarallax(elements)', $script);
     }
@@ -103,18 +109,36 @@ class InstallCommandTest extends TestCase
 
         $layout = File::get(base_path('resources/views/components/layouts/site.blade.php'));
         $hero = File::get(base_path('resources/views/components/site/hero.blade.php'));
+        $scrollIndicator = File::get(base_path('resources/views/components/site/scroll-indicator.blade.php'));
+        $cta = File::get(base_path('resources/views/components/site/cta.blade.php'));
         $home = File::get(base_path('resources/views/site/home.blade.php'));
         $css = File::get(base_path('resources/css/site.css'));
         $script = File::get(base_path('resources/js/site.js'));
 
         $this->assertStringContainsString('site-snap-container', $layout);
         $this->assertStringContainsString('site-snap-section', $hero);
-        $this->assertStringContainsString('data-site-scroll-to', $hero);
-        $this->assertStringContainsString('SCROLL', $hero);
-        $this->assertStringContainsString('site-scroll-line', $hero);
-        $this->assertStringContainsString('site-snap-section bg-white', $home);
+        $this->assertStringContainsString('x-site.scroll-indicator', $hero);
+        $this->assertStringContainsString('data-site-scroll-to', $scrollIndicator);
+        $this->assertStringContainsString('SCROLL', $scrollIndicator);
+        $this->assertStringContainsString('site-scroll-line', $scrollIndicator);
+        $this->assertStringContainsString('x-site.scroll-indicator href="#workflow"', $home);
+        $this->assertStringContainsString('x-site.scroll-indicator href="#proof"', $home);
+        $this->assertStringContainsString('x-site.scroll-indicator href="#contact"', $home);
+        $this->assertStringContainsString('media/yaver-studio-coverr-61.mp4', $home);
+        $this->assertStringContainsString('media/yaver-studio-coverr-01.mp4', $home);
+        $this->assertStringContainsString('site-snap-content', $home);
+        $this->assertStringContainsString('scroll-padding-top: var(--site-header-height)', $css);
+        $this->assertStringContainsString('min-height: calc(100svh - var(--site-header-height))', $css);
+        $this->assertStringContainsString('height: calc(100svh - var(--site-header-height))', $css);
+        $this->assertStringNotContainsString('scroll-margin-top: var(--site-header-height)', $css);
         $this->assertStringContainsString('scroll-snap-type: y mandatory', $css);
         $this->assertStringContainsString('scroll-snap-stop: always', $css);
+        $this->assertStringContainsString('site-terminal-cta', $cta);
+        $this->assertStringContainsString('.site-terminal-cta', $css);
+        $this->assertStringContainsString('scroll-snap-align: start', $css);
+        $this->assertStringContainsString('scroll-snap-stop: normal', $css);
+        $this->assertStringNotContainsString('site-snap-section', $cta);
+        $this->assertStringNotContainsString('data-jarallax', $cta);
         $this->assertStringContainsString('function initSiteScrollLinks()', $script);
         $this->assertStringContainsString('target.scrollIntoView', $script);
     }
@@ -237,6 +261,8 @@ JS);
         }
 
         $this->assertFileExists(base_path('public/media/yaver-studio-hero.mp4'));
+        $this->assertFileExists(base_path('public/media/yaver-studio-coverr-61.mp4'));
+        $this->assertFileExists(base_path('public/media/yaver-studio-coverr-01.mp4'));
     }
 
     public function test_designs_ship_distinct_functional_sections(): void
@@ -383,6 +409,8 @@ JS);
             base_path('resources/css/site.css'),
             base_path('resources/js/site.js'),
             base_path('public/media/yaver-studio-hero.mp4'),
+            base_path('public/media/yaver-studio-coverr-61.mp4'),
+            base_path('public/media/yaver-studio-coverr-01.mp4'),
             base_path('design.md'),
         ];
     }

@@ -6,7 +6,7 @@
     'buttonUrl' => '#',
 ])
 
-<section @if ($id) id="{{ $id }}" @endif class="site-snap-section py-16 sm:py-20">
+<section @if ($id) id="{{ $id }}" @endif class="site-terminal-cta bg-(--site-color-page) py-16 sm:py-20">
     <div class="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
         <div class="rounded-lg bg-(--site-color-accent) px-6 py-10 text-(--site-color-accent-contrast) sm:px-10 lg:flex lg:items-center lg:justify-between">
             <div class="max-w-2xl">

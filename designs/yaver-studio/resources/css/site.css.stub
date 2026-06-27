@@ -1,4 +1,5 @@
 :root {
+    --site-header-height: 4rem;
     --site-color-page: #ffffff;
     --site-color-surface: #ffffff;
     --site-color-surface-muted: #f5f7fb;
@@ -11,6 +12,7 @@
     --site-color-accent-contrast: #ffffff;
     --site-color-ring: #1f7a5b;
     --site-color-hero: #f8fbff;
+    scroll-padding-top: var(--site-header-height);
 }
 
 .site-preset-editorial {
@@ -80,9 +82,24 @@
 }
 
 .site-snap-section {
-    min-height: calc(100vh - 4rem);
+    min-height: calc(100svh - var(--site-header-height));
     scroll-snap-align: start;
     scroll-snap-stop: always;
+}
+
+.site-snap-content {
+    min-height: calc(100svh - var(--site-header-height));
+    padding-bottom: 5.5rem;
+    padding-top: 4rem;
+}
+
+.site-hero-stage {
+    min-height: calc(100svh - var(--site-header-height));
+}
+
+.site-terminal-cta {
+    scroll-snap-align: start;
+    scroll-snap-stop: normal;
 }
 
 .site-scroll-line {
@@ -152,5 +169,9 @@
     html {
         scroll-snap-type: y mandatory;
         scroll-behavior: smooth;
+    }
+
+    .site-snap-section {
+        height: calc(100svh - var(--site-header-height));
     }
 }
