@@ -53,6 +53,8 @@
 - `resources/js/site.js`
 - `design.md`
 
+`routes/site.php`의 홈 라우트 이름은 기본적으로 `site.home`이어야 한다. `home`은 Laravel Starter Kit 또는 호스트 앱 전역 라우트와 충돌하기 쉬우므로, 사용자가 명시적으로 `LARAVEL_SITE_HOME_NAME`을 설정한 경우에만 변경한다.
+
 ## 수용 기준
 
 - `php artisan laravel-site:install` 실행 시 기존 파일을 기본으로 덮어쓰지 않는다.

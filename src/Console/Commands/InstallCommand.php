@@ -68,23 +68,29 @@ class InstallCommand extends Command
         }
 
         $contents = File::get($routesWebPath);
-        $updatedContents = $this->removeStarterWelcomeHomeRoute($contents);
-
-        if ($updatedContents !== $contents) {
-            File::put($routesWebPath, $updatedContents);
-            $contents = $updatedContents;
-            $this->line('Removed default Laravel welcome home route.');
-        }
 
         if (str_contains($contents, "routes/site.php") || str_contains($contents, "__DIR__.'/site.php'")) {
-            File::put($routesWebPath, $contents);
             $this->line('Site route loader already exists.');
 
             return;
         }
 
+        if ($this->siteHomePathIsRoot()) {
+            $updatedContents = $this->removeStarterWelcomeHomeRoute($contents);
+
+            if ($updatedContents !== $contents) {
+                $contents = $updatedContents;
+                $this->line('Removed default Laravel welcome home route.');
+            }
+        }
+
         File::put($routesWebPath, rtrim($contents)."\n\n{$includeLine}\n");
         $this->line("Updated route loader: {$routesWebPath}");
+    }
+
+    private function siteHomePathIsRoot(): bool
+    {
+        return config('laravel-site.routes.home_path', '/') === '/';
     }
 
     private function removeStarterWelcomeHomeRoute(string $contents): string

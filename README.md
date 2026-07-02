@@ -82,6 +82,8 @@ route include를 자동으로 추가하지 않으려면:
 php artisan laravel-site:install --skip-route-include
 ```
 
+생성되는 사이트 홈 라우트 이름은 기본적으로 `site.home`입니다. 기존 Laravel Starter Kit의 `home` 라우트나 호스트 앱 전역 라우트와 충돌하지 않도록 네임스페이스 있는 이름을 유지하며, 꼭 필요한 경우에만 `LARAVEL_SITE_HOME_NAME`으로 변경합니다.
+
 ## 디자인 라이브러리
 
 사용 가능한 디자인 목록:
@@ -160,6 +162,8 @@ design.md
 ```php
 require __DIR__.'/site.php';
 ```
+
+`routes/site.php`의 홈 라우트는 기본 이름으로 `site.home`을 사용합니다.
 
 ## 커스터마이징
 
