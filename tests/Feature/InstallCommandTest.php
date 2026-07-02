@@ -341,6 +341,85 @@ JS);
         $this->assertSame('custom home', File::get(base_path('resources/views/site/home.blade.php')));
     }
 
+    public function test_install_command_removes_single_line_starter_welcome_home_route(): void
+    {
+        File::ensureDirectoryExists(base_path('routes'));
+        File::put(base_path('routes/web.php'), <<<'PHP'
+<?php
+
+use Illuminate\Support\Facades\Route;
+
+Route::view('/', 'welcome')->name('home');
+Route::view('/dashboard', 'dashboard')->middleware(['auth', 'verified'])->name('dashboard');
+PHP);
+
+        $this->artisan('laravel-site:install')
+            ->assertExitCode(0);
+
+        $contents = File::get(base_path('routes/web.php'));
+
+        $this->assertStringNotContainsString("Route::view('/', 'welcome')->name('home');", $contents);
+        $this->assertStringContainsString("Route::view('/dashboard', 'dashboard')->middleware(['auth', 'verified'])->name('dashboard');", $contents);
+        $this->assertStringContainsString("require __DIR__.'/site.php';", $contents);
+    }
+
+    public function test_install_command_removes_multi_line_laravel_starter_welcome_route(): void
+    {
+        File::ensureDirectoryExists(base_path('routes'));
+        File::put(base_path('routes/web.php'), <<<'PHP'
+<?php
+
+use Illuminate\Support\Facades\Route;
+
+Route::get('/', function () {
+    return view('welcome');
+});
+
+Route::view('/dashboard', 'dashboard')->middleware(['auth', 'verified'])->name('dashboard');
+PHP);
+
+        $this->artisan('laravel-site:install')
+            ->assertExitCode(0);
+
+        $contents = File::get(base_path('routes/web.php'));
+
+        $this->assertStringNotContainsString("return view('welcome');", $contents);
+        $this->assertStringContainsString("Route::view('/dashboard', 'dashboard')->middleware(['auth', 'verified'])->name('dashboard');", $contents);
+        $this->assertStringContainsString("require __DIR__.'/site.php';", $contents);
+    }
+
+    public function test_install_command_removes_inertia_starter_welcome_home_route(): void
+    {
+        File::ensureDirectoryExists(base_path('routes'));
+        File::put(base_path('routes/web.php'), <<<'PHP'
+<?php
+
+use Illuminate\Support\Facades\Route;
+use Inertia\Inertia;
+
+Route::get('/', function () {
+    return Inertia::render('welcome', [
+        'canLogin' => Route::has('login'),
+        'canRegister' => Route::has('register'),
+    ]);
+})->name('home');
+
+Route::middleware(['auth', 'verified'])->group(function () {
+    Route::view('dashboard', 'dashboard')->name('dashboard');
+});
+PHP);
+
+        $this->artisan('laravel-site:install')
+            ->assertExitCode(0);
+
+        $contents = File::get(base_path('routes/web.php'));
+
+        $this->assertStringNotContainsString("Inertia::render('welcome'", $contents);
+        $this->assertStringNotContainsString("->name('home')", $contents);
+        $this->assertStringContainsString("Route::view('dashboard', 'dashboard')->name('dashboard');", $contents);
+        $this->assertStringContainsString("require __DIR__.'/site.php';", $contents);
+    }
+
     public function test_install_command_places_site_route_loader_after_existing_routes(): void
     {
         File::ensureDirectoryExists(base_path('routes'));
@@ -370,8 +449,8 @@ JS);
 
         $this->assertStringNotContainsString("Route::view('/', 'welcome')->name('home');", $routesWeb);
         $this->assertStringContainsString("require __DIR__.'/site.php';", $routesWeb);
-        $this->assertStringContainsString("'home_name' => env('LARAVEL_SITE_HOME_NAME', 'home')", File::get(base_path('config/laravel-site.php')));
-        $this->assertStringContainsString("->name(config('laravel-site.routes.home_name', 'home'))", File::get(base_path('routes/site.php')));
+        $this->assertStringContainsString("'home_name' => env('LARAVEL_SITE_HOME_NAME', 'site.home')", File::get(base_path('config/laravel-site.php')));
+        $this->assertStringContainsString("->name(config('laravel-site.routes.home_name', 'site.home'))", File::get(base_path('routes/site.php')));
     }
 
     public function test_install_command_does_not_duplicate_route_loader(): void

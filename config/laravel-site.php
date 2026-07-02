@@ -13,7 +13,7 @@ return [
     */
     'routes' => [
         'home_path' => env('LARAVEL_SITE_HOME_PATH', '/'),
-        'home_name' => env('LARAVEL_SITE_HOME_NAME', 'home'),
+        'home_name' => env('LARAVEL_SITE_HOME_NAME', 'site.home'),
     ],
 
     /*

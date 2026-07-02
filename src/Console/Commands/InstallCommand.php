@@ -77,20 +77,22 @@ class InstallCommand extends Command
         }
 
         if (str_contains($contents, "routes/site.php") || str_contains($contents, "__DIR__.'/site.php'")) {
+            File::put($routesWebPath, $contents);
             $this->line('Site route loader already exists.');
 
             return;
         }
 
-        File::append($routesWebPath, "\n{$includeLine}\n");
+        File::put($routesWebPath, rtrim($contents)."\n\n{$includeLine}\n");
         $this->line("Updated route loader: {$routesWebPath}");
     }
 
     private function removeStarterWelcomeHomeRoute(string $contents): string
     {
         $patterns = [
-            "/^Route::view\\('\\/', 'welcome'\\)->name\\('home'\\);\\R?/m",
-            "/^Route::view\\(\"\\/\", \"welcome\"\\)->name\\(\"home\"\\);\\R?/m",
+            "/^[ \t]*Route::view\(\s*['\"]\/['\"]\s*,\s*['\"]welcome['\"]\s*\)(?:\s*->name\(\s*['\"]home['\"]\s*\))?\s*;\h*\R?/m",
+            "/^[ \t]*Route::get\(\s*['\"]\/['\"]\s*,\s*function\s*\(\s*\)\s*\{\s*return\s+view\(\s*['\"]welcome['\"]\s*\)\s*;\s*\}\s*\)(?:\s*->name\(\s*['\"]home['\"]\s*\))?\s*;\h*\R?/ms",
+            "/^[ \t]*Route::get\(\s*['\"]\/['\"]\s*,\s*function\s*\(\s*\)\s*\{\s*return\s+Inertia::render\(\s*['\"]welcome['\"](?:\s*,\s*\[[\s\S]*?\])?\s*\)\s*;\s*\}\s*\)(?:\s*->name\(\s*['\"]home['\"]\s*\))?\s*;\h*\R?/ms",
         ];
 
         return preg_replace($patterns, '', $contents) ?? $contents;
