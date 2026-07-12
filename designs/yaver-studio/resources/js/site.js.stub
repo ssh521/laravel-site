@@ -2,30 +2,63 @@ function initSiteMobileMenu() {
     const menu = document.querySelector('[data-site-mobile-menu]');
     const panel = menu?.querySelector('.site-mobile-panel');
     const openButton = document.querySelector('[data-site-menu-button]');
-    const closeButtons = document.querySelectorAll('[data-site-menu-close]');
+    const closeButtons = menu?.querySelectorAll('[data-site-menu-close]') ?? [];
+    const menuLinks = menu?.querySelectorAll('[data-site-menu-link]') ?? [];
+    const focusableSelector = 'a[href], button:not([disabled]), [tabindex]:not([tabindex="-1"])';
+    let previousFocus = null;
+    let closeTimer = null;
 
-    if (!menu || !openButton) {
+    if (!menu || !panel || !openButton) {
         return;
     }
 
     function setMenuState(isOpen) {
-        menu.classList.toggle('hidden', !isOpen);
-        menu.classList.toggle('is-open', isOpen);
-        panel?.classList.toggle('translate-x-full', !isOpen);
+        window.clearTimeout(closeTimer);
+
+        if (isOpen) {
+            previousFocus = document.activeElement;
+            menu.classList.remove('hidden');
+            window.requestAnimationFrame(() => {
+                menu.classList.add('is-open');
+                panel.querySelector(focusableSelector)?.focus();
+            });
+        } else {
+            menu.classList.remove('is-open');
+            closeTimer = window.setTimeout(() => menu.classList.add('hidden'), 260);
+        }
+
         menu.setAttribute('aria-hidden', isOpen ? 'false' : 'true');
         openButton.setAttribute('aria-expanded', isOpen ? 'true' : 'false');
         document.body.classList.toggle('overflow-hidden', isOpen);
+
+        if (!isOpen && previousFocus instanceof HTMLElement) {
+            previousFocus.focus();
+        }
     }
 
     openButton.addEventListener('click', () => setMenuState(true));
+    closeButtons.forEach((button) => button.addEventListener('click', () => setMenuState(false)));
+    menuLinks.forEach((link) => link.addEventListener('click', () => setMenuState(false)));
 
-    closeButtons.forEach((button) => {
-        button.addEventListener('click', () => setMenuState(false));
-    });
-
-    document.addEventListener('keydown', (event) => {
+    menu.addEventListener('keydown', (event) => {
+        if (!menu.classList.contains('is-open')) return;
         if (event.key === 'Escape') {
             setMenuState(false);
+            return;
+        }
+
+        if (event.key !== 'Tab') return;
+
+        const focusable = [...panel.querySelectorAll(focusableSelector)];
+        const first = focusable[0];
+        const last = focusable.at(-1);
+
+        if (event.shiftKey && document.activeElement === first) {
+            event.preventDefault();
+            last?.focus();
+        } else if (!event.shiftKey && document.activeElement === last) {
+            event.preventDefault();
+            first?.focus();
         }
     });
 }

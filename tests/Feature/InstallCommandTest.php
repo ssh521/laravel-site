@@ -221,6 +221,26 @@ JS);
         $this->assertStringContainsString("'preset' => env('LARAVEL_SITE_PRESET', 'conversion')", File::get(base_path('config/laravel-site.php')));
     }
 
+    public function test_install_command_can_install_yaver_design(): void
+    {
+        $this->artisan('laravel-site:install', ['--design' => 'yaver'])
+            ->assertExitCode(0);
+
+        $home = File::get(base_path('resources/views/site/home.blade.php'));
+        $script = File::get(base_path('resources/js/site.js'));
+
+        $this->assertStringContainsString('설치되는 앱, 신뢰받는 사이트.', $home);
+        $this->assertStringContainsString("'preset' => env('LARAVEL_SITE_PRESET', 'yaver')", File::get(base_path('config/laravel-site.php')));
+        $this->assertStringContainsString('function initSiteReveals()', $script);
+        $this->assertStringContainsString('prefers-reduced-motion: reduce', $script);
+        $this->assertStringContainsString('focusableSelector', $script);
+        $this->assertFileExists(base_path('resources/views/components/site/dropdown.blade.php'));
+        $this->assertFileExists(base_path('public/media/yaver-team.webp'));
+        $this->assertFileExists(base_path('public/media/yaver-app-install.webp'));
+        $this->assertFileExists(base_path('public/media/yaver-web-development.webp'));
+        $this->assertFileExists(base_path('design.md'));
+    }
+
     public function test_design_command_lists_available_designs(): void
     {
         $this->artisan('laravel-site:design', ['--list' => true])
@@ -234,6 +254,7 @@ JS);
             ->expectsOutput('- package-guide')
             ->expectsOutput('- portfolio-editorial')
             ->expectsOutput('- saas-product')
+            ->expectsOutput('- yaver')
             ->expectsOutput('- yaver-studio')
             ->assertExitCode(0);
     }
@@ -247,6 +268,7 @@ JS);
             'package-guide' => 'Public Site',
             'portfolio-editorial' => 'Give the work room',
             'saas-product' => 'Explain the product',
+            'yaver' => '설치되는 앱, 신뢰받는 사이트.',
             'yaver-studio' => '세련된 디지털 경험을 빠르게 만듭니다.',
             'event-promo' => 'Give visitors the reason',
         ];
@@ -263,6 +285,16 @@ JS);
         $this->assertFileExists(base_path('public/media/yaver-studio-hero.mp4'));
         $this->assertFileExists(base_path('public/media/yaver-studio-coverr-61.mp4'));
         $this->assertFileExists(base_path('public/media/yaver-studio-coverr-01.mp4'));
+
+        $this->artisan('laravel-site:design', [
+            'design' => 'yaver',
+            '--force' => true,
+        ])->assertExitCode(0);
+
+        $this->assertStringContainsString("'preset' => env('LARAVEL_SITE_PRESET', 'yaver')", File::get(base_path('config/laravel-site.php')));
+        $this->assertFileExists(base_path('public/media/yaver-team.webp'));
+        $this->assertFileExists(base_path('public/media/yaver-app-install.webp'));
+        $this->assertFileExists(base_path('public/media/yaver-web-development.webp'));
     }
 
     public function test_designs_ship_distinct_functional_sections(): void
@@ -274,6 +306,7 @@ JS);
             'clinic-clean' => ['Dr. Example Name', 'Reduce anxiety'],
             'portfolio-editorial' => ['Selected work', 'Studio facts'],
             'saas-product' => ['Show the product shape early', 'Pricing'],
+            'yaver' => ['앱 설치는 안내부터 시작됩니다.', '개발 사이트는 신뢰를 설명하는 도구입니다.'],
             'event-promo' => ['Event details', 'Speakers'],
             'yaver-studio' => ['핵심 서비스', '첫 아이디어부터 운영 중인 서비스까지.'],
         ];
@@ -568,6 +601,9 @@ PHP);
             base_path('public/media/yaver-studio-hero.mp4'),
             base_path('public/media/yaver-studio-coverr-61.mp4'),
             base_path('public/media/yaver-studio-coverr-01.mp4'),
+            base_path('public/media/yaver-team.webp'),
+            base_path('public/media/yaver-app-install.webp'),
+            base_path('public/media/yaver-web-development.webp'),
             base_path('design.md'),
         ];
     }

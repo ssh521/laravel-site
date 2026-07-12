@@ -27,7 +27,7 @@
 
 - `laravel-site:install` command
 - `laravel-site:design` command
-- `--design=essential|conversion` 선택 설치
+- `--design={name}` 선택 설치
 - 호스트 앱 파일 스캐폴딩
 - config 기반 header/footer 메뉴
 - desktop dropdown navigation
@@ -36,7 +36,7 @@
 - logo component
 - landing homepage with hero and section slots
 - reusable site components
-- `essential`, `conversion`, `corporate-trust`, `local-business`, `clinic-clean`, `portfolio-editorial`, `saas-product`, `event-promo` 디자인 원본
+- `essential`, `conversion`, `corporate-trust`, `local-business`, `clinic-clean`, `portfolio-editorial`, `saas-product`, `event-promo`, `yaver`, `yaver-studio`, `package-guide` 디자인 원본
 - 디자인별 design token, 홈 화면, 컴포넌트, `design.md`
 - `design.md` AI/developer reference document
 

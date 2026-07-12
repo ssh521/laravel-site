@@ -1,0 +1,22 @@
+@php
+    $items = config('laravel-site.navigation.footer', []);
+@endphp
+
+<footer class="border-t border-(--site-color-border) bg-(--site-color-surface)">
+    <div class="mx-auto grid max-w-7xl gap-10 px-4 py-12 sm:px-6 md:grid-cols-[1fr_auto] lg:px-8">
+        <div>
+            <x-site.logo />
+            <p class="mt-5 max-w-md text-sm leading-6 text-(--site-color-muted)">{{ config('laravel-site.brand.tagline') }}</p>
+        </div>
+        <nav class="grid grid-cols-2 gap-x-8 gap-y-3 text-sm" aria-label="하단 메뉴">
+            @foreach ($items as $item)
+                <a href="{{ $item['url'] ?? '#' }}" class="font-semibold text-(--site-color-muted) hover:text-(--site-color-text) focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-(--site-color-ring)">{{ $item['label'] ?? '메뉴' }}</a>
+            @endforeach
+        </nav>
+    </div>
+    <div class="border-t border-(--site-color-border)">
+        <div class="mx-auto max-w-7xl px-4 py-5 text-sm text-(--site-color-muted) sm:px-6 lg:px-8">
+            <p>&copy; {{ date('Y') }} {{ config('laravel-site.brand.name') }}. All rights reserved.</p>
+        </div>
+    </div>
+</footer>

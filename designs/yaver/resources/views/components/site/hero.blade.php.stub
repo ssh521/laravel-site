@@ -1,0 +1,31 @@
+@props([
+    'title',
+    'description',
+    'primaryLabel' => '상담 요청',
+    'primaryUrl' => '#contact',
+    'secondaryLabel' => '서비스 보기',
+    'secondaryUrl' => '#services',
+])
+
+<section class="site-hero overflow-hidden border-b border-(--site-color-border)">
+    <div class="mx-auto grid min-h-[calc(100dvh-72px)] max-w-7xl items-center gap-10 px-4 py-12 sm:px-6 sm:py-16 lg:grid-cols-[0.9fr_1.1fr] lg:px-8 lg:py-20">
+        <div class="site-reveal max-w-2xl">
+            <p class="text-sm font-black tracking-[0.08em] text-(--site-color-accent)">YAVER DIGITAL STUDIO</p>
+            <h1 class="mt-5 text-[clamp(2.5rem,5vw,4.5rem)] font-black leading-[1.08] tracking-[-0.045em] text-(--site-color-text)">{{ $title }}</h1>
+            <p class="mt-6 max-w-[38rem] text-base leading-7 text-(--site-color-muted) sm:text-lg sm:leading-8">{{ $description }}</p>
+            <div class="mt-8 flex flex-col gap-3 sm:flex-row">
+                <x-site.button :href="$primaryUrl" size="lg">{{ $primaryLabel }}</x-site.button>
+                <x-site.button :href="$secondaryUrl" variant="secondary" size="lg">{{ $secondaryLabel }}</x-site.button>
+            </div>
+        </div>
+
+        <figure class="site-reveal site-reveal-delay relative mx-auto w-full max-w-2xl lg:max-w-none">
+            <div class="overflow-hidden rounded-2xl bg-(--site-color-surface-muted)">
+                <img src="{{ asset('media/yaver-team.webp') }}" alt="앱과 웹사이트 시안을 함께 검토하는 개발 팀" class="aspect-[4/3] h-full w-full object-cover" width="1800" height="1350" fetchpriority="high">
+            </div>
+            <figcaption class="mt-4 flex items-center justify-between gap-4 text-sm text-(--site-color-muted)">
+                <span>기획부터 설치와 운영까지 한 팀으로 연결합니다.</span>
+            </figcaption>
+        </figure>
+    </div>
+</section>

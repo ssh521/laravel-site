@@ -1,0 +1,22 @@
+@props([
+    'id' => null,
+    'title' => null,
+    'description' => null,
+])
+
+<section @if ($id) id="{{ $id }}" @endif {{ $attributes->merge(['class' => 'scroll-mt-24 py-16 sm:py-24']) }}>
+    <div class="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
+        @if ($title || $description)
+            <div class="site-reveal mb-10 max-w-3xl sm:mb-14">
+                @if ($title)
+                    <h2 class="text-3xl font-black leading-tight tracking-[-0.035em] text-(--site-color-text) sm:text-5xl">{{ $title }}</h2>
+                @endif
+                @if ($description)
+                    <p class="mt-5 max-w-[42rem] text-base leading-7 text-(--site-color-muted) sm:text-lg sm:leading-8">{{ $description }}</p>
+                @endif
+            </div>
+        @endif
+
+        {{ $slot }}
+    </div>
+</section>

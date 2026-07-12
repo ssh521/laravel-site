@@ -1,0 +1,18 @@
+@props(['item'])
+
+<div class="site-dropdown relative">
+    <a href="{{ $item['url'] ?? '#' }}" class="inline-flex items-center gap-2 rounded-lg px-3 py-2 text-sm font-semibold text-(--site-color-muted) transition hover:bg-(--site-color-surface-muted) hover:text-(--site-color-text) focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-(--site-color-ring)">
+        {{ $item['label'] ?? '메뉴' }}
+        <span class="site-chevron" aria-hidden="true"></span>
+    </a>
+
+    <div class="site-dropdown-panel absolute left-0 top-full hidden min-w-52 pt-2">
+        <div class="rounded-2xl border border-(--site-color-border) bg-(--site-color-surface) p-2 shadow-xl">
+            @foreach ($item['children'] ?? [] as $child)
+                <a href="{{ $child['url'] ?? '#' }}" class="block rounded-[10px] px-3 py-2.5 text-sm font-semibold text-(--site-color-muted) hover:bg-(--site-color-surface-muted) hover:text-(--site-color-text) focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-(--site-color-ring)">
+                    {{ $child['label'] ?? '메뉴' }}
+                </a>
+            @endforeach
+        </div>
+    </div>
+</div>

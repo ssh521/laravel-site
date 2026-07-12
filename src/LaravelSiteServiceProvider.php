@@ -5,12 +5,16 @@ namespace Ssh521\LaravelSite;
 use Illuminate\Support\ServiceProvider;
 use Ssh521\LaravelSite\Console\Commands\DesignCommand;
 use Ssh521\LaravelSite\Console\Commands\InstallCommand;
+use Ssh521\LaravelSite\Support\DesignCatalog;
+use Ssh521\LaravelSite\Support\DesignLibrary;
 
 class LaravelSiteServiceProvider extends ServiceProvider
 {
     public function register(): void
     {
         $this->mergeConfigFrom(__DIR__.'/../config/laravel-site.php', 'laravel-site');
+        $this->app->singleton(DesignCatalog::class);
+        $this->app->singleton(DesignLibrary::class);
     }
 
     public function boot(): void

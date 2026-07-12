@@ -1,0 +1,6 @@
+@php($items = config('laravel-site.navigation.header', []))
+<header class="nav-classic" data-site-header>
+    <a href="/" class="nav-brand"><x-site.logo /></a>
+    <nav aria-label="주요 메뉴">@foreach ($items as $item)<a href="{{ $item['url'] ?? '#' }}">{{ $item['label'] ?? '메뉴' }}</a>@endforeach</nav>
+    <x-site.button :href="config('laravel-site.navigation.cta.url', '#contact')">{{ config('laravel-site.navigation.cta.label', '문의하기') }}</x-site.button>
+</header>

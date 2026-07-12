@@ -67,6 +67,7 @@ php artisan laravel-admin:install --with=blog,bbs
 php artisan laravel-site:install --design=essential
 php artisan laravel-site:install --design=conversion
 php artisan laravel-site:install --design=corporate-trust
+php artisan laravel-site:install --design=yaver
 php artisan laravel-site:install --design=yaver-studio
 ```
 
@@ -104,6 +105,7 @@ php artisan laravel-site:design event-promo --force
 php artisan laravel-site:design local-business --force
 php artisan laravel-site:design portfolio-editorial --force
 php artisan laravel-site:design saas-product --force
+php artisan laravel-site:design yaver --force
 php artisan laravel-site:design yaver-studio --force
 ```
 
@@ -120,6 +122,7 @@ designs/
 ├── package-guide/
 ├── portfolio-editorial/
 ├── saas-product/
+├── yaver/
 └── yaver-studio/
 ```
 
@@ -140,6 +143,7 @@ designs/
 | `portfolio-editorial` | 스튜디오, 작가, 브랜드 포트폴리오형 |
 | `saas-product` | SaaS, 앱, API, 디지털 제품 소개형 |
 | `event-promo` | 세미나, 강의, 컨퍼런스, 단기 프로모션형 |
+| `yaver` | 앱 설치 안내와 개발 사이트 소개를 위한 절제된 디지털 제작사형 |
 | `yaver-studio` | yaver.com 스타일의 스튜디오/디지털 제작사 소개형 |
 
 ## 생성 파일
@@ -153,7 +157,7 @@ resources/views/components/layouts/site.blade.php
 resources/views/components/site/*.blade.php
 resources/css/site.css
 resources/js/site.js
-public/media/yaver-studio-hero.mp4
+public/media/*
 design.md
 ```
 

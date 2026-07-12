@@ -1,0 +1,6 @@
+@php($items = collect(config('laravel-site.navigation.header', []))->values())
+<header class="nav-centered" data-site-header>
+    <nav aria-label="주요 메뉴 앞쪽">@foreach ($items->take((int) ceil($items->count()/2)) as $item)<a href="{{ $item['url'] ?? '#' }}">{{ $item['label'] ?? '메뉴' }}</a>@endforeach</nav>
+    <a href="/" class="nav-centered__brand"><x-site.logo /></a>
+    <nav aria-label="주요 메뉴 뒤쪽">@foreach ($items->slice((int) ceil($items->count()/2)) as $item)<a href="{{ $item['url'] ?? '#' }}">{{ $item['label'] ?? '메뉴' }}</a>@endforeach</nav>
+</header>

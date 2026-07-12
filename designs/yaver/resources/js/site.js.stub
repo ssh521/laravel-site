@@ -1,0 +1,108 @@
+function initSiteMobileMenu() {
+    const menu = document.querySelector('[data-site-mobile-menu]');
+    const panel = menu?.querySelector('.site-mobile-panel');
+    const openButton = document.querySelector('[data-site-menu-button]');
+    const closeButtons = menu?.querySelectorAll('[data-site-menu-close]') ?? [];
+    const menuLinks = menu?.querySelectorAll('[data-site-menu-link]') ?? [];
+    const accordionButtons = menu?.querySelectorAll('[data-site-accordion]') ?? [];
+    const focusableSelector = 'a[href], button:not([disabled]), [tabindex]:not([tabindex="-1"])';
+    let previousFocus = null;
+    let closeTimer = null;
+
+    if (!menu || !panel || !openButton) {
+        return;
+    }
+
+    function setMenuState(isOpen) {
+        window.clearTimeout(closeTimer);
+
+        if (isOpen) {
+            previousFocus = document.activeElement;
+            menu.classList.remove('hidden');
+            window.requestAnimationFrame(() => {
+                menu.classList.add('is-open');
+                panel.querySelector(focusableSelector)?.focus();
+            });
+        } else {
+            menu.classList.remove('is-open');
+            closeTimer = window.setTimeout(() => menu.classList.add('hidden'), 280);
+        }
+
+        menu.setAttribute('aria-hidden', isOpen ? 'false' : 'true');
+        openButton.setAttribute('aria-expanded', isOpen ? 'true' : 'false');
+        document.body.classList.toggle('overflow-hidden', isOpen);
+        document.body.classList.toggle('site-menu-push-open', isOpen && menu.dataset.menuVariant === 'push');
+
+        if (!isOpen && previousFocus instanceof HTMLElement) {
+            previousFocus.focus();
+        }
+    }
+
+    openButton.addEventListener('click', () => setMenuState(true));
+    closeButtons.forEach((button) => button.addEventListener('click', () => setMenuState(false)));
+    menuLinks.forEach((link) => link.addEventListener('click', () => setMenuState(false)));
+
+    accordionButtons.forEach((button) => {
+        button.addEventListener('click', () => {
+            const panelId = button.getAttribute('aria-controls');
+            const submenu = panelId ? document.getElementById(panelId) : null;
+            const isOpen = button.getAttribute('aria-expanded') === 'true';
+
+            button.setAttribute('aria-expanded', isOpen ? 'false' : 'true');
+            if (submenu) submenu.hidden = isOpen;
+        });
+    });
+
+    menu.addEventListener('keydown', (event) => {
+        if (!menu.classList.contains('is-open')) return;
+        if (event.key === 'Escape') {
+            setMenuState(false);
+            return;
+        }
+        if (event.key !== 'Tab') return;
+
+        const focusable = [...panel.querySelectorAll(focusableSelector)].filter((element) => !element.closest('[hidden]'));
+        const first = focusable[0];
+        const last = focusable.at(-1);
+
+        if (event.shiftKey && document.activeElement === first) {
+            event.preventDefault();
+            last?.focus();
+        } else if (!event.shiftKey && document.activeElement === last) {
+            event.preventDefault();
+            first?.focus();
+        }
+    });
+}
+
+function initSiteReveals() {
+    const elements = document.querySelectorAll('.site-reveal');
+    if (!elements.length) return;
+
+    if (window.matchMedia('(prefers-reduced-motion: reduce)').matches || !('IntersectionObserver' in window)) {
+        elements.forEach((element) => element.classList.add('is-visible'));
+        return;
+    }
+
+    document.documentElement.classList.add('site-motion-ready');
+    const observer = new IntersectionObserver((entries) => {
+        entries.forEach((entry) => {
+            if (!entry.isIntersecting) return;
+            entry.target.classList.add('is-visible');
+            observer.unobserve(entry.target);
+        });
+    }, { threshold: 0.14 });
+
+    elements.forEach((element) => observer.observe(element));
+}
+
+function initYaverSite() {
+    initSiteMobileMenu();
+    initSiteReveals();
+}
+
+if (document.readyState === 'loading') {
+    document.addEventListener('DOMContentLoaded', initYaverSite, { once: true });
+} else {
+    initYaverSite();
+}

@@ -1,0 +1,6 @@
+@php($items = config('laravel-site.navigation.header', []))
+<aside class="nav-rail" aria-label="사이트 탐색">
+    <a href="/"><x-site.logo /></a>
+    <nav>@foreach ($items as $item)<a href="{{ $item['url'] ?? '#' }}">{{ $item['label'] ?? '메뉴' }}</a>@endforeach</nav>
+    <a href="{{ config('laravel-site.navigation.cta.url', '#contact') }}">{{ config('laravel-site.navigation.cta.label', '연락하기') }}</a>
+</aside>

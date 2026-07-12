@@ -1,0 +1,15 @@
+@php
+    $items = collect(config('laravel-site.navigation.header', []))->values();
+    $split = (int) ceil($items->count() / 2);
+@endphp
+
+<header class="site-header site-centered-header sticky top-0 z-40 border-b border-(--site-color-border) bg-(--site-color-page)/92 backdrop-blur-xl">
+    <div class="site-centered-header__inner">
+        <nav class="site-centered-header__nav site-centered-header__nav--left" aria-label="주요 메뉴 앞쪽">@foreach ($items->take($split) as $item)<a href="{{ $item['url'] ?? '#' }}">{{ $item['label'] ?? '메뉴' }}</a>@endforeach</nav>
+        <x-site.logo />
+        <nav class="site-centered-header__nav site-centered-header__nav--right" aria-label="주요 메뉴 뒤쪽">@foreach ($items->slice($split) as $item)<a href="{{ $item['url'] ?? '#' }}">{{ $item['label'] ?? '메뉴' }}</a>@endforeach</nav>
+        <button type="button" class="site-centered-menu-button" data-site-menu-button aria-controls="site-mobile-menu" aria-expanded="false"><span>메뉴</span><span aria-hidden="true">+</span></button>
+    </div>
+</header>
+
+<x-site.mobile-menu :items="$items" />

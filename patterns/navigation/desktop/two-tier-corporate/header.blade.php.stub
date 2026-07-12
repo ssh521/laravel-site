@@ -1,0 +1,5 @@
+@php($utility = config('laravel-site.navigation.utility', [])) @php($items = config('laravel-site.navigation.header', []))
+<header class="nav-corporate">
+    <div class="nav-corporate__utility"><span>{{ config('app.name') }}</span><nav aria-label="보조 메뉴">@foreach ($utility as $item)<a href="{{ $item['url'] ?? '#' }}">{{ $item['label'] ?? '메뉴' }}</a>@endforeach</nav></div>
+    <div class="nav-corporate__primary"><a href="/"><x-site.logo /></a><nav aria-label="주요 메뉴">@foreach ($items as $item)<a href="{{ $item['url'] ?? '#' }}">{{ $item['label'] ?? '메뉴' }}</a>@endforeach</nav><x-site.button :href="config('laravel-site.navigation.cta.url', '#contact')">{{ config('laravel-site.navigation.cta.label', '문의하기') }}</x-site.button></div>
+</header>

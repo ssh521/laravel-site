@@ -1,0 +1,27 @@
+@props([
+    'href' => null,
+    'variant' => 'primary',
+    'size' => 'md',
+    'type' => 'button',
+])
+
+@php
+    $base = 'site-button inline-flex items-center justify-center whitespace-nowrap rounded-[10px] font-bold transition focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-(--site-color-ring) focus-visible:ring-offset-2 focus-visible:ring-offset-(--site-color-page) active:translate-y-px';
+    $sizes = [
+        'sm' => 'min-h-10 px-4 py-2 text-sm',
+        'md' => 'min-h-11 px-5 py-2.5 text-sm',
+        'lg' => 'min-h-12 px-6 py-3 text-base',
+    ];
+    $variants = [
+        'primary' => 'bg-(--site-color-accent) text-(--site-color-accent-contrast) hover:bg-(--site-color-accent-strong)',
+        'secondary' => 'border border-(--site-color-border-strong) bg-(--site-color-surface) text-(--site-color-text) hover:bg-(--site-color-surface-muted)',
+        'ghost' => 'text-(--site-color-text) hover:bg-(--site-color-surface-muted)',
+    ];
+    $classes = $base.' '.($sizes[$size] ?? $sizes['md']).' '.($variants[$variant] ?? $variants['primary']);
+@endphp
+
+@if ($href)
+    <a href="{{ $href }}" {{ $attributes->merge(['class' => $classes]) }}>{{ $slot }}</a>
+@else
+    <button type="{{ $type }}" {{ $attributes->merge(['class' => $classes]) }}>{{ $slot }}</button>
+@endif

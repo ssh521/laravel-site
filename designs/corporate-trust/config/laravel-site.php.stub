@@ -19,6 +19,11 @@ return [
     'navigation' => [
         'cta' => ['label' => 'Request Consultation', 'url' => '#contact'],
 
+        'utility' => [
+            ['label' => 'Company profile', 'url' => '#company'],
+            ['label' => 'Trust library', 'url' => '#certifications'],
+        ],
+
         'header' => [
             ['label' => 'Home', 'url' => '/', 'active' => true],
             [

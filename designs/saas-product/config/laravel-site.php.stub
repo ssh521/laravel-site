@@ -31,13 +31,11 @@ return [
                 ],
             ],
             ['label' => 'Pricing', 'url' => '#pricing'],
-            ['label' => 'Pricing', 'url' => '#pricing'],
         ],
 
         'footer' => [
             ['label' => 'Product', 'url' => '#product'],
             ['label' => 'Features', 'url' => '#features'],
-            ['label' => 'Pricing', 'url' => '#pricing'],
             ['label' => 'Pricing', 'url' => '#pricing'],
         ],
     ],

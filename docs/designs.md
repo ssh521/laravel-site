@@ -4,6 +4,10 @@
 
 이 문서는 패키지 안의 `designs/{name}` 원본을 추가하거나 수정할 때 따르는 기준입니다.
 
+디자인 카탈로그, navigation 패턴 다양화, 별도 미리보기 앱 구축 계획은 [디자인 카탈로그 및 미리보기 사이트 작업지시서](design-catalog-preview-work-order.md)를 따릅니다.
+
+신규 프리셋의 차별성 판정은 [Design Differentiation Contract](design-differentiation-contract.md)를 따르며, 기존 프리셋의 기준선은 [Existing Preset Audit](design-preset-audit.md)에 기록합니다.
+
 ## Why There Is No Root `design.md`
 
 루트 `design.md`는 만들지 않습니다.
@@ -58,6 +62,7 @@ designs/{name}/
 | `portfolio-editorial` | 스튜디오, 작가, 브랜드 포트폴리오형 |
 | `saas-product` | SaaS, 앱, API, 디지털 제품 소개형 |
 | `event-promo` | 세미나, 강의, 컨퍼런스, 단기 프로모션형 |
+| `yaver` | 앱 설치 안내와 개발 사이트 소개를 위한 절제된 디지털 제작사형 |
 | `yaver-studio` | yaver.com 스타일의 스튜디오/디지털 제작사 소개형 |
 
 ## Adding A Preset

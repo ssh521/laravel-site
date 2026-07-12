@@ -1,0 +1,37 @@
+<?php
+
+return [
+    'routes' => [
+        'home_path' => env('LARAVEL_SITE_HOME_PATH', '/'),
+        'home_name' => env('LARAVEL_SITE_HOME_NAME', 'site.home'),
+    ],
+
+    'brand' => [
+        'name' => env('APP_NAME', '야버'),
+        'tagline' => '앱 설치부터 서비스 개발까지, 오래 운영할 디지털 기반을 만듭니다.',
+        'logo_text' => 'YAVER',
+    ],
+
+    'design' => [
+        'preset' => env('LARAVEL_SITE_PRESET', 'yaver'),
+    ],
+
+    'navigation' => [
+        'header' => [
+            ['label' => '서비스', 'url' => '#services'],
+            ['label' => '앱 설치', 'url' => '#app'],
+            ['label' => '사이트 개발', 'url' => '#web'],
+            ['label' => '진행 방식', 'url' => '#process'],
+        ],
+        'cta' => [
+            'label' => '상담 요청',
+            'url' => '#contact',
+        ],
+        'footer' => [
+            ['label' => '서비스', 'url' => '#services'],
+            ['label' => '앱 설치', 'url' => '#app'],
+            ['label' => '사이트 개발', 'url' => '#web'],
+            ['label' => '상담 요청', 'url' => '#contact'],
+        ],
+    ],
+];

@@ -1,42 +1,11 @@
 @props(['items' => []])
+@php($cta = config('laravel-site.navigation.cta', ['label' => 'Register', 'url' => '#tickets']))
 
-@php
-    $cta = config('laravel-site.navigation.cta', ['label' => 'Contact', 'url' => '#contact']);
-@endphp
-
-<div id="site-mobile-menu" class="site-mobile-menu fixed inset-0 z-50 hidden md:hidden" data-site-mobile-menu aria-hidden="true">
-    <div class="absolute inset-0 bg-black/40" data-site-menu-close></div>
-    <aside class="site-mobile-panel absolute right-0 top-0 flex h-full w-full max-w-sm translate-x-full flex-col bg-(--site-color-surface) p-6 shadow-2xl transition-transform duration-200">
-        <div class="flex items-center justify-between">
-            <x-site.logo />
-            <button
-                type="button"
-                class="inline-flex h-10 w-10 items-center justify-center rounded-md border border-(--site-color-border) text-(--site-color-text)"
-                data-site-menu-close
-            >
-                <span class="sr-only">Close menu</span>
-                <svg class="h-5 w-5" viewBox="0 0 24 24" fill="none" aria-hidden="true">
-                    <path d="m6 6 12 12M18 6 6 18" stroke="currentColor" stroke-width="2" stroke-linecap="round" />
-                </svg>
-            </button>
-        </div>
-
-        <nav class="mt-8 space-y-2" aria-label="Mobile navigation">
-            @foreach ($items as $item)
-                <a href="{{ $item['url'] ?? '#' }}" class="block rounded-md px-3 py-3 text-base font-medium text-(--site-color-text) hover:bg-(--site-color-surface-muted)">
-                    {{ $item['label'] ?? 'Menu' }}
-                </a>
-
-                @foreach ($item['children'] ?? [] as $child)
-                    <a href="{{ $child['url'] ?? '#' }}" class="block rounded-md px-6 py-2 text-sm text-(--site-color-muted) hover:bg-(--site-color-surface-muted)">
-                        {{ $child['label'] ?? 'Menu' }}
-                    </a>
-                @endforeach
-            @endforeach
-        </nav>
-
-        <div class="mt-auto pt-8">
-            <x-site.button :href="$cta['url'] ?? '#contact'" class="w-full justify-center">{{ $cta['label'] ?? 'Contact' }}</x-site.button>
-        </div>
+<div id="site-mobile-menu" class="site-mobile-menu site-mobile-menu--dropdown hidden lg:hidden" data-site-mobile-menu aria-hidden="true">
+    <button type="button" class="site-menu-backdrop" data-site-menu-close tabindex="-1"><span class="sr-only">Close menu</span></button>
+    <aside class="site-mobile-panel" role="dialog" aria-modal="true" aria-label="Mobile navigation">
+        <div class="site-menu-head"><strong>Event menu</strong><button type="button" data-site-menu-close>Close</button></div>
+        <nav>@foreach ($items as $item)<a href="{{ $item['url'] ?? '#' }}" data-site-menu-link>{{ $item['label'] ?? 'Menu' }}</a>@endforeach</nav>
+        <a class="site-menu-cta" href="{{ $cta['url'] ?? '#tickets' }}" data-site-menu-link>{{ $cta['label'] ?? 'Register' }}</a>
     </aside>
 </div>

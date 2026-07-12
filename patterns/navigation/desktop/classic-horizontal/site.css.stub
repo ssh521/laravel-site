@@ -1,0 +1,1 @@
+.nav-classic{display:grid;grid-template-columns:auto 1fr auto;align-items:center;gap:2rem;min-height:4.5rem;padding-inline:max(1rem,calc((100vw - 80rem)/2));border-bottom:1px solid var(--site-color-border)}.nav-classic nav{display:flex;justify-content:center;gap:1.5rem;white-space:nowrap}@media(max-width:63.99rem){.nav-classic nav,.nav-classic>a:last-child{display:none}}
