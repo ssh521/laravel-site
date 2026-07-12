@@ -14,6 +14,10 @@
     --site-color-hero: #f8fbff;
 }
 
+html {
+    overflow-x: clip;
+}
+
 .site-preset-editorial {
     --site-color-page: #fbfaf7;
     --site-color-surface: #ffffff;
@@ -64,6 +68,7 @@
 
 .site-shell {
     font-family: ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+    overflow-x: clip;
 }
 
 .site-agency-hero {
@@ -127,6 +132,8 @@
 }
 
 .site-marquee {
+    contain: inline-size paint;
+    max-width: 100vw;
     overflow: hidden;
 }
 
