@@ -4,7 +4,7 @@
 
 ## 목적
 
-- yaver.com 초기 화면의 강한 첫인상, 보라/퓨샤 CTA, 빌드·운영·자동화 메시지를 재사용 가능한 공개 사이트 프리셋으로 제공합니다.
+- 강한 영상 첫인상과 단일 보라색 CTA, 제작부터 운영까지 연결되는 메시지를 재사용 가능한 공개 사이트 프리셋으로 제공합니다.
 - 1인 스튜디오, 디지털 제품 팀, Laravel 제작사, 자동화 컨설팅 사이트의 첫 화면으로 바로 수정할 수 있게 합니다.
 - Laravel Starter Kit의 auth, dashboard, admin 화면은 건드리지 않고 public site 화면만 관리합니다.
 
@@ -41,16 +41,16 @@
 - 첫 화면의 메시지는 `<x-site.hero>`에서 관리하고, 서비스/워크플로/증거/CTA는 `resources/views/site/home.blade.php`에서 편집합니다.
 - 섹션 배경 동영상은 `public/media/yaver-studio-*.mp4` 파일을 교체하면 됩니다.
 - 섹션 패럴랙스는 jarallax CDN과 `resources/js/site.js`의 `initSiteJarallax()`에서 초기화합니다.
-- 한 화면 단위 스크롤은 `.site-snap-section`과 `<x-site.scroll-indicator>`의 `data-site-scroll-to` 인디케이터로 제어합니다.
-- CTA는 `<x-site.button>`을 사용해서 보라/퓨샤 버튼 톤을 유지합니다.
+- 한 화면 단위 스크롤은 `.site-snap-section`으로 구성하되 별도의 SCROLL 안내 장식은 사용하지 않습니다.
+- CTA는 `<x-site.button>`을 사용하고 전체 페이지에서 보라색 한 가지 강조색만 유지합니다.
 - 로고는 어두운 헤더/푸터 기준으로 설계되어 있으므로 밝은 배경에 옮길 때는 색상을 함께 조정합니다.
-- 반복 카드 UI는 필요할 때만 별도 `resources/views/components/site/*.blade.php` 컴포넌트로 분리합니다.
+- 실제 증거가 없는 상태 pill, 가짜 대시보드, 장식용 수치와 동일 크기 카드 반복을 추가하지 않습니다.
 - 모바일에서 먼저 자연스럽게 보이도록 1열을 기본으로 하고, `md:` 또는 `lg:`부터 다열 레이아웃을 적용합니다.
 
 ## 내비게이션
 
-- 데스크톱 header는 드롭다운 메뉴를 지원합니다.
-- 모바일 header는 햄버거 버튼과 슬라이딩 메뉴를 사용합니다.
+- 데스크톱과 모바일 모두 메뉴 버튼을 사용하는 offcanvas 구조이며, 전체 화면 takeover 메뉴를 사용합니다.
+- 메뉴는 Escape 닫기, focus trap, 열기 버튼으로 focus 복귀, body scroll lock을 유지합니다.
 - v1 메뉴는 `config/laravel-site.php`의 `navigation.header`, `navigation.footer`, `navigation.cta` 배열에서 관리합니다.
 
 ## AI 추가 제작 기준
@@ -60,3 +60,6 @@
 - 실제 서비스 링크, 사례, 연락 경로는 `config/laravel-site.php`와 `resources/views/site/home.blade.php`에서 교체합니다.
 - 전체 색상 변경은 개별 Tailwind class를 흩뿌리지 말고 CSS 변수부터 조정합니다.
 - 새 public JS는 `resources/js/site.js`에 모으고, 컴포넌트 markup은 `data-site-*` 속성을 사용합니다.
+- hero에는 실제 영상, 제목, 20단어 이내 설명, 최대 2개의 CTA만 둡니다.
+- 후속 섹션은 서비스 인덱스, 영상과 프로세스, 큰 문장과 증거처럼 서로 다른 layout family를 사용합니다.
+- `prefers-reduced-motion` 환경에서는 jarallax와 자동 reveal motion을 비활성화합니다.

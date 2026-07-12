@@ -89,6 +89,20 @@ function watchSiteHeaderOffset() {
 
 function initSiteJarallax() {
     const elements = document.querySelectorAll('[data-jarallax]');
+    const videos = document.querySelectorAll('video[autoplay]');
+    const prefersReducedMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+
+    if (prefersReducedMotion) {
+        if (elements.length > 0 && typeof window.jarallax === 'function') {
+            window.jarallax(elements, 'destroy');
+        }
+
+        videos.forEach((video) => video.pause());
+
+        return;
+    }
+
+    videos.forEach((video) => video.play().catch(() => {}));
 
     if (elements.length === 0 || typeof window.jarallax !== 'function') {
         return;
@@ -105,41 +119,10 @@ function initSiteJarallax() {
     window.jarallax(elements);
 }
 
-function initSiteScrollLinks() {
-    const links = document.querySelectorAll('[data-site-scroll-to]');
-
-    links.forEach((link) => {
-        link.addEventListener('click', (event) => {
-            const href = link.getAttribute('href') ?? '';
-            const targetId = href.startsWith('#') ? href.slice(1) : null;
-
-            if (!targetId) {
-                return;
-            }
-
-            const target = document.getElementById(targetId);
-
-            if (!target) {
-                return;
-            }
-
-            event.preventDefault();
-
-            target.scrollIntoView({
-                behavior: window.matchMedia('(prefers-reduced-motion: reduce)').matches ? 'auto' : 'smooth',
-                block: 'start',
-            });
-
-            window.history.replaceState(null, '', href);
-        });
-    });
-}
-
 function initSite() {
     watchSiteHeaderOffset();
     initSiteMobileMenu();
     initSiteJarallax();
-    initSiteScrollLinks();
 }
 
 if (document.readyState === 'loading') {
@@ -153,3 +136,5 @@ window.addEventListener('load', () => {
     updateSiteHeaderOffset();
     initSiteJarallax();
 }, { once: true });
+
+window.matchMedia('(prefers-reduced-motion: reduce)').addEventListener('change', initSiteJarallax);

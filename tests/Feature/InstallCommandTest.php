@@ -100,7 +100,7 @@ class InstallCommandTest extends TestCase
         $this->assertStringContainsString('window.jarallax(elements)', $script);
     }
 
-    public function test_yaver_studio_ships_snap_scroll_indicator(): void
+    public function test_yaver_studio_ships_cinematic_sections_without_scroll_decorations(): void
     {
         $this->artisan('laravel-site:design', [
             'design' => 'yaver-studio',
@@ -109,7 +109,6 @@ class InstallCommandTest extends TestCase
 
         $layout = File::get(base_path('resources/views/components/layouts/site.blade.php'));
         $hero = File::get(base_path('resources/views/components/site/hero.blade.php'));
-        $scrollIndicator = File::get(base_path('resources/views/components/site/scroll-indicator.blade.php'));
         $cta = File::get(base_path('resources/views/components/site/cta.blade.php'));
         $home = File::get(base_path('resources/views/site/home.blade.php'));
         $css = File::get(base_path('resources/css/site.css'));
@@ -117,15 +116,14 @@ class InstallCommandTest extends TestCase
 
         $this->assertStringContainsString('site-snap-container', $layout);
         $this->assertStringContainsString('site-snap-section', $hero);
-        $this->assertStringContainsString('x-site.scroll-indicator', $hero);
-        $this->assertStringContainsString('data-site-scroll-to', $scrollIndicator);
-        $this->assertStringContainsString('SCROLL', $scrollIndicator);
-        $this->assertStringContainsString('site-scroll-line', $scrollIndicator);
-        $this->assertStringContainsString('x-site.scroll-indicator href="#workflow"', $home);
-        $this->assertStringContainsString('x-site.scroll-indicator href="#proof"', $home);
-        $this->assertStringContainsString('x-site.scroll-indicator href="#contact"', $home);
+        $this->assertStringNotContainsString('x-site.scroll-indicator', $hero);
+        $this->assertStringNotContainsString('실시간 제작', $hero);
+        $this->assertStringNotContainsString('rounded-full bg-fuchsia-400', $hero);
+        $this->assertFileDoesNotExist(base_path('resources/views/components/site/scroll-indicator.blade.php'));
         $this->assertStringContainsString('media/yaver-studio-coverr-61.mp4', $home);
         $this->assertStringContainsString('media/yaver-studio-coverr-01.mp4', $home);
+        $this->assertStringContainsString('site-service-index', $home);
+        $this->assertStringContainsString('필요한 범위를 함께 정하고 바로 만듭니다.', $home);
         $this->assertStringContainsString('site-snap-content', $home);
         $this->assertStringContainsString('scroll-padding-top: var(--site-header-height)', $css);
         $this->assertStringContainsString('min-height: calc(100svh - var(--site-header-height))', $css);
@@ -139,8 +137,10 @@ class InstallCommandTest extends TestCase
         $this->assertStringContainsString('scroll-snap-stop: normal', $css);
         $this->assertStringNotContainsString('site-snap-section', $cta);
         $this->assertStringNotContainsString('data-jarallax', $cta);
-        $this->assertStringContainsString('function initSiteScrollLinks()', $script);
-        $this->assertStringContainsString('target.scrollIntoView', $script);
+        $this->assertStringNotContainsString('function initSiteScrollLinks()', $script);
+        $this->assertStringContainsString("prefers-reduced-motion: reduce", $script);
+        $this->assertStringContainsString("window.jarallax(elements, 'destroy')", $script);
+        $this->assertStringContainsString('video.pause()', $script);
     }
 
     public function test_mobile_menu_is_rendered_outside_the_sticky_header(): void
@@ -269,7 +269,7 @@ JS);
             'portfolio-editorial' => 'Give the work room',
             'saas-product' => 'Explain the product',
             'yaver' => '설치되는 앱, 신뢰받는 사이트.',
-            'yaver-studio' => '세련된 디지털 경험을 빠르게 만듭니다.',
+            'yaver-studio' => '아이디어를 실제 서비스로 연결합니다.',
             'event-promo' => 'Give visitors the reason',
         ];
 
@@ -308,7 +308,7 @@ JS);
             'saas-product' => ['Show the product shape early', 'Pricing'],
             'yaver' => ['앱 설치는 안내부터 시작됩니다.', '개발 사이트는 신뢰를 설명하는 도구입니다.'],
             'event-promo' => ['Event details', 'Speakers'],
-            'yaver-studio' => ['핵심 서비스', '첫 아이디어부터 운영 중인 서비스까지.'],
+            'yaver-studio' => ['필요한 범위를 함께 정하고 바로 만듭니다.', '결정이 필요한 순간마다 결과물을 확인합니다.'],
         ];
 
         foreach ($expectations as $design => $markers) {
