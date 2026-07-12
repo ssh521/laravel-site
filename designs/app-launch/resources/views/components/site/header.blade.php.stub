@@ -1,0 +1,25 @@
+@php
+    $items = config('laravel-site.navigation.header', []);
+    $cta = config('laravel-site.navigation.cta', ['label' => '앱 설치하기', 'url' => '#download']);
+@endphp
+
+<header class="site-launch-header" data-site-header>
+    <div class="site-launch-header__inner">
+        <x-site.logo />
+
+        <nav aria-label="주요 메뉴">
+            @foreach ($items as $item)
+                <a href="{{ $item['url'] ?? '#' }}" @if($item['active'] ?? false) aria-current="page" @endif>{{ $item['label'] ?? '메뉴' }}</a>
+            @endforeach
+        </nav>
+
+        <x-site.button :href="$cta['url'] ?? '#download'" size="sm" class="site-header-cta">{{ $cta['label'] ?? '앱 설치하기' }}</x-site.button>
+
+        <button type="button" class="site-menu-button" data-site-menu-button aria-controls="site-mobile-menu" aria-expanded="false">
+            <span>메뉴</span>
+            <span aria-hidden="true">+</span>
+        </button>
+    </div>
+</header>
+
+<x-site.mobile-menu :items="$items" />

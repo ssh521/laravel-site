@@ -1,0 +1,9 @@
+@props([
+    'href' => '/',
+    'label' => config('laravel-site.brand.logo_text', config('laravel-site.brand.name')),
+])
+
+<a href="{{ $href }}" {{ $attributes->merge(['class' => 'site-logo']) }}>
+    <span class="site-logo-mark" aria-hidden="true">ㅅ</span>
+    <span>{{ $label }}</span>
+</a>

@@ -1,0 +1,19 @@
+@php($items = config('laravel-site.navigation.footer', []))
+
+<footer class="site-footer">
+    <div class="site-footer__inner">
+        <div>
+            <x-site.logo />
+            <p>{{ config('laravel-site.brand.tagline') }}</p>
+        </div>
+        <nav aria-label="하단 메뉴">
+            @foreach ($items as $item)
+                <a href="{{ $item['url'] ?? '#' }}">{{ $item['label'] ?? '메뉴' }}</a>
+            @endforeach
+        </nav>
+    </div>
+    <div class="site-footer__legal">
+        <p>&copy; {{ date('Y') }} {{ config('laravel-site.brand.name') }}. All rights reserved.</p>
+        <p>Laravel, Blade, Tailwind CSS로 제작했습니다.</p>
+    </div>
+</footer>

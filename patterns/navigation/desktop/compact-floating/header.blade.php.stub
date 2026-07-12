@@ -1,0 +1,17 @@
+@php
+    $items = config('laravel-site.navigation.header', []);
+    $cta = config('laravel-site.navigation.cta', ['label' => '시작하기', 'url' => '#contact']);
+@endphp
+
+<header class="nav-compact-floating">
+    <div class="nav-compact-floating__inner">
+        <x-site.logo />
+        <nav aria-label="주요 메뉴">
+            @foreach ($items as $item)
+                <a href="{{ $item['url'] ?? '#' }}" @if($item['active'] ?? false) aria-current="page" @endif>{{ $item['label'] ?? '메뉴' }}</a>
+            @endforeach
+        </nav>
+        <x-site.button :href="$cta['url'] ?? '#contact'" size="sm" class="nav-compact-floating__cta">{{ $cta['label'] ?? '시작하기' }}</x-site.button>
+        <button type="button" class="nav-compact-floating__menu" data-site-menu-button aria-controls="site-mobile-menu" aria-expanded="false">메뉴</button>
+    </div>
+</header>

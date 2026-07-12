@@ -1,0 +1,89 @@
+<x-layouts.site :title="config('laravel-site.brand.name')" :description="config('laravel-site.brand.tagline')">
+    <x-site.hero
+        eyebrow="로컬 발견 앱"
+        title="가고 싶은 곳을, 오늘의 동선으로."
+        description="저장한 장소를 연결해 친구와 함께 걷는 하루를 만듭니다."
+        primary-label="앱 설치하기"
+        :primary-url="config('laravel-site.navigation.cta.url', '#download')"
+        secondary-label="앱 화면 보기"
+        secondary-url="#screens"
+    />
+
+    <section id="screens" class="site-screen-story">
+        <div class="site-screen-story__inner">
+            <div class="site-screen-story__copy" data-site-reveal>
+                <h2>저장해 둔 장소가 실제 하루가 됩니다.</h2>
+                <p>카페, 전시, 골목을 한 번에 모으고 이동하기 좋은 순서로 연결하세요.</p>
+                <a href="#features">주요 기능 살펴보기</a>
+            </div>
+            <div class="site-screen-story__gallery" data-site-reveal>
+                <div class="site-device site-device--main">
+                    <img src="{{ asset('media/app-launch-saved.webp') }}" alt="사이 앱의 저장한 장소 모음 화면" width="941" height="1672" loading="lazy">
+                </div>
+                <div class="site-device site-device--side">
+                    <img src="{{ asset('media/app-launch-map.webp') }}" alt="사이 앱의 장소 경로 지도 화면" width="941" height="1672" loading="lazy">
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <x-site.section
+        id="features"
+        title="앱을 켜고, 장소를 고르고, 함께 출발하세요."
+        description="복잡한 계획표 없이 오늘 필요한 행동만 남겼습니다."
+        class="site-features"
+    >
+        <div class="site-feature-index">
+            @foreach ([
+                ['장소 저장', '메시지와 브라우저에 흩어진 장소를 한곳에 모읍니다.'],
+                ['동선 연결', '선택한 장소를 걷기 편한 순서로 확인합니다.'],
+                ['친구와 공유', '같이 갈 사람에게 목록과 경로를 한 번에 보냅니다.'],
+                ['다녀온 기록', '사진과 짧은 메모로 다음 나들이의 단서를 남깁니다.'],
+            ] as [$title, $description])
+                <x-site.feature-card :title="$title" :description="$description" />
+            @endforeach
+        </div>
+    </x-site.section>
+
+    <section class="site-use-scene">
+        <div class="site-use-scene__media" data-site-reveal>
+            <img src="{{ asset('media/app-launch-friends.webp') }}" alt="카페에서 사이 앱의 산책 경로를 함께 살펴보는 친구들" width="1536" height="1024" loading="lazy">
+        </div>
+        <div class="site-use-scene__copy" data-site-reveal>
+            <h2>보내기 쉬워야 같이 갈 수 있습니다.</h2>
+            <p>저장 목록과 이동 경로를 링크 하나로 공유해 만날 장소를 빠르게 정하세요.</p>
+        </div>
+    </section>
+
+    <section id="reviews" class="site-review">
+        <div class="site-review__inner" data-site-reveal>
+            <p class="site-review__quote">“채팅방에 쌓아 둔 링크를 정리했더니, 주말마다 어디 갈지 정하는 시간이 훨씬 짧아졌어요.”</p>
+            <p class="site-review__author">김하린<br><span>서울에서 친구들과 사이를 사용하는 직장인</span></p>
+        </div>
+    </section>
+
+    <x-site.section id="faq" title="설치 전에 확인해 보세요." class="site-faq">
+        <div class="site-faq-list" data-site-reveal>
+            <details>
+                <summary>저장한 장소는 친구에게 어떻게 보내나요?</summary>
+                <p>목록에서 공유를 선택하면 앱이 없는 친구도 확인할 수 있는 링크가 만들어집니다.</p>
+            </details>
+            <details>
+                <summary>위치 권한을 항상 켜야 하나요?</summary>
+                <p>현재 위치를 기준으로 경로를 볼 때만 권한을 사용하며 설정에서 언제든 변경할 수 있습니다.</p>
+            </details>
+            <details>
+                <summary>기존에 저장한 링크도 옮길 수 있나요?</summary>
+                <p>공유 메뉴에서 사이를 선택하면 브라우저와 메시지의 장소 링크를 바로 저장할 수 있습니다.</p>
+            </details>
+        </div>
+    </x-site.section>
+
+    <x-site.cta
+        id="download"
+        title="다음 나들이를 지금 저장하세요."
+        description="장소를 모으는 순간부터 함께 걷는 시간까지 하나의 앱으로 연결합니다."
+        button-label="앱 설치하기"
+        :button-url="config('laravel-site.navigation.cta.url', '#download')"
+    />
+</x-layouts.site>

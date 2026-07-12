@@ -1,0 +1,17 @@
+@props([
+    'id' => null,
+    'title' => null,
+    'description' => null,
+])
+
+<section @if ($id) id="{{ $id }}" @endif {{ $attributes->merge(['class' => 'site-section']) }}>
+    <div class="site-section__inner">
+        @if ($title || $description)
+            <header class="site-section__header" data-site-reveal>
+                @if ($title)<h2>{{ $title }}</h2>@endif
+                @if ($description)<p>{{ $description }}</p>@endif
+            </header>
+        @endif
+        {{ $slot }}
+    </div>
+</section>

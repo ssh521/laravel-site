@@ -54,6 +54,7 @@ designs/{name}/
 | Design | Purpose |
 | --- | --- |
 | `package-guide` | 기본 설치 화면, 패키지 설명 및 설치/추가 방법 안내 |
+| `app-launch` | 실제 앱 화면과 사용 장면으로 설치 전환을 만드는 소비자 앱 출시형 |
 | `essential` | 범용 회사/서비스 소개형 |
 | `conversion` | 광고 유입, 상담 신청, 문의 전환형 |
 | `corporate-trust` | B2B 회사, 제조, 전문 서비스 신뢰형 |

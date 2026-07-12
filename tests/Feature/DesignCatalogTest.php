@@ -41,12 +41,14 @@ class DesignCatalogTest extends TestCase
         $appDesigns = $catalog->filter(['category' => 'app', 'language' => 'ko']);
 
         $this->assertContains('yaver', array_column($appDesigns, 'name'));
+        $this->assertContains('app-launch', array_column($appDesigns, 'name'));
     }
 
     public function test_diversified_presets_use_distinct_navigation_pairs(): void
     {
         $catalog = app(DesignCatalog::class);
         $expected = [
+            'app-launch' => ['compact-floating', 'bottom-action-sheet'],
             'portfolio-editorial' => ['sidebar-rail', 'push-content'],
             'corporate-trust' => ['two-tier-corporate', 'accordion-drawer'],
             'saas-product' => ['transparent-overlay', 'bottom-sheet'],
@@ -66,8 +68,8 @@ class DesignCatalogTest extends TestCase
     public function test_navigation_pattern_library_has_complete_sources(): void
     {
         $patterns = [
-            'desktop' => ['classic-horizontal', 'centered-logo-split', 'transparent-overlay', 'desktop-offcanvas', 'sidebar-rail', 'two-tier-corporate'],
-            'mobile' => ['right-drawer', 'fullscreen-takeover', 'bottom-sheet', 'header-dropdown', 'accordion-drawer', 'push-content'],
+            'desktop' => ['classic-horizontal', 'centered-logo-split', 'transparent-overlay', 'desktop-offcanvas', 'sidebar-rail', 'two-tier-corporate', 'compact-floating'],
+            'mobile' => ['right-drawer', 'fullscreen-takeover', 'bottom-sheet', 'header-dropdown', 'accordion-drawer', 'push-content', 'bottom-action-sheet'],
         ];
 
         foreach ($patterns as $type => $names) {

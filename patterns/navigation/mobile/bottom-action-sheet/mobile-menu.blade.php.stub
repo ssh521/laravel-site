@@ -1,0 +1,13 @@
+@props(['items' => []])
+@php($cta = config('laravel-site.navigation.cta', ['label' => '시작하기', 'url' => '#contact']))
+
+<div id="site-mobile-menu" class="nav-mobile-action-sheet" data-mobile-nav-root hidden>
+    <button type="button" class="nav-mobile-action-sheet__backdrop" data-nav-close tabindex="-1"><span class="sr-only">메뉴 닫기</span></button>
+    <aside class="nav-mobile-action-sheet__panel" data-nav-panel role="dialog" aria-modal="true" aria-label="모바일 메뉴">
+        <div class="nav-mobile-action-sheet__head"><strong>메뉴</strong><button type="button" data-nav-close>닫기</button></div>
+        <nav>@foreach ($items as $item)<a href="{{ $item['url'] ?? '#' }}" data-nav-link>{{ $item['label'] ?? '메뉴' }}</a>@endforeach</nav>
+        <a class="nav-mobile-action-sheet__cta" href="{{ $cta['url'] ?? '#contact' }}" data-nav-link>{{ $cta['label'] ?? '시작하기' }}</a>
+    </aside>
+</div>
+
+<a class="nav-mobile-sticky-action" href="{{ $cta['url'] ?? '#contact' }}">{{ $cta['label'] ?? '시작하기' }}</a>

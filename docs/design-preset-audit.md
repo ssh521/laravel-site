@@ -6,7 +6,7 @@
 
 ## 요약
 
-현재 프리셋은 11개다. `yaver-studio`를 제외하면 Desktop navigation 대부분이 `classic-horizontal`, Mobile navigation은 모두 `right-drawer`에 집중되어 있다.
+Phase 0 기준선은 11개 프리셋으로 시작했다. navigation 다양화와 `app-launch` 추가 후 현재 프리셋은 12개이며, 각 대표 프리셋은 목적에 맞는 desktop과 mobile navigation family를 사용한다.
 
 가장 큰 중복은 다음과 같다.
 
@@ -20,6 +20,7 @@
 
 | Preset | Category | Style | Desktop nav | Mobile nav | Hero | Motion | 판단 |
 | --- | --- | --- | --- | --- | --- | ---: | --- |
+| `app-launch` | app, consumer | editorial, bright | compact-floating | bottom-action-sheet | asymmetric-device-showcase | 6 | 신규 대표 프리셋 |
 | `package-guide` | package, docs | technical, neutral | classic-horizontal | right-drawer | package-introduction | 2 | 유지, catalog 기준 화면 |
 | `essential` | general service | minimal, neutral | classic-horizontal | right-drawer | asymmetric-media | 2 | 개선 필요, 범용 기준 |
 | `conversion` | campaign | direct, conversion | classic-horizontal | right-drawer | conversion-form | 2 | 유지, form 전환성 강화 |
@@ -50,6 +51,21 @@
 - `yaver-studio` ↔ 다른 프리셋
 - `package-guide` ↔ 고객용 프리셋
 - `portfolio-editorial` ↔ 전환형 프리셋
+
+## App Launch 차별성 검토
+
+| 비교 항목 | `app-launch` | 가장 가까운 기존 프리셋 | 차이 설명 |
+| --- | --- | --- | --- |
+| Target audience | 앱 설치를 결정하는 최종 사용자 | `saas-product`: SaaS 구매자, `yaver`: 개발 의뢰 고객 | 개발·구매 설명보다 설치 행동에 집중 |
+| Desktop nav | compact floating bar | transparent overlay, centered logo split | page edge에서 분리된 짧은 floating navigation |
+| Mobile nav | bottom action sheet + 고정 설치 CTA | bottom sheet | 메뉴와 별도로 설치 행동을 viewport 하단에 유지 |
+| Hero | 실제 앱 화면 비대칭 device showcase | product device, asymmetric media | 생성된 실제 제품 screenshot이 주 시각 자산 |
+| Typography | 굵은 한국어 sans display | 영문 technical, 절제된 Korean sans | 소비자용 짧은 문장과 큰 한국어 제목 |
+| Color/material | cool off-white + coral | indigo product, cobalt trust | 보라색 없이 coral 단일 accent와 light theme 고정 |
+| Section rhythm | screen gallery, feature index, lifestyle scene, quote, FAQ | mock product, split service | 6개 섹션에 5개 layout family 사용 |
+| Image direction | 앱 screenshot 2종 + 실제 사용 장면 | fake product UI, agency photography | div 기반 dashboard 없이 생성 이미지 사용 |
+| CTA | `앱 설치하기` 고정 | trial, consultation | 모든 설치 목적 CTA를 한 문구로 통일 |
+| Motion | one-shot reveal과 action sheet | basic reveal | 정보 순서와 메뉴 상태 전환에만 motion 사용 |
 
 ## 권장 Navigation 재배치
 
@@ -85,9 +101,11 @@
 
 ## 후속 브라우저 감사 항목
 
-- 나머지 프리셋의 메뉴 열기·닫기, Escape, focus restore 전수 검사
-- light/dark 지원 프리셋의 양쪽 테마 screenshot
-- CTA 줄바꿈과 horizontal overflow 자동 검사 결과 기록
+- 2026-07-13 기준 기존 11개 프리셋의 메뉴 열기, Escape 닫기, focus restore를 전수 검사했고 모두 통과했다.
+- 390x844, 820x1180, 1440x900에서 초기 제목과 CTA 노출, 가로 overflow를 검사했다.
+- `package-guide`의 390px overflow와 데스크톱 초기 CTA 이탈을 발견해 hero 높이, grid min-width, page overflow를 보정했다.
+- auto theme 프리셋 `yaver`는 light와 dark 양쪽에서 overflow 0, primary CTA 대비 5.82:1과 5.86:1, console error 0건을 확인했다.
+- CTA 줄바꿈 자동 검사와 양쪽 테마 비교는 후속 자동화 단계에서 계속한다.
 - navigation 다양화 이후 기준 screenshot 재생성
 
 스크린샷은 `laravel-site-preview` 앱이 생성하고 소유한다.

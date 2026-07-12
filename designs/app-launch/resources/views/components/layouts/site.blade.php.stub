@@ -1,0 +1,30 @@
+@props([
+    'title' => config('laravel-site.brand.name'),
+    'description' => config('laravel-site.brand.tagline'),
+])
+
+<!DOCTYPE html>
+<html lang="{{ str_replace('_', '-', app()->getLocale()) }}">
+    <head>
+        <meta charset="utf-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <meta name="description" content="{{ $description }}">
+        <meta name="theme-color" content="#f5f6f3">
+
+        <title>{{ $title }}</title>
+
+        <link rel="preload" as="image" href="{{ asset('media/app-launch-map.webp') }}" fetchpriority="high">
+        @vite(['resources/css/app.css', 'resources/css/site.css', 'resources/js/app.js', 'resources/js/site.js'])
+    </head>
+    <body class="site-shell site-preset-{{ config('laravel-site.design.preset', 'app-launch') }} min-h-[100dvh] bg-(--site-color-page) text-(--site-color-text) antialiased">
+        <a class="site-skip-link" href="#content">본문으로 이동</a>
+        <x-site.header />
+
+        <main id="content">
+            {{ $slot }}
+        </main>
+
+        <x-site.footer />
+        <a class="site-mobile-install" href="{{ config('laravel-site.navigation.cta.url', '#download') }}">앱 설치하기</a>
+    </body>
+</html>

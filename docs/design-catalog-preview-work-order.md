@@ -516,7 +516,7 @@ query string은 catalog UI 상태에만 사용한다.
 
 작업:
 
-- `app-launch`
+- `app-launch` (완료)
 - `swiss-corporate`
 - `studio-cinematic`
 - README, docs, catalog, tests 갱신

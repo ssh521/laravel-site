@@ -1,0 +1,18 @@
+@props(['items' => []])
+@php($cta = config('laravel-site.navigation.cta', ['label' => '앱 설치하기', 'url' => '#download']))
+
+<div id="site-mobile-menu" class="site-mobile-menu hidden lg:hidden" data-site-mobile-menu aria-hidden="true">
+    <button type="button" class="site-menu-backdrop" data-site-menu-close tabindex="-1"><span class="sr-only">메뉴 닫기</span></button>
+    <aside class="site-mobile-panel" role="dialog" aria-modal="true" aria-label="사이트 메뉴">
+        <div class="site-menu-head">
+            <strong>메뉴</strong>
+            <button type="button" data-site-menu-close>닫기</button>
+        </div>
+        <nav>
+            @foreach ($items as $item)
+                <a href="{{ $item['url'] ?? '#' }}" data-site-menu-link>{{ $item['label'] ?? '메뉴' }}</a>
+            @endforeach
+        </nav>
+        <a class="site-menu-cta" href="{{ $cta['url'] ?? '#download' }}" data-site-menu-link>{{ $cta['label'] ?? '앱 설치하기' }}</a>
+    </aside>
+</div>

@@ -241,10 +241,31 @@ JS);
         $this->assertFileExists(base_path('design.md'));
     }
 
+    public function test_install_command_can_install_app_launch_design(): void
+    {
+        $this->artisan('laravel-site:install', ['--design' => 'app-launch'])
+            ->assertExitCode(0);
+
+        $home = File::get(base_path('resources/views/site/home.blade.php'));
+        $script = File::get(base_path('resources/js/site.js'));
+
+        $this->assertStringContainsString('가고 싶은 곳을, 오늘의 동선으로.', $home);
+        $this->assertStringContainsString('앱 설치하기', $home);
+        $this->assertStringContainsString("'preset' => env('LARAVEL_SITE_PRESET', 'app-launch')", File::get(base_path('config/laravel-site.php')));
+        $this->assertStringContainsString('function initSiteReveals()', $script);
+        $this->assertStringContainsString('IntersectionObserver', $script);
+        $this->assertStringContainsString('focusableSelector', $script);
+        $this->assertFileExists(base_path('public/media/app-launch-map.webp'));
+        $this->assertFileExists(base_path('public/media/app-launch-saved.webp'));
+        $this->assertFileExists(base_path('public/media/app-launch-friends.webp'));
+        $this->assertFileExists(base_path('design.md'));
+    }
+
     public function test_design_command_lists_available_designs(): void
     {
         $this->artisan('laravel-site:design', ['--list' => true])
             ->expectsOutput('Available Laravel Site designs:')
+            ->expectsOutput('- app-launch')
             ->expectsOutput('- clinic-clean')
             ->expectsOutput('- conversion')
             ->expectsOutput('- corporate-trust')
@@ -262,6 +283,7 @@ JS);
     public function test_new_designs_can_be_applied(): void
     {
         $expectations = [
+            'app-launch' => '가고 싶은 곳을, 오늘의 동선으로.',
             'corporate-trust' => 'Present your company with clarity',
             'local-business' => 'Help nearby customers call',
             'clinic-clean' => 'Create a calm path',
@@ -285,6 +307,9 @@ JS);
         $this->assertFileExists(base_path('public/media/yaver-studio-hero.mp4'));
         $this->assertFileExists(base_path('public/media/yaver-studio-coverr-61.mp4'));
         $this->assertFileExists(base_path('public/media/yaver-studio-coverr-01.mp4'));
+        $this->assertFileExists(base_path('public/media/app-launch-map.webp'));
+        $this->assertFileExists(base_path('public/media/app-launch-saved.webp'));
+        $this->assertFileExists(base_path('public/media/app-launch-friends.webp'));
 
         $this->artisan('laravel-site:design', [
             'design' => 'yaver',
@@ -300,6 +325,7 @@ JS);
     public function test_designs_ship_distinct_functional_sections(): void
     {
         $expectations = [
+            'app-launch' => ['저장해 둔 장소가 실제 하루가 됩니다.', '설치 전에 확인해 보세요.'],
             'conversion' => ['Lead form placeholder', 'Remove the objections'],
             'corporate-trust' => ['Company profile', 'Trust library'],
             'local-business' => ['Business hours', 'Map embed area'],
@@ -604,6 +630,9 @@ PHP);
             base_path('public/media/yaver-team.webp'),
             base_path('public/media/yaver-app-install.webp'),
             base_path('public/media/yaver-web-development.webp'),
+            base_path('public/media/app-launch-map.webp'),
+            base_path('public/media/app-launch-saved.webp'),
+            base_path('public/media/app-launch-friends.webp'),
             base_path('design.md'),
         ];
     }

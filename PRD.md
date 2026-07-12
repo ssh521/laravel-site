@@ -36,7 +36,7 @@
 - logo component
 - landing homepage with hero and section slots
 - reusable site components
-- `essential`, `conversion`, `corporate-trust`, `local-business`, `clinic-clean`, `portfolio-editorial`, `saas-product`, `event-promo`, `yaver`, `yaver-studio`, `package-guide` 디자인 원본
+- `essential`, `conversion`, `corporate-trust`, `local-business`, `clinic-clean`, `portfolio-editorial`, `saas-product`, `event-promo`, `yaver`, `yaver-studio`, `app-launch`, `package-guide` 디자인 원본
 - 디자인별 design token, 홈 화면, 컴포넌트, `design.md`
 - `design.md` AI/developer reference document
 

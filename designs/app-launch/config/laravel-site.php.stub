@@ -1,0 +1,37 @@
+<?php
+
+return [
+    'routes' => [
+        'home_path' => env('LARAVEL_SITE_HOME_PATH', '/'),
+        'home_name' => env('LARAVEL_SITE_HOME_NAME', 'site.home'),
+    ],
+
+    'brand' => [
+        'name' => env('LARAVEL_SITE_BRAND_NAME', '사이'),
+        'tagline' => '저장한 장소를 연결해 오늘의 동선을 만드는 로컬 발견 앱.',
+        'logo_text' => env('LARAVEL_SITE_BRAND_NAME', '사이'),
+    ],
+
+    'design' => [
+        'preset' => env('LARAVEL_SITE_PRESET', 'app-launch'),
+    ],
+
+    'navigation' => [
+        'cta' => ['label' => '앱 설치하기', 'url' => env('LARAVEL_SITE_APP_URL', '#download')],
+
+        'header' => [
+            ['label' => '홈', 'url' => '/', 'active' => true],
+            ['label' => '앱 화면', 'url' => '#screens'],
+            ['label' => '주요 기능', 'url' => '#features'],
+            ['label' => '사용 후기', 'url' => '#reviews'],
+            ['label' => '자주 묻는 질문', 'url' => '#faq'],
+        ],
+
+        'footer' => [
+            ['label' => '앱 화면', 'url' => '#screens'],
+            ['label' => '주요 기능', 'url' => '#features'],
+            ['label' => '사용 후기', 'url' => '#reviews'],
+            ['label' => '자주 묻는 질문', 'url' => '#faq'],
+        ],
+    ],
+];

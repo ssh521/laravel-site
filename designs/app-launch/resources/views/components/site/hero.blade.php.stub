@@ -1,0 +1,35 @@
+@props([
+    'eyebrow' => null,
+    'title',
+    'description' => null,
+    'primaryLabel' => null,
+    'primaryUrl' => '#',
+    'secondaryLabel' => null,
+    'secondaryUrl' => '#',
+])
+
+<section class="site-launch-hero">
+    <div class="site-launch-hero__inner">
+        <div class="site-launch-hero__copy" data-site-reveal>
+            @if ($eyebrow)
+                <p class="site-eyebrow">{{ $eyebrow }}</p>
+            @endif
+            <h1>{{ $title }}</h1>
+            @if ($description)
+                <p class="site-launch-hero__description">{{ $description }}</p>
+            @endif
+            @if ($primaryLabel || $secondaryLabel)
+                <div class="site-launch-hero__actions">
+                    @if ($primaryLabel)<x-site.button :href="$primaryUrl" size="lg">{{ $primaryLabel }}</x-site.button>@endif
+                    @if ($secondaryLabel)<x-site.button :href="$secondaryUrl" variant="secondary" size="lg">{{ $secondaryLabel }}</x-site.button>@endif
+                </div>
+            @endif
+        </div>
+
+        <div class="site-launch-hero__visual" data-site-reveal>
+            <div class="site-device site-device--hero">
+                <img src="{{ asset('media/app-launch-map.webp') }}" alt="사이 앱에서 저장한 장소를 동선으로 연결한 지도 화면" width="941" height="1672" fetchpriority="high">
+            </div>
+        </div>
+    </div>
+</section>

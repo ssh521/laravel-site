@@ -1,0 +1,6 @@
+@props(['title', 'description' => null])
+
+<article {{ $attributes->merge(['class' => 'site-feature-card']) }} data-site-reveal>
+    <h3>{{ $title }}</h3>
+    @if ($description)<p>{{ $description }}</p>@endif
+</article>

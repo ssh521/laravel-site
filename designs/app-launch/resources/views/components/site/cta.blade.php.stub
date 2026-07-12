@@ -1,0 +1,17 @@
+@props([
+    'id' => null,
+    'title',
+    'description' => null,
+    'buttonLabel' => null,
+    'buttonUrl' => '#',
+])
+
+<section @if ($id) id="{{ $id }}" @endif class="site-download-cta">
+    <div class="site-download-cta__inner" data-site-reveal>
+        <div>
+            <h2>{{ $title }}</h2>
+            @if ($description)<p>{{ $description }}</p>@endif
+        </div>
+        @if ($buttonLabel)<x-site.button :href="$buttonUrl" size="lg" class="site-download-button">{{ $buttonLabel }}</x-site.button>@endif
+    </div>
+</section>

@@ -65,6 +65,7 @@ php artisan laravel-admin:install --with=blog,bbs
 
 ```bash
 php artisan laravel-site:install --design=essential
+php artisan laravel-site:install --design=app-launch
 php artisan laravel-site:install --design=conversion
 php artisan laravel-site:install --design=corporate-trust
 php artisan laravel-site:install --design=yaver
@@ -97,6 +98,7 @@ php artisan laravel-site:design --list
 
 ```bash
 php artisan laravel-site:design clinic-clean --force
+php artisan laravel-site:design app-launch --force
 php artisan laravel-site:design corporate-trust --force
 php artisan laravel-site:design package-guide --force
 php artisan laravel-site:design conversion --force
@@ -113,6 +115,7 @@ php artisan laravel-site:design yaver-studio --force
 
 ```text
 designs/
+├── app-launch/
 ├── clinic-clean/
 ├── corporate-trust/
 ├── conversion/
@@ -135,6 +138,7 @@ designs/
 | 디자인 | 용도 |
 |--------|------|
 | `package-guide` | 기본 설치 화면, 패키지 설명 및 설치/추가 방법 안내 |
+| `app-launch` | 실제 앱 화면과 사용 장면으로 설치 전환을 만드는 소비자 앱 출시형 |
 | `essential` | 범용 회사/서비스 소개형 |
 | `conversion` | 광고 유입, 상담 신청, 문의 전환형 |
 | `corporate-trust` | B2B 회사, 제조, 전문 서비스 신뢰형 |
