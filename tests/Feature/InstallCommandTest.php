@@ -56,7 +56,11 @@ class InstallCommandTest extends TestCase
         $this->assertStringContainsString('Public Site', File::get(base_path('resources/views/site/home.blade.php')));
         $this->assertStringContainsString('공개 사이트를 만든 뒤 관리자와 기능 패키지로 확장합니다', File::get(base_path('resources/views/site/home.blade.php')));
         $this->assertStringContainsString('composer require ssh521/laravel-admin', File::get(base_path('resources/views/site/home.blade.php')));
-        $this->assertStringContainsString('php artisan laravel-admin:install --with=users,file', File::get(base_path('resources/views/site/home.blade.php')));
+        $this->assertStringContainsString('php artisan laravel-admin:install --with=file', File::get(base_path('resources/views/site/home.blade.php')));
+        $this->assertStringNotContainsString('laravel-admin-users', File::get(base_path('resources/views/site/home.blade.php')));
+        $this->assertStringContainsString('>13</p>', File::get(base_path('resources/views/site/home.blade.php')));
+        $this->assertStringContainsString('background: var(--site-color-page);', File::get(base_path('resources/css/site.css')));
+        $this->assertStringContainsString('color: var(--site-color-text);', File::get(base_path('resources/css/site.css')));
         $this->assertStringContainsString("'preset' => env('LARAVEL_SITE_PRESET', 'package-guide')", File::get(base_path('config/laravel-site.php')));
     }
 
@@ -138,7 +142,7 @@ class InstallCommandTest extends TestCase
         $this->assertStringNotContainsString('site-snap-section', $cta);
         $this->assertStringNotContainsString('data-jarallax', $cta);
         $this->assertStringNotContainsString('function initSiteScrollLinks()', $script);
-        $this->assertStringContainsString("prefers-reduced-motion: reduce", $script);
+        $this->assertStringContainsString('prefers-reduced-motion: reduce', $script);
         $this->assertStringContainsString("window.jarallax(elements, 'destroy')", $script);
         $this->assertStringContainsString('video.pause()', $script);
     }

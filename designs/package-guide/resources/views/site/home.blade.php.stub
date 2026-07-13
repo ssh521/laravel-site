@@ -118,7 +118,7 @@ php artisan laravel-site:install --design=conversion</code></pre>
         <div class="grid min-w-0 gap-8 lg:grid-cols-[0.95fr_1.05fr] lg:items-start">
             <div class="grid min-w-0 gap-4 sm:grid-cols-2">
                 <x-site.feature-card title="ssh521/laravel-admin" description="관리자 레이아웃, 메뉴, 권한 기반을 추가합니다." />
-                <x-site.feature-card title="admin-users / file" description="관리자 사용자 관리와 파일 관리 기능을 얹습니다." />
+                <x-site.feature-card title="admin core / file" description="관리자 회원 관리는 core에서 제공하고, 파일 관리는 기능 패키지로 추가합니다." />
                 <x-site.feature-card title="blog / bbs / page" description="블로그, 게시판, 페이지 CMS로 콘텐츠 운영을 확장합니다." />
                 <x-site.feature-card title="popup / notification" description="팝업, 배너, 공지바, 알림 기능을 운영 화면에 연결합니다." />
             </div>
@@ -132,9 +132,9 @@ php artisan laravel-site:install
 composer require ssh521/laravel-admin
 php artisan laravel-admin:install
 
-# 3. 자주 쓰는 관리자 기능 패키지
-composer require ssh521/laravel-admin-users ssh521/laravel-file
-php artisan laravel-admin:install --with=users,file
+# 3. 파일 관리 기능 패키지
+composer require ssh521/laravel-file
+php artisan laravel-admin:install --with=file
 
 # 4. 콘텐츠 기능 패키지 예시
 composer require ssh521/laravel-blog ssh521/laravel-bbs
@@ -156,12 +156,12 @@ php artisan laravel-admin:install --with=blog,bbs</code></pre>
 
             <div class="grid grid-cols-2 gap-px overflow-hidden border border-(--site-color-border) bg-(--site-color-border) md:grid-cols-4">
                 <div class="bg-(--site-color-surface) p-5">
-                    <p class="text-3xl font-black text-(--site-color-text)">12</p>
+                    <p class="text-3xl font-black text-(--site-color-text)">13</p>
                     <p class="mt-2 text-sm text-(--site-color-muted)">design presets</p>
                 </div>
                 <div class="bg-(--site-color-surface) p-5">
-                    <p class="text-3xl font-black text-(--site-color-text)">8</p>
-                    <p class="mt-2 text-sm text-(--site-color-muted)">generated paths</p>
+                    <p class="text-3xl font-black text-(--site-color-text)">10+</p>
+                    <p class="mt-2 text-sm text-(--site-color-muted)">editable files</p>
                 </div>
                 <div class="bg-(--site-color-surface) p-5">
                     <p class="text-3xl font-black text-(--site-color-text)">1</p>
@@ -176,11 +176,18 @@ php artisan laravel-admin:install --with=blog,bbs</code></pre>
 
         <div class="mt-10 divide-y divide-(--site-color-border) border-y border-(--site-color-border)">
             @foreach ([
+                ['name' => 'app-launch', 'label' => '소비자 앱 출시/설치 전환'],
+                ['name' => 'clinic-clean', 'label' => '병원·전문직 신뢰 안내'],
                 ['name' => 'essential', 'label' => '범용 회사/서비스 소개'],
                 ['name' => 'conversion', 'label' => '광고 유입/문의 전환'],
                 ['name' => 'corporate-trust', 'label' => 'B2B 회사/전문 서비스'],
+                ['name' => 'event-promo', 'label' => '행사·세미나 프로모션'],
                 ['name' => 'local-business', 'label' => '오프라인 매장'],
+                ['name' => 'portfolio-editorial', 'label' => '스튜디오·포트폴리오'],
                 ['name' => 'saas-product', 'label' => '디지털 제품 소개'],
+                ['name' => 'swiss-corporate', 'label' => '기술·제조 기업 소개'],
+                ['name' => 'yaver', 'label' => '앱 설치·개발 서비스 소개'],
+                ['name' => 'yaver-studio', 'label' => '디지털 제작사 스튜디오'],
             ] as $design)
                 <div class="grid gap-3 py-4 text-sm md:grid-cols-[1fr_auto] md:items-center">
                     <span class="text-xl font-bold text-(--site-color-text)">{{ $design['name'] }}</span>

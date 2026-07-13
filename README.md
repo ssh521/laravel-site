@@ -38,9 +38,9 @@ php artisan laravel-site:install
 composer require ssh521/laravel-admin
 php artisan laravel-admin:install
 
-# 자주 쓰는 관리자 기능 패키지
-composer require ssh521/laravel-admin-users ssh521/laravel-file
-php artisan laravel-admin:install --with=users,file
+# 파일 관리 기능 패키지
+composer require ssh521/laravel-file
+php artisan laravel-admin:install --with=file
 
 # 콘텐츠 기능 패키지 예시
 composer require ssh521/laravel-blog ssh521/laravel-bbs
@@ -51,8 +51,7 @@ php artisan laravel-admin:install --with=blog,bbs
 
 | 패키지 | 용도 |
 |--------|------|
-| `ssh521/laravel-admin` | 관리자 레이아웃, 메뉴, 권한 기반 |
-| `ssh521/laravel-admin-users` | 관리자 사용자 관리 |
+| `ssh521/laravel-admin` | 관리자 레이아웃, 메뉴, 권한, 관리자 회원 관리 |
 | `ssh521/laravel-blog` | 블로그 콘텐츠 관리 |
 | `ssh521/laravel-bbs` | 게시판/커뮤니티 |
 | `ssh521/laravel-file` | 파일 관리 |

@@ -67,6 +67,8 @@ html {
 }
 
 .site-shell {
+    background: var(--site-color-page);
+    color: var(--site-color-text);
     font-family: ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
     overflow-x: clip;
 }

@@ -34,7 +34,7 @@
 - `--site-color-accent-contrast`: 강조색 위 텍스트
 - `--site-color-hero`: 히어로 배경
 
-기본 프리셋은 `package-guide`입니다. 고객 사이트용 프리셋으로 `essential`, `editorial`, `conversion` 계열 토큰도 함께 유지합니다. 새 프리셋을 만들 때는 `.site-preset-{name}` 클래스를 추가하고 `config/laravel-site.php`의 `design.preset` 값을 변경합니다.
+기본 프리셋은 `package-guide`이며 dark 배경과 cyan 강조색을 사용합니다. 고객 사이트로 전환할 때는 이 파일 안에 다른 프리셋 토큰을 추가하지 않고 `essential`, `portfolio-editorial`, `conversion` 등 별도 디자인 프리셋을 적용합니다.
 
 ## 컴포넌트 규칙
 

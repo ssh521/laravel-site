@@ -34,9 +34,12 @@ class DesignCatalogTest extends TestCase
     {
         $catalog = app(DesignCatalog::class);
         $yaver = $catalog->find('yaver');
+        $packageGuide = $catalog->find('package-guide');
 
         $this->assertSame('auto', $yaver['theme']);
         $this->assertSame('bottom-sheet', $yaver['navigation']['mobile']);
+        $this->assertSame('dark', $packageGuide['theme']);
+        $this->assertSame('cyan', $packageGuide['accent']);
 
         $appDesigns = $catalog->filter(['category' => 'app', 'language' => 'ko']);
 
