@@ -1,0 +1,12 @@
+@php($items = config('laravel-site.navigation.header', []))
+<header class="site-header" data-site-header>
+    <div class="site-header-grid">
+        <x-site.logo />
+        <nav class="site-desktop-nav" aria-label="주요 메뉴">
+            @foreach ($items as $item)
+                <a href="{{ $item['url'] }}">{{ $item['label'] }}</a>
+            @endforeach
+        </nav>
+        <x-site.button class="site-header-cta" :href="config('laravel-site.navigation.cta.url')">{{ config('laravel-site.navigation.cta.label') }}</x-site.button>
+    </div>
+</header>

@@ -1,0 +1,34 @@
+<?php
+
+return [
+    'routes' => [
+        'home_path' => env('LARAVEL_SITE_HOME_PATH', '/'),
+        'home_name' => env('LARAVEL_SITE_HOME_NAME', 'site.home'),
+    ],
+
+    'brand' => [
+        'name' => env('LARAVEL_SITE_BRAND_NAME', '기준산업'),
+        'tagline' => '설계 검토부터 정밀 가공과 품질 확인까지 연결하는 제조 파트너.',
+        'logo_text' => env('LARAVEL_SITE_BRAND_NAME', '기준산업'),
+    ],
+
+    'design' => [
+        'preset' => env('LARAVEL_SITE_PRESET', 'swiss-corporate'),
+    ],
+
+    'navigation' => [
+        'cta' => ['label' => '사업 문의', 'url' => env('LARAVEL_SITE_CONTACT_URL', '#contact')],
+        'header' => [
+            ['label' => '역량', 'url' => '#capabilities'],
+            ['label' => '생산 환경', 'url' => '#production'],
+            ['label' => '프로젝트', 'url' => '#projects'],
+            ['label' => '원칙', 'url' => '#principles'],
+        ],
+        'footer' => [
+            ['label' => '역량', 'url' => '#capabilities'],
+            ['label' => '생산 환경', 'url' => '#production'],
+            ['label' => '프로젝트', 'url' => '#projects'],
+            ['label' => '사업 문의', 'url' => '#contact'],
+        ],
+    ],
+];

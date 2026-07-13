@@ -426,8 +426,8 @@ query string은 catalog UI 상태에만 사용한다.
 
 | 이름 | 핵심 스타일 | Desktop nav | Mobile nav |
 | --- | --- | --- | --- |
-| `app-launch` | 제품 장치 중심, 선명한 제품 소개 | transparent overlay | bottom sheet |
-| `swiss-corporate` | 강한 그리드와 타이포그래피 | two-tier corporate | accordion drawer |
+| `app-launch` | 제품 장치 중심, 선명한 제품 소개 | compact floating | bottom action sheet |
+| `swiss-corporate` | 강한 그리드와 타이포그래피 | grid masthead | grid index panel |
 | `studio-cinematic` | full-bleed media와 큰 여백 | desktop offcanvas | fullscreen takeover |
 | `portfolio-sidebar` | 작업 중심 비정형 갤러리 | sidebar rail | push content |
 | `editorial-service` | 콘텐츠 중심 에디토리얼 | centered logo split | header dropdown |
@@ -517,7 +517,7 @@ query string은 catalog UI 상태에만 사용한다.
 작업:
 
 - `app-launch` (완료)
-- `swiss-corporate`
+- `swiss-corporate` (완료)
 - `studio-cinematic`
 - README, docs, catalog, tests 갱신
 

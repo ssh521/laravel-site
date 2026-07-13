@@ -1,0 +1,17 @@
+<section class="site-hero" aria-labelledby="hero-title">
+    <div class="site-grid">
+        <p class="site-hero-kicker" data-reveal>정밀 제조 파트너</p>
+        <h1 id="hero-title" data-reveal>정확한 기준으로,<br>산업을 움직입니다.</h1>
+        <div class="site-hero-copy" data-reveal>
+            <p>설계 검토부터 정밀 가공과 품질 확인까지 하나의 생산 흐름으로 연결합니다.</p>
+            <div class="site-hero-actions">
+                <x-site.button :href="config('laravel-site.navigation.cta.url')">사업 문의</x-site.button>
+                <x-site.button href="#capabilities" variant="text">역량 보기</x-site.button>
+            </div>
+        </div>
+        <figure class="site-hero-media" data-reveal>
+            <img src="{{ asset('media/swiss-corporate-components.webp') }}" alt="검사대 위에 정렬된 정밀 가공 부품" width="1536" height="1024" fetchpriority="high">
+            <figcaption>정밀 가공 부품 검사 공정</figcaption>
+        </figure>
+    </div>
+</section>

@@ -1,0 +1,10 @@
+<section class="site-contact" id="contact" aria-labelledby="contact-title">
+    <div class="site-contact-grid">
+        <p data-reveal>새 프로젝트</p>
+        <h2 id="contact-title" data-reveal>도면에서 양산까지,<br>같은 기준으로 시작합니다.</h2>
+        <div data-reveal>
+            <p>필요한 공정과 품질 조건을 알려주시면 검토 범위부터 정리해 드립니다.</p>
+            <x-site.button href="mailto:contact@example.com" variant="secondary">사업 문의</x-site.button>
+        </div>
+    </div>
+</section>

@@ -261,6 +261,26 @@ JS);
         $this->assertFileExists(base_path('design.md'));
     }
 
+    public function test_install_command_can_install_swiss_corporate_design(): void
+    {
+        $this->artisan('laravel-site:install', ['--design' => 'swiss-corporate'])
+            ->assertExitCode(0);
+
+        $home = File::get(base_path('resources/views/site/home.blade.php'));
+        $hero = File::get(base_path('resources/views/components/site/hero.blade.php'));
+        $script = File::get(base_path('resources/js/site.js'));
+
+        $this->assertStringContainsString('정확한 기준으로,', $hero);
+        $this->assertStringContainsString('생산의 빈틈을 줄이는 네 가지 연결', $home);
+        $this->assertStringContainsString("'preset' => env('LARAVEL_SITE_PRESET', 'swiss-corporate')", File::get(base_path('config/laravel-site.php')));
+        $this->assertStringContainsString('function initSiteReveals()', $script);
+        $this->assertStringContainsString('focusableSelector', $script);
+        $this->assertFileExists(base_path('public/media/swiss-corporate-components.webp'));
+        $this->assertFileExists(base_path('public/media/swiss-corporate-factory.webp'));
+        $this->assertFileExists(base_path('public/media/swiss-corporate-engineer.webp'));
+        $this->assertFileExists(base_path('design.md'));
+    }
+
     public function test_design_command_lists_available_designs(): void
     {
         $this->artisan('laravel-site:design', ['--list' => true])
@@ -275,6 +295,7 @@ JS);
             ->expectsOutput('- package-guide')
             ->expectsOutput('- portfolio-editorial')
             ->expectsOutput('- saas-product')
+            ->expectsOutput('- swiss-corporate')
             ->expectsOutput('- yaver')
             ->expectsOutput('- yaver-studio')
             ->assertExitCode(0);
@@ -290,6 +311,7 @@ JS);
             'package-guide' => 'Public Site',
             'portfolio-editorial' => 'Give the work room',
             'saas-product' => 'Explain the product',
+            'swiss-corporate' => '생산의 빈틈을 줄이는 네 가지 연결',
             'yaver' => '설치되는 앱, 신뢰받는 사이트.',
             'yaver-studio' => '아이디어를 실제 서비스로 연결합니다.',
             'event-promo' => 'Give visitors the reason',
@@ -310,6 +332,9 @@ JS);
         $this->assertFileExists(base_path('public/media/app-launch-map.webp'));
         $this->assertFileExists(base_path('public/media/app-launch-saved.webp'));
         $this->assertFileExists(base_path('public/media/app-launch-friends.webp'));
+        $this->assertFileExists(base_path('public/media/swiss-corporate-components.webp'));
+        $this->assertFileExists(base_path('public/media/swiss-corporate-factory.webp'));
+        $this->assertFileExists(base_path('public/media/swiss-corporate-engineer.webp'));
 
         $this->artisan('laravel-site:design', [
             'design' => 'yaver',
@@ -332,6 +357,7 @@ JS);
             'clinic-clean' => ['Dr. Example Name', 'Reduce anxiety'],
             'portfolio-editorial' => ['Selected work', 'Studio facts'],
             'saas-product' => ['Show the product shape early', 'Pricing'],
+            'swiss-corporate' => ['생산의 빈틈을 줄이는 네 가지 연결', '협업을 단순하게 만드는 운영 기준'],
             'yaver' => ['앱 설치는 안내부터 시작됩니다.', '개발 사이트는 신뢰를 설명하는 도구입니다.'],
             'event-promo' => ['Event details', 'Speakers'],
             'yaver-studio' => ['필요한 범위를 함께 정하고 바로 만듭니다.', '결정이 필요한 순간마다 결과물을 확인합니다.'],
@@ -633,6 +659,9 @@ PHP);
             base_path('public/media/app-launch-map.webp'),
             base_path('public/media/app-launch-saved.webp'),
             base_path('public/media/app-launch-friends.webp'),
+            base_path('public/media/swiss-corporate-components.webp'),
+            base_path('public/media/swiss-corporate-factory.webp'),
+            base_path('public/media/swiss-corporate-engineer.webp'),
             base_path('design.md'),
         ];
     }

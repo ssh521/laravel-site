@@ -1,0 +1,11 @@
+@props(['items' => []])
+<div class="site-mobile-menu" id="site-mobile-menu" hidden data-site-mobile-menu>
+    <div class="site-mobile-menu-grid" data-site-mobile-panel>
+        <p>메뉴 인덱스</p>
+        <nav aria-label="모바일 메뉴">
+            @foreach ($items as $index => $item)
+                <a href="{{ $item['url'] }}"><span>{{ str_pad($index + 1, 2, '0', STR_PAD_LEFT) }}</span>{{ $item['label'] }}</a>
+            @endforeach
+        </nav>
+    </div>
+</div>

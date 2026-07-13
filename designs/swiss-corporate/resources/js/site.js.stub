@@ -1,0 +1,91 @@
+const focusableSelector = 'a[href], button:not([disabled]), input:not([disabled]), select:not([disabled]), textarea:not([disabled]), [tabindex]:not([tabindex="-1"])';
+
+function initSiteMobileMenu() {
+    const toggle = document.querySelector('[data-site-menu-toggle]');
+    const menu = document.querySelector('[data-site-mobile-menu]');
+    const panel = document.querySelector('[data-site-mobile-panel]');
+    const symbol = document.querySelector('[data-site-menu-symbol]');
+
+    if (!toggle || !menu || !panel) return;
+
+    const close = (restoreFocus = true) => {
+        menu.hidden = true;
+        toggle.setAttribute('aria-expanded', 'false');
+        document.body.classList.remove('site-menu-open');
+        if (symbol) symbol.textContent = '＋';
+        if (restoreFocus) toggle.focus();
+    };
+
+    const open = () => {
+        menu.hidden = false;
+        toggle.setAttribute('aria-expanded', 'true');
+        document.body.classList.add('site-menu-open');
+        if (symbol) symbol.textContent = '×';
+        panel.querySelector(focusableSelector)?.focus();
+    };
+
+    toggle.addEventListener('click', () => {
+        toggle.getAttribute('aria-expanded') === 'true' ? close(false) : open();
+    });
+
+    menu.querySelectorAll('a').forEach((link) => link.addEventListener('click', () => close(false)));
+
+    document.addEventListener('keydown', (event) => {
+        if (menu.hidden) return;
+
+        if (event.key === 'Escape') {
+            event.preventDefault();
+            close();
+            return;
+        }
+
+        if (event.key !== 'Tab') return;
+
+        const focusable = [...panel.querySelectorAll(focusableSelector)];
+        const first = focusable[0];
+        const last = focusable[focusable.length - 1];
+
+        if (event.shiftKey && document.activeElement === first) {
+            event.preventDefault();
+            last?.focus();
+        } else if (!event.shiftKey && document.activeElement === last) {
+            event.preventDefault();
+            first?.focus();
+        }
+    });
+
+    window.matchMedia('(min-width: 901px)').addEventListener('change', (event) => {
+        if (event.matches) close(false);
+    });
+}
+
+function initSiteReveals() {
+    const elements = document.querySelectorAll('[data-reveal]');
+    const reducedMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+
+    if (reducedMotion || !('IntersectionObserver' in window)) {
+        elements.forEach((element) => element.classList.add('is-visible'));
+        return;
+    }
+
+    const observer = new IntersectionObserver((entries) => {
+        entries.forEach((entry) => {
+            if (!entry.isIntersecting) return;
+            entry.target.classList.add('is-visible');
+            observer.unobserve(entry.target);
+        });
+    }, { threshold: 0.14, rootMargin: '0px 0px -6% 0px' });
+
+    elements.forEach((element) => observer.observe(element));
+}
+
+function initSite() {
+    initSiteMobileMenu();
+    initSiteReveals();
+}
+
+if (document.readyState === 'loading') {
+    document.addEventListener('DOMContentLoaded', initSite, { once: true });
+} else {
+    initSite();
+}

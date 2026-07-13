@@ -6,7 +6,7 @@
 
 ## 요약
 
-Phase 0 기준선은 11개 프리셋으로 시작했다. navigation 다양화와 `app-launch` 추가 후 현재 프리셋은 12개이며, 각 대표 프리셋은 목적에 맞는 desktop과 mobile navigation family를 사용한다.
+Phase 0 기준선은 11개 프리셋으로 시작했다. navigation 다양화와 `app-launch`, `swiss-corporate` 추가 후 현재 프리셋은 13개이며, 각 대표 프리셋은 목적에 맞는 desktop과 mobile navigation family를 사용한다.
 
 가장 큰 중복은 다음과 같다.
 
@@ -25,6 +25,7 @@ Phase 0 기준선은 11개 프리셋으로 시작했다. navigation 다양화와
 | `essential` | general service | minimal, neutral | classic-horizontal | right-drawer | asymmetric-media | 2 | 개선 필요, 범용 기준 |
 | `conversion` | campaign | direct, conversion | classic-horizontal | right-drawer | conversion-form | 2 | 유지, form 전환성 강화 |
 | `corporate-trust` | corporate, B2B | structured, trust | two-tier-corporate | accordion-drawer | asymmetric-media | 2 | 개선 완료 |
+| `swiss-corporate` | corporate, manufacturing | swiss, editorial | grid-masthead | grid-index-panel | editorial-grid-image | 4 | 신규 대표 프리셋 |
 | `local-business` | local store | friendly, practical | classic-horizontal | right-drawer | local-action | 2 | header-dropdown으로 개선 후보 |
 | `clinic-clean` | clinic, professional | calm, trust | classic-horizontal | right-drawer | asymmetric-media | 2 | nav보다 콘텐츠 신뢰 구조 강화 |
 | `portfolio-editorial` | portfolio | editorial, gallery | sidebar-rail | push-content | editorial-type | 4 | 개선 완료 |
@@ -67,6 +68,20 @@ Phase 0 기준선은 11개 프리셋으로 시작했다. navigation 다양화와
 | CTA | `앱 설치하기` 고정 | trial, consultation | 모든 설치 목적 CTA를 한 문구로 통일 |
 | Motion | one-shot reveal과 action sheet | basic reveal | 정보 순서와 메뉴 상태 전환에만 motion 사용 |
 
+## Swiss Corporate 차별성 검토
+
+| 비교 항목 | `swiss-corporate` | `corporate-trust` | 차이 설명 |
+| --- | --- | --- | --- |
+| Target audience | 기술 검토자, 제조 구매 담당자 | 일반 B2B 의사결정자 | 제조 공정과 검사 흐름을 우선 전달 |
+| Desktop nav | grid masthead | two-tier corporate | 한 줄 12열 셀 구조로 정보 위계를 단순화 |
+| Mobile nav | grid index panel | accordion drawer | 측면 패널 대신 헤더 아래 번호형 인덱스 사용 |
+| Hero | 대형 한국어 타이포와 생산 이미지 | 설명형 비대칭 미디어 | 지표 카드 없이 메시지와 실제 부품을 전면 배치 |
+| Typography | 매우 굵은 neo-grotesk sans | 안정적인 corporate sans | 좁은 자간과 큰 크기로 Swiss 포스터 리듬 형성 |
+| Color/material | off-white, charcoal, signal red | white, navy, cobalt | 단일 빨강과 1px 정렬선, 모든 모서리 직각 |
+| Section rhythm | 역량 행, panorama, mosaic, 비대칭 원칙 열 | 회사 소개, 카드 grid, trust library | 섹션마다 다른 열 점유로 반복 카드 제거 |
+| Theme | 운영체제 연동 auto | light | 두 테마에서 동일한 정보 계층 유지 |
+| Motion | one-shot reveal | 최소 reveal | 읽기 순서에만 한 번 적용하고 reduced motion 지원 |
+
 ## 권장 Navigation 재배치
 
 | Preset | 현재 | 권장 Desktop | 권장 Mobile |
@@ -75,6 +90,7 @@ Phase 0 기준선은 11개 프리셋으로 시작했다. navigation 다양화와
 | `essential` | classic/right-drawer | classic-horizontal | right-drawer |
 | `conversion` | classic/right-drawer | floating-island | bottom-sheet |
 | `corporate-trust` | classic/right-drawer | two-tier-corporate | accordion-drawer |
+| `swiss-corporate` | 신규 | grid-masthead | grid-index-panel |
 | `local-business` | classic/right-drawer | classic-horizontal | header-dropdown |
 | `clinic-clean` | classic/right-drawer | centered-logo-split | accordion-drawer |
 | `portfolio-editorial` | classic/right-drawer | sidebar-rail | push-content |

@@ -1,0 +1,3 @@
+.site-mobile-menu { position: fixed; inset: var(--site-header-height) 0 auto; background: var(--site-color-page); }
+.site-mobile-menu-grid { display: grid; grid-template-columns: 4.25rem minmax(0, 1fr); max-height: calc(100dvh - var(--site-header-height)); overflow-y: auto; }
+.site-mobile-menu nav a { display: grid; grid-template-columns: 2.5rem 1fr; min-height: 3.5rem; align-items: center; }

@@ -1,0 +1,51 @@
+<x-layouts.site>
+    <x-site.hero />
+
+    <x-site.section id="capabilities" label="01 / 역량" title="생산의 빈틈을 줄이는 네 가지 연결">
+        <div class="site-capability-list">
+            <x-site.capability-row number="01" title="설계 검토" description="도면과 사용 환경을 함께 검토해 가공 조건과 위험 요소를 먼저 정리합니다." output="도면 검토 · 공정 제안" />
+            <x-site.capability-row number="02" title="정밀 가공" description="소재 특성과 공차 기준에 맞춰 CNC 밀링과 선반 공정을 구성합니다." output="시제품 · 양산 부품" />
+            <x-site.capability-row number="03" title="표면 처리" description="사용 목적에 맞는 후처리 사양을 협력 공정과 함께 관리합니다." output="아노다이징 · 연마" />
+            <x-site.capability-row number="04" title="품질 확인" description="측정 기준과 검사 결과를 생산 이력과 연결해 다음 발주까지 남깁니다." output="검사 성적 · 이력 관리" />
+        </div>
+    </x-site.section>
+
+    <section class="site-production" id="production" aria-labelledby="production-title">
+        <div class="site-production-heading site-grid">
+            <p class="site-section-label" data-reveal>02 / 생산 환경</p>
+            <h2 id="production-title" data-reveal>공정이 보이면<br>결정이 빨라집니다.</h2>
+            <p data-reveal>장비와 작업자가 같은 기준을 공유하도록 생산 흐름을 단순하게 유지합니다.</p>
+        </div>
+        <figure data-reveal>
+            <img src="{{ asset('media/swiss-corporate-factory.webp') }}" alt="CNC 설비와 기술자가 작업 중인 제조 현장" width="1536" height="1024" loading="lazy">
+            <figcaption><span>생산 현장</span><span>가공 · 측정 · 기록</span></figcaption>
+        </figure>
+    </section>
+
+    <x-site.section id="projects" label="03 / 프로젝트" title="품질은 결과가 아니라 작업 방식입니다.">
+        <div class="site-project-mosaic">
+            <figure class="site-project-wide" data-reveal>
+                <img src="{{ asset('media/swiss-corporate-components.webp') }}" alt="측정을 기다리는 금속 부품" width="1536" height="1024" loading="lazy">
+                <figcaption>01 / 형상과 공차를 함께 검토합니다.</figcaption>
+            </figure>
+            <div class="site-project-copy" data-reveal>
+                <p>요청 사양을 그대로 받는 데서 멈추지 않습니다. 생산 가능성과 검사 기준을 앞에서 맞춰 재작업을 줄입니다.</p>
+                <a href="#principles">작업 원칙 확인</a>
+            </div>
+            <figure class="site-project-portrait" data-reveal>
+                <img src="{{ asset('media/swiss-corporate-engineer.webp') }}" alt="디지털 캘리퍼스로 가공 부품을 측정하는 엔지니어" width="1024" height="1536" loading="lazy">
+                <figcaption>02 / 측정 결과를 다음 공정에 연결합니다.</figcaption>
+            </figure>
+        </div>
+    </x-site.section>
+
+    <x-site.section id="principles" label="04 / 원칙" title="협업을 단순하게 만드는 운영 기준">
+        <div class="site-principles">
+            <article data-reveal><span>먼저</span><h3>조건을 확인합니다.</h3><p>용도, 소재, 공차, 납기 중 우선순위를 프로젝트 시작 전에 정리합니다.</p></article>
+            <article data-reveal><span>진행 중</span><h3>변경을 기록합니다.</h3><p>공정 변경과 판단 근거를 공유해 담당자가 바뀌어도 같은 맥락을 유지합니다.</p></article>
+            <article data-reveal><span>출고 전</span><h3>결과를 남깁니다.</h3><p>합의한 검사 항목을 확인하고 다음 생산에 활용할 수 있는 이력을 전달합니다.</p></article>
+        </div>
+    </x-site.section>
+
+    <x-site.cta />
+</x-layouts.site>

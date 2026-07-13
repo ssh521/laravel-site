@@ -58,6 +58,7 @@ designs/{name}/
 | `essential` | 범용 회사/서비스 소개형 |
 | `conversion` | 광고 유입, 상담 신청, 문의 전환형 |
 | `corporate-trust` | B2B 회사, 제조, 전문 서비스 신뢰형 |
+| `swiss-corporate` | 강한 그리드, 굵은 타이포, 생산 이미지 중심의 기술·제조 기업형 |
 | `local-business` | 식당, 학원, 미용실, 오프라인 매장형 |
 | `clinic-clean` | 병원, 상담센터, 법률/세무/노무 전문직형 |
 | `portfolio-editorial` | 스튜디오, 작가, 브랜드 포트폴리오형 |

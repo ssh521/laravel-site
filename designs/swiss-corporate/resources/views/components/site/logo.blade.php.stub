@@ -1,0 +1,4 @@
+<a {{ $attributes->merge(['href' => url('/'), 'class' => 'site-logo']) }} aria-label="{{ config('laravel-site.brand.name') }} 홈">
+    <span class="site-logo-mark" aria-hidden="true">K</span>
+    <span>{{ config('laravel-site.brand.logo_text') }}</span>
+</a>

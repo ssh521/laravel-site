@@ -51,6 +51,7 @@ class DesignCatalogTest extends TestCase
             'app-launch' => ['compact-floating', 'bottom-action-sheet'],
             'portfolio-editorial' => ['sidebar-rail', 'push-content'],
             'corporate-trust' => ['two-tier-corporate', 'accordion-drawer'],
+            'swiss-corporate' => ['grid-masthead', 'grid-index-panel'],
             'saas-product' => ['transparent-overlay', 'bottom-sheet'],
             'yaver-studio' => ['desktop-offcanvas', 'fullscreen-takeover'],
             'event-promo' => ['transparent-overlay', 'header-dropdown'],
@@ -68,8 +69,8 @@ class DesignCatalogTest extends TestCase
     public function test_navigation_pattern_library_has_complete_sources(): void
     {
         $patterns = [
-            'desktop' => ['classic-horizontal', 'centered-logo-split', 'transparent-overlay', 'desktop-offcanvas', 'sidebar-rail', 'two-tier-corporate', 'compact-floating'],
-            'mobile' => ['right-drawer', 'fullscreen-takeover', 'bottom-sheet', 'header-dropdown', 'accordion-drawer', 'push-content', 'bottom-action-sheet'],
+            'desktop' => ['classic-horizontal', 'centered-logo-split', 'transparent-overlay', 'desktop-offcanvas', 'sidebar-rail', 'two-tier-corporate', 'compact-floating', 'grid-masthead'],
+            'mobile' => ['right-drawer', 'fullscreen-takeover', 'bottom-sheet', 'header-dropdown', 'accordion-drawer', 'push-content', 'bottom-action-sheet', 'grid-index-panel'],
         ];
 
         foreach ($patterns as $type => $names) {

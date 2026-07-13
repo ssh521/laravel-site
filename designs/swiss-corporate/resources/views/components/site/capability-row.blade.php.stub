@@ -1,0 +1,7 @@
+@props(['number', 'title', 'description', 'output'])
+
+<article class="site-capability" data-reveal>
+    <span class="site-capability-number">{{ $number }}</span>
+    <div><h3>{{ $title }}</h3><p>{{ $description }}</p></div>
+    <p class="site-capability-output">{{ $output }}</p>
+</article>
