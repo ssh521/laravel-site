@@ -1,157 +1,87 @@
-# Laravel Site
+# ssh521/laravel-site
 
-`ssh521/laravel-site`는 Laravel Starter Kit 기반 앱에 반응형 고객 웹사이트 스캐폴드를 설치하는 디자인 라이브러리 패키지입니다.
+[![Latest Version on Packagist](https://img.shields.io/packagist/v/ssh521/laravel-site.svg?style=flat-square)](https://packagist.org/packages/ssh521/laravel-site)
+[![Total Downloads](https://img.shields.io/packagist/dt/ssh521/laravel-site.svg?style=flat-square)](https://packagist.org/packages/ssh521/laravel-site)
+[![License](https://img.shields.io/packagist/l/ssh521/laravel-site.svg?style=flat-square)](LICENSE)
 
-관리자 페이지나 런타임 빌더가 아니라, 웹에이전시 개발자가 디자인을 선택해 설치한 뒤 생성된 Blade, CSS, JS, config 파일을 직접 수정해서 고객 사이트를 빠르게 납품하는 흐름을 목표로 합니다.
+Laravel Starter Kit 애플리케이션에 편집 가능한 반응형 공개 사이트를 설치하는 디자인 프리셋 패키지입니다.
+
+런타임 페이지 빌더가 아니라, 선택한 프리셋의 Blade, CSS, JavaScript와 설정 파일을 호스트 애플리케이션으로 생성합니다. 설치 후 생성된 파일을 프로젝트 요구에 맞게 자유롭게 수정할 수 있습니다.
+
+## 주요 기능
+
+- 13개의 반응형 사이트 디자인 프리셋
+- Blade 컴포넌트, Tailwind CSS와 JavaScript를 포함한 완성형 스캐폴드
+- Laravel Starter Kit 인증 화면과 분리된 공개 사이트 영역
+- `site.home` 이름을 사용하는 충돌 방지형 홈 route
+- 설치 후 모든 생성 파일을 호스트 애플리케이션이 소유하는 구조
+- 프리셋별 디자인 의도와 확장 규칙을 담은 `design.md`
 
 ## 요구 사항
 
 - PHP `^8.3`
-- Laravel `^13.0`
-- Livewire `^3.0|^4.0`
-- Tailwind CSS `^4.0`이 구성된 Laravel Starter Kit 앱
+- Laravel/Illuminate `^13.0`
+- Livewire `^3.0` 또는 `^4.0`
+- Tailwind CSS `^4.0`과 Laravel Vite가 구성된 Starter Kit 애플리케이션
 
-`resources/css/app.css`는 Tailwind v4 방식인 `@import "tailwindcss";`를 사용하고,
-`vite.config.js`에는 `@tailwindcss/vite` 플러그인이 설정되어 있어야 합니다.
-이 패키지는 `tailwind.config.js`나 v3의 `@tailwind base/components/utilities`
-지시어를 생성하지 않습니다.
+`resources/css/app.css`는 Tailwind v4의 `@import "tailwindcss";` 방식을 사용해야 합니다. 이 패키지는 `tailwind.config.js` 또는 Tailwind v3 지시어를 생성하지 않습니다.
 
 ## 설치
 
 ```bash
 composer require ssh521/laravel-site
 php artisan laravel-site:install
+npm install
+npm run build
 ```
 
-기본 설치 디자인은 `package-guide`입니다. Laravel Starter Kit 설치 직후 실행하면 메인 화면이 `ssh521/laravel-site` 패키지 설명, 설치 방법, 생성 파일 안내 화면으로 바뀝니다.
+기본 프리셋은 `package-guide`입니다. 설치 명령은 공개 사이트 route, Blade 화면과 컴포넌트, CSS, JavaScript, 설정, 미디어와 `design.md`를 생성하고 Vite input을 갱신합니다.
 
-## 관리자/기능 패키지로 확장
+> `--force`는 기존에 생성된 사이트 파일을 덮어씁니다. 커스터마이징한 프로젝트에서는 먼저 Git 변경 상태를 확인하고 복구 가능한 커밋을 만든 뒤 사용하십시오.
 
-`laravel-site`는 방문자용 public site를 생성하는 패키지입니다. 고객 사이트에 관리자 화면과 운영 기능이 필요하면 `ssh521/laravel-admin`을 추가한 뒤 기능 패키지를 이어서 설치합니다.
+## 디자인 선택
 
-```bash
-# 공개 사이트
-composer require ssh521/laravel-site
-php artisan laravel-site:install
-
-# 관리자 기반
-composer require ssh521/laravel-admin
-php artisan laravel-admin:install
-
-# 파일 관리 기능 패키지
-composer require ssh521/laravel-file
-php artisan laravel-admin:install --with=file
-
-# 콘텐츠 기능 패키지 예시
-composer require ssh521/laravel-blog ssh521/laravel-bbs
-php artisan laravel-admin:install --with=blog,bbs
-```
-
-확장 패키지는 프로젝트 성격에 맞게 선택합니다.
-
-| 패키지 | 용도 |
-|--------|------|
-| `ssh521/laravel-admin` | 관리자 레이아웃, 메뉴, 권한, 관리자 회원 관리 |
-| `ssh521/laravel-blog` | 블로그 콘텐츠 관리 |
-| `ssh521/laravel-bbs` | 게시판/커뮤니티 |
-| `ssh521/laravel-file` | 파일 관리 |
-| `ssh521/laravel-page` | 정적/반정적 페이지 CMS |
-| `ssh521/laravel-popup` | 팝업, 배너, 공지바 관리 |
-| `ssh521/laravel-notification` | 알림 관리 |
-| `ssh521/laravel-broadcast-notification` | 실시간 인앱 알림 |
-
-디자인을 선택해서 설치:
+설치할 때 프리셋을 지정할 수 있습니다.
 
 ```bash
 php artisan laravel-site:install --design=essential
 php artisan laravel-site:install --design=app-launch
-php artisan laravel-site:install --design=conversion
-php artisan laravel-site:install --design=corporate-trust
 php artisan laravel-site:install --design=swiss-corporate
-php artisan laravel-site:install --design=yaver
-php artisan laravel-site:install --design=yaver-studio
 ```
 
-기존 생성 파일을 다시 쓰려면:
-
-```bash
-php artisan laravel-site:install --force
-```
-
-route include를 자동으로 추가하지 않으려면:
-
-```bash
-php artisan laravel-site:install --skip-route-include
-```
-
-생성되는 사이트 홈 라우트 이름은 기본적으로 `site.home`입니다. 기존 Laravel Starter Kit의 `home` 라우트나 호스트 앱 전역 라우트와 충돌하지 않도록 네임스페이스 있는 이름을 유지하며, 꼭 필요한 경우에만 `LARAVEL_SITE_HOME_NAME`으로 변경합니다.
-
-## 디자인 라이브러리
-
-사용 가능한 디자인 목록:
+사용 가능한 프리셋은 명령으로 확인합니다.
 
 ```bash
 php artisan laravel-site:design --list
 ```
 
-설치 후 디자인 파일만 교체:
+설치 후 디자인 파일만 교체하려면 다음 명령을 사용합니다.
 
 ```bash
-php artisan laravel-site:design clinic-clean --force
-php artisan laravel-site:design app-launch --force
 php artisan laravel-site:design corporate-trust --force
-php artisan laravel-site:design package-guide --force
-php artisan laravel-site:design conversion --force
-php artisan laravel-site:design essential --force
-php artisan laravel-site:design event-promo --force
-php artisan laravel-site:design local-business --force
-php artisan laravel-site:design portfolio-editorial --force
-php artisan laravel-site:design saas-product --force
-php artisan laravel-site:design swiss-corporate --force
-php artisan laravel-site:design yaver --force
-php artisan laravel-site:design yaver-studio --force
 ```
 
-패키지의 디자인 원본은 다음 구조로 관리합니다.
+이 명령도 기존 사이트 디자인 파일을 덮어쓰므로 변경 내용을 먼저 확인하십시오.
 
-```text
-designs/
-├── app-launch/
-├── clinic-clean/
-├── corporate-trust/
-├── conversion/
-├── essential/
-├── event-promo/
-├── local-business/
-├── package-guide/
-├── portfolio-editorial/
-├── saas-product/
-├── swiss-corporate/
-├── yaver/
-└── yaver-studio/
-```
+## 디자인 프리셋
 
-각 디자인은 `home.blade.php`, site component, `site.css`, `site.js`, `config/laravel-site.php`, `design.md`를 함께 가집니다.
+| 프리셋 | 용도 |
+|---|---|
+| `package-guide` | 패키지 기능과 설치 흐름을 설명하는 기본 안내형 |
+| `app-launch` | 소비자 앱 출시와 설치 전환형 |
+| `clinic-clean` | 병원, 상담센터, 법률·세무·노무 전문직형 |
+| `conversion` | 광고 유입과 상담·문의 전환형 |
+| `corporate-trust` | B2B, 제조와 전문 서비스 신뢰형 |
+| `essential` | 범용 회사·서비스 소개형 |
+| `event-promo` | 세미나, 강의, 컨퍼런스와 단기 프로모션형 |
+| `local-business` | 식당, 학원, 미용실과 오프라인 매장형 |
+| `portfolio-editorial` | 스튜디오, 작가와 브랜드 포트폴리오형 |
+| `saas-product` | SaaS, 앱, API와 디지털 제품 소개형 |
+| `swiss-corporate` | 강한 그리드와 타이포 중심의 기술·제조 기업형 |
+| `yaver` | 앱 설치 안내와 디지털 제작사 소개형 |
+| `yaver-studio` | 스튜디오·디지털 제작사 소개형 |
 
-패키지 레벨의 프리셋 제작 기준은 [docs/designs.md](docs/designs.md)에 정리합니다. 루트 `design.md`는 만들지 않습니다. `design.md`는 설치 후 호스트 앱에 생성되는 산출물이며, 패키지 원본에서는 각 디자인의 `design.md.stub`가 그 역할을 합니다.
-
-기본 제공 디자인:
-
-| 디자인 | 용도 |
-|--------|------|
-| `package-guide` | 기본 설치 화면, 패키지 설명 및 설치/추가 방법 안내 |
-| `app-launch` | 실제 앱 화면과 사용 장면으로 설치 전환을 만드는 소비자 앱 출시형 |
-| `essential` | 범용 회사/서비스 소개형 |
-| `conversion` | 광고 유입, 상담 신청, 문의 전환형 |
-| `corporate-trust` | B2B 회사, 제조, 전문 서비스 신뢰형 |
-| `swiss-corporate` | 강한 그리드, 굵은 타이포, 생산 이미지 중심의 기술·제조 기업형 |
-| `local-business` | 식당, 학원, 미용실, 오프라인 매장형 |
-| `clinic-clean` | 병원, 상담센터, 법률/세무/노무 전문직형 |
-| `portfolio-editorial` | 스튜디오, 작가, 브랜드 포트폴리오형 |
-| `saas-product` | SaaS, 앱, API, 디지털 제품 소개형 |
-| `event-promo` | 세미나, 강의, 컨퍼런스, 단기 프로모션형 |
-| `yaver` | 앱 설치 안내와 개발 사이트 소개를 위한 절제된 디지털 제작사형 |
-| `yaver-studio` | yaver.com 스타일의 스튜디오/디지털 제작사 소개형 |
+프리셋 제작과 확장 규칙은 [디자인 프리셋 문서](docs/designs.md)를 참고하십시오.
 
 ## 생성 파일
 
@@ -168,36 +98,61 @@ public/media/*
 design.md
 ```
 
-`routes/web.php`에는 다음 줄이 자동 추가됩니다.
+`routes/web.php`에는 다음 route loader가 자동으로 추가됩니다.
 
 ```php
 require __DIR__.'/site.php';
 ```
 
-`routes/site.php`의 홈 라우트는 기본 이름으로 `site.home`을 사용합니다.
+route loader를 직접 관리하려면 설치할 때 `--skip-route-include`를 사용합니다.
+
+```bash
+php artisan laravel-site:install --skip-route-include
+```
+
+생성되는 홈 route 이름은 기본적으로 `site.home`입니다. 필요한 경우 `LARAVEL_SITE_HOME_NAME` 환경변수로 변경할 수 있습니다.
 
 ## 커스터마이징
 
-- 메인 랜딩 페이지: `resources/views/site/home.blade.php`
-- 공통 컴포넌트: `resources/views/components/site`
-- 사이트 레이아웃: `resources/views/components/layouts/site.blade.php`
-- 메뉴/브랜드/프리셋: `config/laravel-site.php`
-- 전체 색상/톤: `resources/css/site.css`
-- 모바일 메뉴 JS: `resources/js/site.js`
-- AI 추가 제작 기준: `design.md`
+- 메인 페이지: `resources/views/site/home.blade.php`
+- 사이트 컴포넌트: `resources/views/components/site`
+- 레이아웃: `resources/views/components/layouts/site.blade.php`
+- 메뉴와 브랜드 설정: `config/laravel-site.php`
+- 색상과 레이아웃: `resources/css/site.css`
+- 모바일 메뉴 동작: `resources/js/site.js`
+- 프리셋 의도와 AI 확장 기준: `design.md`
 
-## Auth
+생성 파일은 패키지 업데이트로 자동 덮어쓰지 않습니다. 프리셋을 다시 적용할 때는 호스트 애플리케이션의 커스터마이징과 새 프리셋의 차이를 직접 병합하십시오.
 
-로그인, 회원가입, 비밀번호 재설정 같은 auth 화면은 Laravel Starter Kit이 제공하는 페이지를 그대로 사용합니다. `laravel-site`는 public website 영역만 담당합니다.
+## 관리자 기능 추가
 
-## 테스트
-
-```bash
-vendor/bin/phpunit --configuration phpunit.xml.dist
-```
-
-로컬 패키지에 PHPUnit 의존성이 없을 때는 워크벤치의 공유 runner를 사용할 수 있습니다.
+`laravel-site`는 방문자용 공개 사이트만 생성합니다. 관리자 인증, 역할·권한과 메뉴가 필요하면 공개 코어 패키지를 별도로 설치합니다.
 
 ```bash
-/Users/ssh521/Projects/Packagist/adminTest/vendor/bin/phpunit --configuration phpunit.xml.dist
+composer require ssh521/laravel-admin
+php artisan laravel-admin:install
+npm run build
 ```
+
+현재 설치 가능한 `ssh521/*` 패키지는 [Packagist 검색 결과](https://packagist.org/search/?query=ssh521)에서 확인할 수 있습니다.
+
+## 인증 화면
+
+로그인, 회원가입, 비밀번호 재설정과 같은 인증 화면은 Laravel Starter Kit이 계속 소유합니다. `laravel-site`는 공개 사이트 route와 화면만 생성합니다.
+
+## 개발과 테스트
+
+```bash
+composer test
+git diff --check
+```
+
+프리셋을 변경한 경우 설치 명령, Vite build, route 충돌, 데스크톱·모바일 반응형과 생성 파일의 재현성을 함께 확인해야 합니다.
+
+## 지원과 보안
+
+버그와 기능 요청은 [GitHub Issues](https://github.com/ssh521/laravel-site/issues)에 등록해 주십시오. 보안 취약점은 공개 이슈 대신 [GitHub Security Advisory](https://github.com/ssh521/laravel-site/security/advisories/new)로 제보해 주십시오.
+
+## 라이선스
+
+이 패키지는 [MIT License](LICENSE)로 배포됩니다.

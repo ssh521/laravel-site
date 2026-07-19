@@ -1,6 +1,6 @@
 {
     "name": "ssh521/laravel-site",
-    "description": "Responsive public site starter scaffold for Laravel applications.",
+    "description": "Installable responsive site design presets for Laravel 13 applications.",
     "type": "library",
     "license": "MIT",
     "authors": [
