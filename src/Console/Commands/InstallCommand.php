@@ -69,7 +69,7 @@ class InstallCommand extends Command
 
         $contents = File::get($routesWebPath);
 
-        if (str_contains($contents, "routes/site.php") || str_contains($contents, "__DIR__.'/site.php'")) {
+        if (str_contains($contents, 'routes/site.php') || str_contains($contents, "__DIR__.'/site.php'")) {
             $this->line('Site route loader already exists.');
 
             return;
